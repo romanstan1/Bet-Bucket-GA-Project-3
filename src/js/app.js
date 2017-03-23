@@ -1,2 +1,2 @@
 angular
-  .module('nameYourAppHere', []);
+  .module('YTHO', ['ui.router', 'satellizer']);
