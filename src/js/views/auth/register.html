@@ -1,0 +1,16 @@
+<form name="register.registerForm" ng-submit="register.submit()" novalidate>
+
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" ng-model="register.user.username" required>
+
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" ng-model="register.user.email" required>
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" ng-model="register.user.password" required>
+
+  <label for="passwordConfirmation">Password Confirmation</label>
+  <input type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required>
+
+  <button class="button">Register</button>
+</form>
