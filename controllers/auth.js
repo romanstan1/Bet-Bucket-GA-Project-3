@@ -2,9 +2,10 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
 
-function showStuff(req, res, next) {
+function profile(req, res, next) {
   User
-    .find()
+    .findById(req.user.id)
+    .populate('accumulators')
     .exec()
     .then((users) => res.json(users))
     .catch(next);
@@ -30,7 +31,7 @@ function login(req, res, next) {
 }
 
 module.exports = {
-  show: showStuff,
+  profile,
   register,
   login
 };

@@ -1,15 +1,15 @@
 angular
   .module('YTHO')
-  .controller('ShowCtrl', ShowCtrl);
+  .controller('ProfileCtrl', ProfileCtrl);
 
 
-ShowCtrl.$inject = ['$http'];
-function ShowCtrl($http) {
+ProfileCtrl.$inject = ['$http'];
+function ProfileCtrl($http) {
   const vm = this;
 
   vm.all = [];
 
   $http
-    .get('/api/show')
+    .get('/api/profile')
     .then((response) => vm.all = response.data);
 }

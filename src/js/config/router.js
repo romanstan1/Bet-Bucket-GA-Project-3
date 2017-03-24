@@ -17,10 +17,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/auth/register.html',
       controller: 'RegisterCtrl as register'
     })
-    .state('show', {
-      url: '/show',
-      template: '<p>{{ show.all }}</p>',
-      controller: 'ShowCtrl as show'
+    .state('profile', {
+      url: '/profile',
+      template: '<p>{{ profile.all }}</p>',
+      controller: 'ProfileCtrl as profile'
     });
 
   $urlRouterProvider.otherwise('/');

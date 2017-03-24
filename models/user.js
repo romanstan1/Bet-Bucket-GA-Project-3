@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const Accumulator = require('../models/accumulator');
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  accumulators: [{ type: mongoose.Schema.ObjectId, ref: 'Accumulator' }]
 });
 
 userSchema

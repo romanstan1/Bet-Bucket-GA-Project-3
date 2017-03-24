@@ -9,8 +9,9 @@ const errorHandler = require('./lib/errorHandler');
 const { port, dbURI, env } = require('./config/environment');
 const routes = require('./config/routes');
 
-const app = express();
 mongoose.connect(dbURI);
+
+const app = express();
 
 if(env !== 'test') app.use(morgan('dev'));
 
@@ -18,7 +19,6 @@ app.use(customResponses);
 
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
-
 
 app.use('/api', routes);
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
