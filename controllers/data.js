@@ -1,6 +1,5 @@
 const FakeData = require('../models/fakeData');
 
-
 function show(req, res, next) {
   FakeData
     .find()
@@ -8,7 +7,6 @@ function show(req, res, next) {
     .then((data) => res.json(data))
     .catch(next);
 }
-
 
 
 module.exports = {

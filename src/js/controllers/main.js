@@ -8,11 +8,20 @@ ProfileCtrl.$inject = ['$http'];
 function ProfileCtrl($http) {
   const vm = this;
 
-  vm.all = [];
+  vm.user = [];
+  vm.events = [];
 
   $http
     .get('/api/profile')
-    .then((response) => vm.all = response.data);
+    .then((response) => vm.user = response.data);
+
+  vm.getEvent = getEvent;
+
+  function getEvent(accumulatorId) {
+    $http
+      .get(`/api/accumulators/${accumulatorId}`)
+      .then((response) => vm.events = response.data);
+  }
 }
 
 ShowCtrl.$inject = ['$http'];

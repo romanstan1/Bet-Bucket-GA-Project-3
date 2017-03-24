@@ -1,0 +1,9 @@
+<div>
+  <p>{{ profile.user.username }}</p>
+  <p>{{ profile.user.accumulators }}</p>
+  <p ng-repeat="accy in profile.user.accumulators"><a ng-click="profile.getEvent(accy.id)">{{ accy.id }}</a></p>
+</div>
+
+<div>
+  {{ profile.events }}
+</div>

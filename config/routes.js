@@ -2,6 +2,7 @@ const router = require('express').Router();
 const secureRoute = require('../lib/secureRoute');
 const auth = require('../controllers/auth');
 const data = require('../controllers/data');
+const accy = require('../controllers/accumulators');
 const rp = require('request-promise');
 
 // to see that the routes and user work with the angular app
@@ -17,6 +18,9 @@ router.route('/login')
 
 router.route('/data')
   .get(data.show);
+
+router.route('/accumulators/:id')
+  .get(accy.show);
 
 router.route('/betfair')
   .get((req, res) => {
@@ -39,6 +43,7 @@ router.route('/betfair')
       res.end();
     });
   });
+
 router.all('/*', (req, res) => res.notFound());
 
 module.exports = router;

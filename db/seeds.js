@@ -18,10 +18,10 @@ Accumulator
     marketId: [8891, 10]
   }, {
     name: 'Best Events',
-    markedId: [20, 500]
+    markedId: [1, 500]
   }])
   .then((accy) => {
-    console.log(`${accy.length} accies (accys?) created! Accy 1 is called ${accy[0].name}`);
+    console.log(`${accy.length} accies (accys?) created! Accy 1 is called ${accy[0].id}`);
 
     return User
       .create([{
@@ -47,6 +47,6 @@ Accumulator
         eventId: 1
       }]);
   })
-  .then((events) => console.log(`${events.length} events created!`))
+  .then((events) => console.log(`${events.length} events created! ${events[0].id}`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
