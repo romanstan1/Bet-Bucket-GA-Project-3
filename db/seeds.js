@@ -6,9 +6,11 @@ mongoose.connect(dbURI);
 
 const User = require('../models/user');
 const Accumulator = require('../models/accumulator');
+const FakeData = require('../models/fakeData');
 
 User.collection.drop();
 Accumulator.collection.drop();
+FakeData.collection.drop();
 
 Accumulator
   .create([{
@@ -30,6 +32,21 @@ Accumulator
         accumulators: [accy[0], accy[1]]
       }]);
   })
-  .then((users) => console.log(`${users.length} users created, ${users[0].accumulators[0].name}`))
+  .then((users) => {
+    console.log(`${users.length} users created, ${users[0].accumulators[0].name}`);
+
+    return FakeData
+      .create([{
+        eventName: 'Trump Assassination',
+        eventId: 10
+      }, {
+        eventName: 'Floyd vs Bugs Bunny',
+        eventId: 8891
+      }, {
+        eventName: 'Ur Nan\'s Health',
+        eventId: 1
+      }]);
+  })
+  .then((events) => console.log(`${events.length} events created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());

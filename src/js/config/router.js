@@ -21,6 +21,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/profile',
       template: '<p>{{ profile.all }}</p>',
       controller: 'ProfileCtrl as profile'
+    })
+    .state('show', {
+      url: '/show',
+      template: '<p>{{ show.all }}</p><br><p>{{show.all[0].evendId }}</p>',
+      controller: 'ShowCtrl as show'
     });
 
   $urlRouterProvider.otherwise('/');
