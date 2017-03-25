@@ -19,7 +19,8 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('profile', {
       url: '/profile',
-      template: '<p>{{ profile.all }}</p>',
+      templateUrl: 'js/views/user/index.html',
+      // template: '<p>{{ profile.all }}</p>',
       controller: 'ProfileCtrl as profile'
     })
     .state('show', {
