@@ -1,6 +1,9 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
+const betfairLogin = require('../lib/betfair');
+
+
 
 function profile(req, res, next) {
   User
@@ -27,7 +30,13 @@ function login(req, res, next) {
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '5hr' });
       res.json({ token, message: `Welcome back ${user.username}` });
     })
-    .catch(next);
+    .then(() => {
+      return betfairLogin();
+    })
+    .then((response) => {
+      console.log(response);
+    })
+  .catch(next);
 }
 
 module.exports = {
