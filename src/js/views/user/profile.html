@@ -1,0 +1,14 @@
+<ul>
+    <li ng-click="profile.logout()"><a href="#">Logout</a></li>
+</ul>
+
+<p>{{ profile.all }}</p>
+
+<div>
+  <p>Username:{{ profile.user.username }}</p>
+  <p ng-repeat="accy in profile.user.accumulators"><a ng-click="profile.getEvent(accy.id)">Accumulator {{ $index + 1 }} and its Id: {{ accy.id }} - <em>click me</em></a></p>
+</div>
+
+<div>
+  <p ng-repeat="events in profile.events">Event {{ $index + 1 }} {{ events.eventName }}. events Id: {{ events.eventId }}. id: {{ events.id }}</p>
+</div>

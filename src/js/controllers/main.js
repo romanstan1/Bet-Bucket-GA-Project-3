@@ -8,7 +8,8 @@ ProfileCtrl.$inject = ['$http', '$auth', '$state'];
 function ProfileCtrl($http, $auth, $state) {
   const vm = this;
 
-  vm.all = [];
+  vm.user = [];
+  vm.events = [];
 
   getUserProfile();
 
@@ -18,13 +19,20 @@ function ProfileCtrl($http, $auth, $state) {
     .then((response) => vm.all = response.data);
   }
 
+  vm.getEvent = getEvent;
+
+  function getEvent(accumulatorId) {
+    $http
+      .get(`/api/accumulators/${accumulatorId}`)
+      .then((response) => vm.events = response.data);
+  }
+
   function logout() {
     $auth.logout();
     $state.go('login');
   }
 
   vm.logout = logout;
-
 }
 
 ShowCtrl.$inject = ['$http'];
