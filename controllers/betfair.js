@@ -11,11 +11,13 @@ function getEvents(req, res) {
       'X-Authentication': 'n5a7gSphIRaIFPxmytzWhqctF0vZp7dYgLdKQtVUYfc=',
       'Content-Type': 'application/json'
     },
-    filter: {
-      'eventTypeIds': [1],
-      'eventListStartTime': {
-        'from': '2018-03-24T00:00:00Z',
-        'to': '2018-03-24T23:59:00Z'
+    body: {
+      'filter': {
+        'eventTypeIds': ['1'],
+        'eventListStartTime': {
+          'from': '2017-03-27T00:00:00Z',
+          'to': '2017-04-27T23:59:00Z'
+        }
       }
     },
     json: true
