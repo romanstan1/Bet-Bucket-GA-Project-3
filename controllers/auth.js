@@ -1,7 +1,8 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
-const betfairLogin = require('../lib/betfair');
+const betfairLogin = require('../lib/betfairLogin');
+const listEvents = require('../lib/betfairGetEvents');
 
 
 
@@ -34,7 +35,12 @@ function login(req, res, next) {
       return betfairLogin();
     })
     .then((response) => {
-      console.log(response);
+      req.token = response.token;
+      //console.log('\x1b[31m', req.token);
+      return listEvents(response.token);
+    })
+    .then((response1) => {
+      console.log(response1);
     })
   .catch(next);
 }

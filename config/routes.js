@@ -2,7 +2,7 @@ const router = require('express').Router();
 const secureRoute = require('../lib/secureRoute');
 const auth = require('../controllers/auth');
 const data = require('../controllers/data');
-const betfair = require('../lib/betfair');
+// const betfair = require('../lib/betfair');
 const accy = require('../controllers/accumulators');
 
 // to see that the routes and user work with the angular app
