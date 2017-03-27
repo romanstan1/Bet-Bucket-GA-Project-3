@@ -8,8 +8,31 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body>
-  <h1>Project 3</h1>
+<body ng-controller="MainCtrl as main">
+  <header>
+    <nav>
+      <ul>
+        <li ng-if="main.isAuthenticated()"><a href="#">Username:{{ main.user.username }}</a></li>
+        <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
+
+        <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
+        <li ng-if="!main.isAuthenticated()" ui-sref="register"><a href="#">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="profile-accy-nav" ng-if="main.isAuthenticated()">
+    <p ng-repeat="accy in main.user.accumulators">
+      <a ng-click="main.dislayTrackedEvents(accy.id)">
+      Accumulator {{ $index + 1 }} and its Id: {{ accy.id }} - <em>click me</em></a>
+    </p>
+  </section>
+
+  <h1>Bet Bucket?</h1>
+
   <main ui-view></main>
+
+  <footer>
+  </footer>
 </body>
 </html>

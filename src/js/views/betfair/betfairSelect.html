@@ -1,0 +1,31 @@
+<div class="">
+<section class="profile-input-selectboxes" >
+
+  <label for="caption">Choose your category</label>
+  <select class="" name="EVENT TYPE" ng-model="betfair.eventTypeId">
+    <option value="1"> Soccer</option>
+    <option value="2"> Rugby</option>
+    <option value="3"> Golf</option>
+  </select><br>
+
+
+  <label for="caption">Date</label>
+  <label for="caption">From</label>
+  <input type="date" name="startDate" ng-model="betfair.startDate"><br>
+  <label for="caption">Until</label>
+  <input type="date" name="endDate" ng-model="betfair.endDate">
+<br> <br>
+{{ betfair.startDate }}
+{{ betfair.endDate }}
+
+  <button class="profile-search-event" type="button" name="button" ng-click="betfair.listEvents()">SEARCH</button>
+</section>
+
+<section class="profile-select-event">
+  <p ng-repeat="market in betfair.markets">{{ market.marketId }}</p>
+</section>
+
+<section class="profile-select-event" >
+  <p ng-repeat="event in betfair.all" ng-click="betfair.listMarkets(event.event.id)">{{ event }}</p>
+</section>
+</div>

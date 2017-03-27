@@ -1,0 +1,123 @@
+html, main, body, a, li, ul, nav, div, section, article, header, footer, {
+  list-style: none;
+  text-decoration: none;
+  font-family: sans-serif;
+  color: black;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+
+
+// main styles -------------------------
+nav {
+  position: absolute;
+  height: 50px;
+  background: ghostwhite;
+  top: 0;
+  width: 100%;
+  ul{
+    width: 80%;
+    margin: 0 auto;
+    li{
+      display: inline-block;
+      margin-right: 30px;
+      background: red;
+      opacity: 1;
+      cursor: pointer;
+      a {
+        display:block;
+        line-height: 50px;
+        background: white;
+        padding: 0 10px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+
+section.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-top: 70px;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+
+// profile page styles ---------------------------
+section.profile-accy-nav {
+  width: 20%;
+  background: ghostwhite;
+  border: 2px solid black;
+  display: inline-block;
+  float: right;
+  margin-left: 10px;
+}
+
+section.profile-selected-accy, section.profile-select-event {
+  width: 70%;
+  background: ghostwhite;
+  border: 2px solid black;
+  display: inline-block;
+  float: left;
+}
+
+section.profile-input-selectboxes {
+
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  background: ghostwhite;
+
+  select {
+    option {
+      line-height: 20px;
+    }
+  }
+  input {
+      line-height: 20px;
+  }
+}
+
+
+section.profile-select-event {
+  background: grey;
+}
+
+button.profile-choose-event, button.profile-search-event {
+  width: 50%;
+  height : 30px;
+  margin: 0 auto;
+  color: white;
+  background: dodgerblue;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  margin-bottom: 30px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+button.profile-search-event {
+  background: tomato;
+}
+
+main {
+  background-color: gold;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}

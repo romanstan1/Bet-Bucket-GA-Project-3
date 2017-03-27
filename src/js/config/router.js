@@ -19,14 +19,9 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('profile', {
       url: '/profile',
-      templateUrl: 'js/views/user/profile.html',
-      controller: 'ProfileCtrl as profile'
-    })
-    .state('show', {
-      url: '/show',
-      template: '<p>{{ show.all }}</p>',
-      controller: 'ShowCtrl as show'
+      templateUrl: 'js/views/betfair/betfairSelect.html',
+      controller: 'BetfairSelectCtrl as betfair'
     });
-
+    
   $urlRouterProvider.otherwise('/');
 }

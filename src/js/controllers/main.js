@@ -1,48 +1,47 @@
 angular
   .module('YTHO')
-  .controller('ProfileCtrl', ProfileCtrl)
-  .controller('ShowCtrl', ShowCtrl);
+  .controller('MainCtrl', MainCtrl);
 
-
-ProfileCtrl.$inject = ['$http', '$auth', '$state'];
-function ProfileCtrl($http, $auth, $state) {
+MainCtrl.$inject = ['$rootScope', '$state', '$auth', '$http'];
+function MainCtrl($rootScope, $state, $auth, $http) {
   const vm = this;
-
+  //vm.stateHasChanged = false;
   vm.user = [];
-  vm.events = [];
+
+  vm.isAuthenticated = $auth.isAuthenticated;
+
+  $rootScope.$on('error', (e, err) => {
+    vm.stateHasChanged = false;
+    vm.message = err.data.message;
+    $state.go('login');
+  });
+  //
+  $rootScope.$on('$stateChangeSuccess', () => {
+    if(vm.stateHasChanged) vm.message = null;
+    if(!vm.stateHasChanged) vm.stateHasChanged = true;
+    if($auth.getPayload()) vm.currentUserId = $auth.getPayload().userId;
+  });
+
+  function logout() {
+    $auth.logout();
+    $state.go('login');
+  }
+  vm.logout = logout;
 
   getUserProfile();
 
   function getUserProfile() {
     $http
     .get('/api/profile')
-    .then((response) => vm.all = response.data);
+    .then((response) => vm.user = response.data);
   }
 
-  vm.getEvent = getEvent;
+  vm.dislayTrackedEvents = dislayTrackedEvents;
 
-  function getEvent(accumulatorId) {
+  function dislayTrackedEvents(accumulatorId) {
     $http
       .get(`/api/accumulators/${accumulatorId}`)
       .then((response) => vm.events = response.data);
   }
-
-  function logout() {
-    $auth.logout();
-    $state.go('login');
-  }
-
-  vm.logout = logout;
-}
-
-ShowCtrl.$inject = ['$http'];
-function ShowCtrl($http) {
-  const vm = this;
-
-  vm.all = [];
-
-  $http
-    .get('/api/data')
-    .then((response) => vm.all = response.data);
 
 }

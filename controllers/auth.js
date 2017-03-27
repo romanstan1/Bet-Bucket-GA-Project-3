@@ -1,9 +1,7 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
-const betfairLogin = require('../lib/betfair');
-
-
+const betfairLogin = require('../lib/betfairLogin');
 
 function profile(req, res, next) {
   User
@@ -22,21 +20,20 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
-  User
-    .findOne({ email: req.body.email })
+  return betfairLogin()
+    .then((response) => {
+      global.betfairToken = response.token;
+
+      return User
+        .findOne({ email: req.body.email });
+    })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) return res.unauthorized();
 
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '5hr' });
       res.json({ token, message: `Welcome back ${user.username}` });
     })
-    .then(() => {
-      return betfairLogin();
-    })
-    .then((response) => {
-      console.log(response);
-    })
-  .catch(next);
+    .catch(next);
 }
 
 module.exports = {
