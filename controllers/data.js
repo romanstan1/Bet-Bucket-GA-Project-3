@@ -4,7 +4,7 @@ const listEvents = require('../lib/betfairGetEvents');
 
 function show(req, res, next) {
   console.log('responese here');
-  return listEvents(req.token)
+  return listEvents(global.betfairToken)
     .then((data) => {
       //console.log(response);
       console.log('responese here too');

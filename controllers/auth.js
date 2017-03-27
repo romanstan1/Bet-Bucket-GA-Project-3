@@ -4,8 +4,6 @@ const { secret } = require('../config/environment');
 const betfairLogin = require('../lib/betfairLogin');
 const listEvents = require('../lib/betfairGetEvents');
 
-
-
 function profile(req, res, next) {
   User
     .findById(req.user.id)
@@ -23,26 +21,20 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
-  User
-    .findOne({ email: req.body.email })
+  return betfairLogin()
+    .then((response) => {
+      global.betfairToken = response.token;
+
+      return User
+        .findOne({ email: req.body.email })
+    })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) return res.unauthorized();
 
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '5hr' });
       res.json({ token, message: `Welcome back ${user.username}` });
     })
-    .then(() => {
-      return betfairLogin();
-    })
-    .then((response) => {
-      req.token = response.token;
-      //console.log('\x1b[31m', req.token);
-      return listEvents(response.token);
-    })
-    .then((response) => {
-      console.log(response);
-    })
-  .catch(next);
+    .catch(next);
 }
 
 module.exports = {

@@ -55,7 +55,7 @@ h1 {
 
 
 // profile page styles ---------------------------
-section.profile-select-accy {
+section.profile-accy-nav {
   width: 20%;
   background: ghostwhite;
   border: 2px solid black;
@@ -64,15 +64,37 @@ section.profile-select-accy {
   margin-left: 10px;
 }
 
-section.profile-view-data {
+section.profile-selected-accy, section.profile-select-event {
   width: 70%;
   background: ghostwhite;
   border: 2px solid black;
   display: inline-block;
-  float: right
+  float: left;
 }
 
-button.profile-choose-event {
+section.profile-input-selectboxes {
+
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  background: ghostwhite;
+
+  select {
+    option {
+      line-height: 20px;
+    }
+  }
+  input {
+      line-height: 20px;
+  }
+}
+
+
+section.profile-select-event {
+  background: grey;
+}
+
+button.profile-choose-event, button.profile-search-event {
   width: 50%;
   height : 30px;
   margin: 0 auto;
@@ -87,4 +109,8 @@ button.profile-choose-event {
   &:hover {
     opacity: 0.7;
   }
+}
+
+button.profile-search-event {
+  background: tomato;
 }
