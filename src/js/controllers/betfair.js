@@ -11,7 +11,17 @@ function BetfairSelectCtrl($http) {
 
   function listEvents() {
     $http
-      .get('/api/data', { params: { eventTypeId: vm.eventTypeId, startDate: vm.startDate, endDate: vm.endDate }})
+      .get('/api/listEvents', { params: { eventTypeId: vm.eventTypeId, startDate: vm.startDate, endDate: vm.endDate }})
       .then((response) => vm.all = response.data);
+  }
+
+  vm.listMarkets = listMarkets;
+  function listMarkets(eventId) {
+    $http
+      .get('/api/listMarkets', { params: { eventId }})
+      .then((response) => {
+        console.log(response);
+        vm.markets = response.data;
+      });
   }
 }

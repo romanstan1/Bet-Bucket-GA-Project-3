@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const secureRoute = require('../lib/secureRoute');
 const auth = require('../controllers/auth');
-const data = require('../controllers/data');
+const betfairData = require('../controllers/betfairData');
 //const betfair = require('../controllers/betfair');
 
 // const betfair = require('../lib/betfair');
@@ -18,9 +18,12 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
-router.route('/data')
-  .get(data.show);
+router.route('/listEvents')
+  .get(betfairData.listEvents);
 
+router.route('/listMarkets')
+  .get(betfairData.listMarkets);
+  
 // betfair apis routes called from the front-end selections
 
 // router.route('/getEvents')
