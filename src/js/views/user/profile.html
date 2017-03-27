@@ -9,38 +9,12 @@
 
   <button class="profile-choose-event" type="button" name="button">Choose New Event</button>
 
+<section ng-controller="PartialsCtrl as partial">
 
-  <section class="profile-input-selectboxes">
-
-    <label for="caption">Choose your category</label>
-    <select class="" name="EVENT TYPE">
-      <option value="1"> Soccer</option>
-      <option value="2"> Rugby</option>
-      <option value="3"> Golf</option>
-    </select><br>
-
-
-    <label for="caption">Date</label>
-    <label for="caption">From</label>
-    <input type="date" name="" value="" ng-model="profile.dateFrom"><br>
-    <label for="caption">Until</label>
-    <input type="date" name="" value="" ng-model="profile.dateUntil">
- <br> <br>
-    {{ profile.dateFrom }}
-    {{ profile.dateUntil }}
-
-    <button class="profile-search-event" type="button" name="button">SEARCH</button>
-  </section>
-
+</section>
 
   <section class="profile-accy-nav">
-    <p ng-repeat="accy in profile.user.accumulators"><a ng-click="profile.getEvent(accy.id)">Accumulator {{ $index + 1 }} and its Id: {{ accy.id }} - <em>click me</em></a></p>
-  </section>
-
-  <section class="profile-select-event" >
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    {{ }}
+    <p ng-repeat="accy in profile.user.accumulators"><a ng-click="profile.dislayTrackedEvents(accy.id)">Accumulator {{ $index + 1 }} and its Id: {{ accy.id }} - <em>click me</em></a></p>
   </section>
 
   <section class="profile-selected-accy">

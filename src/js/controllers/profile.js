@@ -17,12 +17,11 @@ function ProfileCtrl($http, $auth, $state) {
     $http
     .get('/api/profile')
     .then((response) => vm.user = response.data);
-    console.log(vm.user);
   }
 
-  vm.getEvent = getEvent;
+  vm.dislayTrackedEvents = dislayTrackedEvents;
 
-  function getEvent(accumulatorId) {
+  function dislayTrackedEvents(accumulatorId) {
     $http
       .get(`/api/accumulators/${accumulatorId}`)
       .then((response) => vm.events = response.data);
@@ -36,14 +35,16 @@ function ProfileCtrl($http, $auth, $state) {
   vm.logout = logout;
 }
 
-ShowCtrl.$inject = ['$http'];
-function ShowCtrl($http) {
-  const vm = this;
 
-  vm.all = [];
 
-  $http
-    .get('/api/data')
-    .then((response) => vm.all = response.data);
-
-}
+// PartialsCtrl.$inject = ['$http'];
+// function PartialsCtrl($http) {
+//   const vm = this;
+//
+//   vm.all = [];
+//
+//   $http
+//     .get('/api/data')
+//     .then((response) => vm.all = response.data);
+//
+// }
