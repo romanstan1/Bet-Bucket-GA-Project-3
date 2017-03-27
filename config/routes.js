@@ -2,7 +2,9 @@ const router = require('express').Router();
 const secureRoute = require('../lib/secureRoute');
 const auth = require('../controllers/auth');
 const data = require('../controllers/data');
-const betfair = require('../controllers/betfair');
+//const betfair = require('../controllers/betfair');
+
+// const betfair = require('../lib/betfair');
 const accy = require('../controllers/accumulators');
 
 // to see that the routes and user work with the angular app
@@ -21,8 +23,8 @@ router.route('/data')
 
 // betfair apis routes called from the front-end selections
 
-router.route('/getEvents')
-  .get(betfair.getEvents);
+// router.route('/getEvents')
+//   .get(betfair.getEvents);
 //
 // router.route('/getMarketType')
 //   .get(betfair.getMarketType);

@@ -16,7 +16,8 @@ function ProfileCtrl($http, $auth, $state) {
   function getUserProfile() {
     $http
     .get('/api/profile')
-    .then((response) => vm.all = response.data);
+    .then((response) => vm.user = response.data);
+    console.log(vm.user);
   }
 
   vm.getEvent = getEvent;
