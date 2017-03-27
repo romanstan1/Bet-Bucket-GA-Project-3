@@ -39,8 +39,8 @@ function login(req, res, next) {
       //console.log('\x1b[31m', req.token);
       return listEvents(response.token);
     })
-    .then((response1) => {
-      console.log(response1);
+    .then((response) => {
+      console.log(response);
     })
   .catch(next);
 }
