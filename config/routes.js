@@ -23,6 +23,9 @@ router.route('/listEvents')
 router.route('/listMarkets')
   .get(betfairData.listMarkets);
 
+router.route('/marketOdds')
+  .get(betfairData.getMarketOdds);
+
 // betfair apis routes called from the front-end selections
 
 // router.route('/getEvents')
@@ -33,6 +36,9 @@ router.route('/listMarkets')
 //
 // router.route('/getMarketData')
 //   .get(betfair.getMarketData);
+
+router.route('/accumulators')
+  .post(secureRoute, accy.create);
 
 router.route('/accumulators/:id')
   .get(accy.show);

@@ -17,7 +17,16 @@ function listMarkets(req, res, next) {
     .catch(next);
 }
 
+function getMarketOdds(req, res, next) {
+  return betfairRoutes.getMarketOdds(global.betfairToken, req.query.marketId)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(next);
+}
+
 module.exports = {
   listEvents,
-  listMarkets
+  listMarkets,
+  getMarketOdds
 };

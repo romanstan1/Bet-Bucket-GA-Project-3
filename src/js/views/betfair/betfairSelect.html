@@ -2,30 +2,29 @@
 <section class="profile-input-selectboxes" >
 
   <label for="caption">Choose your category</label>
-  <select class="" name="EVENT TYPE" ng-model="betfair.eventTypeId">
-    <option value="1"> Soccer</option>
-    <option value="2"> Rugby</option>
-    <option value="3"> Golf</option>
+  <select name="EVENT TYPE" ng-model="betfair.eventTypeId">
+    <option value="1">Soccer</option>
+    <option value="2">Tennis</option>
+    <option value="3">Golf</option>
+    <option value="4">Cricket</option>
+    <option value="5">Rugby</option>
+    <option value="6">Boxing</option>
+    <option value="7">Horse</option>
+    <option value="8">Motor</option>
+    <option value="10">Special</option>
   </select><br>
 
 
-  <label for="caption">Date</label>
-  <label for="caption">From</label>
+  <label for="caption">Search From</label>
   <input type="date" name="startDate" ng-model="betfair.startDate"><br>
   <label for="caption">Until</label>
   <input type="date" name="endDate" ng-model="betfair.endDate">
 <br> <br>
-{{ betfair.startDate }}
-{{ betfair.endDate }}
 
   <button class="profile-search-event" type="button" name="button" ng-click="betfair.listEvents()">SEARCH</button>
 </section>
 
-<section class="profile-select-event">
-  <p ng-repeat="market in betfair.markets">{{ market.marketId }}</p>
-</section>
-
 <section class="profile-select-event" >
-  <p ng-repeat="event in betfair.all" ng-click="betfair.listMarkets(event.event.id)">{{ event }}</p>
+  <p ng-repeat="event in betfair.all" ui-sref="markets({ eventId: event.event.id })">{{ event }}</p>
 </section>
 </div>
