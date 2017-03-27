@@ -1,8 +1,8 @@
 <h1>I am a market, hear me roar</h1>
-<p ng-repeat="market in betfairM.markets">{{ market.marketName }} {{ market.marketId }}
+<p ng-repeat="market in betfairM.markets" ng-click="betfairM.getMarketOdds(market.marketId)">{{ market.marketName }} {{ market.marketId }}
   <span ng-repeat="runner in market.runners"><strong>{{ runner.runnerName }}</strong> {{ runner.lastPriceTraded }}-</span></p>
 <div>
   <ul>
-    <li class="odds" ng-repeat="odds in betfairM.specificMarket.runners">{{ odds.selectionId }}</li>
+    <li class="odds" ng-repeat="odds in betfairM.specificMarket.runners">{{ odds }}</li>
   </ul>
 </div>
