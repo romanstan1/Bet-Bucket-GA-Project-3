@@ -3,12 +3,12 @@
   <br>{{ market.marketName }} {{ market.marketId }}
   <span ng-repeat="runner in market.runners">
     <br>
-    <strong>{{ runner.runnerName }} - </strong>  <button> add </button>
+    <strong>{{ runner.runnerName }} - </strong>
     {{ runner.lastPriceTraded }}
   </span>
   </p>
 <div>
   <ul>
-    <li class="odds" ng-repeat="odds in betfairM.specificMarket.runners">{{ odds.selectionId }}</li>
+    <li class="odds" ng-repeat="odds in betfairM.specificMarket.runners">{{ odds.selectionId }}</li> <button> add </button>
   </ul>
 </div>
