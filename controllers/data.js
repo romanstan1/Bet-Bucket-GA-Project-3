@@ -1,10 +1,10 @@
 //const FakeData = require('../models/fakeData');
 //const User = require('../models/user');
-const listEvents = require('../lib/betfairGetEvents');
+const betfairRoutes = require('../lib/betfairRoutes');
 
 function show(req, res, next) {
   console.log('responese here');
-  return listEvents(global.betfairToken)
+  return betfairRoutes.listEvents(global.betfairToken, req.query.eventTypeId, req.query.startDate, req.query.endDate)
     .then((data) => {
       //console.log(response);
       console.log('responese here too');
