@@ -1,7 +1,6 @@
 angular
   .module('YTHO')
-  .controller('ProfileCtrl', ProfileCtrl)
-  .controller('ShowCtrl', ShowCtrl);
+  .controller('ProfileCtrl', ProfileCtrl);
 
 
 ProfileCtrl.$inject = ['$http', '$auth', '$state'];

@@ -8,8 +8,29 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body>
+<body ng-controller="MainCtrl as main">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Username:{{ main.user.username }}</a></li>
+        <li ng-click="main.logout()"><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
   <h1>Bet Bucket?</h1>
+
+  <!-- <section class="profile-accy-nav">
+    <p ng-repeat="accy in main.user.accumulators">
+      <a ng-click="main.dislayTrackedEvents(accy.id)">
+      Accumulator {{ $index + 1 }} and its Id: {{ accy.id }} - <em>click me</em></a>
+    </p>
+  </section> -->
+
   <main ui-view></main>
+
+  <footer>
+  </footer>
 </body>
 </html>

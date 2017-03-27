@@ -1,9 +1,9 @@
 angular
   .module('YTHO')
-  .controller('PartialsCtrl', PartialsCtrl);
+  .controller('BetfairSelectCtrl', BetfairSelectCtrl);
 
-PartialsCtrl.$inject = ['$http'];
-function PartialsCtrl($http) {
+BetfairSelectCtrl.$inject = ['$http'];
+function BetfairSelectCtrl($http) {
   const vm = this;
 
   vm.all = [];
