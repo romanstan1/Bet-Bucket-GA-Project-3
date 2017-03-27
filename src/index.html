@@ -30,6 +30,11 @@
 
   <h1>Bet Bucket?</h1>
 
+  <div ng-controller="LineCtrl as line">
+    <canvas id="line" class="chart chart-line" chart-data="line.data"
+    chart-labels="line.labels" chart-series="line.series" chart-options="line.options">
+    </canvas>
+  </div>
   <main ui-view></main>
 
   <footer>

@@ -7,8 +7,7 @@ const betfairData = require('../controllers/betfairData');
 // const betfair = require('../lib/betfair');
 const accy = require('../controllers/accumulators');
 
-// to see that the routes and user work with the angular app
-// all this does is hopefully show all users on a page, with no authentication.
+
 router.route('/profile')
   .get(secureRoute, auth.profile);
 
@@ -23,7 +22,7 @@ router.route('/listEvents')
 
 router.route('/listMarkets')
   .get(betfairData.listMarkets);
-  
+
 // betfair apis routes called from the front-end selections
 
 // router.route('/getEvents')
