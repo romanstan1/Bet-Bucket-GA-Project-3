@@ -55,6 +55,8 @@ h1 {
 
 
 // profile page styles ---------------------------
+
+
 section.profile-accy-nav {
   width: 20%;
   background: ghostwhite;
@@ -62,6 +64,21 @@ section.profile-accy-nav {
   display: inline-block;
   float: right;
   margin-left: 10px;
+  ul {
+    li {
+      margin: 15px 0;
+      cursor: pointer;
+      background: grey;
+      color: black;
+      a {
+        color: inherit;
+      }
+      &:hover {
+        color: white;
+        background: dodgerblue;
+      }
+    }
+  }
 }
 
 section.profile-selected-accy, section.profile-select-event {
@@ -71,6 +88,14 @@ section.profile-selected-accy, section.profile-select-event {
   display: inline-block;
   float: left;
 }
+
+
+
+
+
+// input select paritals sections-------------------
+
+
 
 section.profile-input-selectboxes {
 

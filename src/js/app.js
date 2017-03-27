@@ -1,2 +1,2 @@
 angular
-  .module('YTHO', ['ui.router', 'satellizer', 'ngMessages']);
+  .module('YTHO', ['ui.router', 'satellizer', 'ngMessages', 'ngResource']);
