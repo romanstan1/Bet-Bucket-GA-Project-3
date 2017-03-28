@@ -8,9 +8,10 @@
   </form>
   <ul>
     <li ng-repeat="accy in usersShow.user.accumulators">
-      <a ng-click="usersShow.dislayTrackedEvents(accy.id)">
+      <a ng-click="usersShow.displayTrackedEvents(accy.id)">
       Accumulator {{ $index + 1 }} <br>
       {{ accy.name }} <br>{{ accy.id }}</a>
+      <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
     </li>
   </ul>
 </section>

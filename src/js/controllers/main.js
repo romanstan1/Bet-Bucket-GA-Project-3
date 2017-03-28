@@ -37,9 +37,9 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   //   .then((response) => vm.user = response.data);
   // }
   //
-  // vm.dislayTrackedEvents = dislayTrackedEvents;
+  // vm.displayTrackedEvents = displayTrackedEvents;
 
-  // function dislayTrackedEvents(accumulatorId) {
+  // function displayTrackedEvents(accumulatorId) {
   //   $http
   //     .get(`/api/accumulators/${accumulatorId}`)
   //     .then((response) => vm.events = response.data);
