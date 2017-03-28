@@ -87,7 +87,7 @@ function LineCtrl($scope) {
 
   setTimeout(() => {
     clearInterval(timerId);
-  }, 10000); // stop timer after 10 seconds
+  }, 2000); // stop timer after 10 seconds
 
   function updateGraph() {
     test++;

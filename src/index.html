@@ -33,7 +33,7 @@
       <li ng-repeat="accy in main.user.accumulators">
         <a ng-click="main.dislayTrackedEvents(accy.id)">
         Accumulator {{ $index + 1 }} <br>
-        {{ accy.name }} <br>{{ accy.id }}</a>
+        {{ accy.name }} <br>{{ accy.id }}<br><span ng-repeat="ids in accy.marketId"><strong>{{ ids }} </strong></span></a>
       </li>
     </ul>
 

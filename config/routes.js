@@ -1,10 +1,7 @@
 const router = require('express').Router();
 const secureRoute = require('../lib/secureRoute');
-const auth = require('../controllers/auth');
 const betfairData = require('../controllers/betfairData');
-//const betfair = require('../controllers/betfair');
-
-// const betfair = require('../lib/betfair');
+const auth = require('../controllers/auth');
 const accy = require('../controllers/accumulators');
 
 
