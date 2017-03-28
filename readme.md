@@ -57,13 +57,13 @@ Secure routes ensure that only registered users can access the site.
 1. Betfair API
 2. Facebook Login
 
-####The Build
+#### The Build
 
 The following tools are used to build the site.
 
+* Javascript
 * AngularJS
 * Bootstrap SCSS
-* Javascript
 * MongoDB
 
 In addition, the following planning and management tools were used:

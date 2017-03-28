@@ -35,11 +35,16 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
       });
   }
 
+  vm.runnerNames = [];
+
   function selectMarket(selectedMarket) {
     vm.markets.forEach((market) => {
       market.selected = false;
     });
     selectedMarket.selected = true;
+    selectedMarket.runners.forEach((element) => {
+      return vm.runnerNames.push(element.runnerName);
+    });
   }
 
   vm.selectMarket = selectMarket;
