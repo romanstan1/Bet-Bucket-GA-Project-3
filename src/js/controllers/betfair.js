@@ -27,6 +27,7 @@ function BetfairMarketCtrl($http, $state, $stateParams, filterFilter) {
   listMarkets();
   vm.listMarkets = listMarkets;
   function listMarkets() {
+    console.log($stateParams);
     $http
       .get('/api/listMarkets', { params: $stateParams })
       .then((response) => {

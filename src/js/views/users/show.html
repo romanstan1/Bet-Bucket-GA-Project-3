@@ -1,0 +1,22 @@
+<h1> USERS SHOW </h1>
+
+<section class="profile-accy-nav">
+  {{ main.newAccumulator.name }}
+  <form ng-submit="usersShow.createAccumulator()" novalidate>
+    <input type="text" value="My Accumulator" ng-model="usersShow.newAccumulator.name">
+    <button>Create New Accumulator</button>
+  </form>
+  <ul>
+    <li ng-repeat="accy in usersShow.user.accumulators">
+      <a ng-click="usersShow.dislayTrackedEvents(accy.id)">
+      Accumulator {{ $index + 1 }} <br>
+      {{ accy.name }} <br>{{ accy.id }}</a>
+    </li>
+  </ul>
+</section>
+
+<button ui-sref="profile.events">Add Event</button>
+
+
+<!-- loads in events index.html and show.html -->
+<div ui-view></div>

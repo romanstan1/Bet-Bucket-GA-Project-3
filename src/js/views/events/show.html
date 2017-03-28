@@ -1,0 +1,17 @@
+<h1>I am a market, hear me roar</h1>
+  <p ng-repeat="market in betfairM.markets">
+  <br>{{ market.marketName }} {{ market.marketId }}
+  <span ng-repeat="runner in market.runners">
+    <br>
+    <strong>{{ runner.runnerName }} - </strong>
+    {{ runner.lastPriceTraded }}
+  </span>
+  </p>
+<div>
+  <ul>
+    <li class="odds" ng-repeat="runner in betfairM.specificMarket.runners">
+      {{ runner.selectionId }} {{ runner.lastPriceTraded }}
+      <button ng-click="usersShow.addEvent(runner)">Add Event</button>
+    </li>
+  </ul>
+</div>

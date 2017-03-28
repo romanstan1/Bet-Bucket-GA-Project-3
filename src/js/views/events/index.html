@@ -25,6 +25,6 @@
 </section>
 
 <section class="profile-select-event" >
-  <p ng-repeat="event in betfair.all" ui-sref="markets({ eventId: event.event.id })">{{ event }}</p>
+  <p ng-repeat="event in betfair.all" ui-sref="profile.eventsShow({ eventId: event.event.id })">{{ event }}</p>
 </section>
 </div>
