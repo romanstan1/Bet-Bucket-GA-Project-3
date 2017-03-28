@@ -45,8 +45,24 @@ function deleteRoute(req, res, next) {
     .catch(next);
 }
 
+function pushRoute(req, res, next) {
+  const marketId = req.body;
+  console.log(marketId);
+  Accumulator
+    .findById(req.params.id)
+    .exec()
+    .then((accumulator) => {
+      if(!accumulator) return res.notFound();
+      accumulator.marketId.push(req.body.marketId);
+      return accumulator.save();
+    })
+    .then(() => res.status(200).end())
+    .catch(next);
+}
+
 module.exports = {
   show: showRoute,
   create: createRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  push: pushRoute
 };

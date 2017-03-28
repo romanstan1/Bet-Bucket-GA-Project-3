@@ -7,7 +7,6 @@ MainCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator'];
 function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   const vm = this;
   //vm.stateHasChanged = false;
-  vm.user = [];
 
   vm.isAuthenticated = $auth.isAuthenticated;
 
@@ -56,12 +55,6 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   //
   //
   // vm.createAccumulator = createAccumulator;
-
-  $rootScope.greaterThan = function(prop, val){
-    return function(item){
-      return item[prop] > val;
-    };
-  };
 
 }
 //this section is for the chart and sets parameters for how often it refreshes and what it displays
