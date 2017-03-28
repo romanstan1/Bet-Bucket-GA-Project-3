@@ -14,11 +14,9 @@ Accumulator.collection.drop();
 
 Accumulator
   .create([{
-    name: 'Weird Events',
-    marketId: [8891, 10]
+    name: 'Just Olympics'
   }, {
-    name: 'Best Events',
-    marketId: [1, 500]
+    name: 'Best Events'
   }])
   .then((accy) => {
     console.log(`${accy.length} accies (accys?) created! Accy 1 is called ${accy[0].id}`);

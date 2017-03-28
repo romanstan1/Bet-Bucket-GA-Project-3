@@ -1,5 +1,9 @@
 <h1> {{ usersShow.currentAccumulator.name }}</h1>
 
+<ul ng-repeat="event in usersShow.currentAccumulator.events">
+  <li>{{ event }}<li>
+</ul>
+
 <section class="profile-accy-nav">
   {{ main.newAccumulator.name }}
   <form ng-submit="usersShow.createAccumulator()" novalidate>
@@ -7,8 +11,9 @@
     <button>Create New Accumulator</button>
   </form>
   <ul>
-    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy.id, accy.name)">
+    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)">
       <a ng-click="usersShow.displayTrackedEvents(accy.id)">
+      {{ accy }}
       Accumulator {{ $index + 1 }} <br>
       {{ accy.name }} {{ accy.marketId }}</a>
       <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
@@ -18,6 +23,7 @@
 
 <button ui-sref="profile.events">Add Event</button>
 
+<p>The new event: {{ usersShow.newEvent }}</p>
 
 <!-- loads in events index.html and show.html -->
 <div ui-view></div>

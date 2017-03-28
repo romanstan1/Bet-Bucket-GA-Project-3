@@ -20,19 +20,17 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
-  console.log('Login route ');
+
   return betfairLogin()
     .then((response) => {
-      console.log(response);
       global.betfairToken = response.token;
-      console.log('global token', global.betfairToken);
       return User
         .findOne({ email: req.body.email });
     })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) return res.unauthorized();
 
-      const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '5hr' });
+      const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '4hr' });
       res.json({ token, message: `Welcome back ${user.username}` });
     })
     .catch(next);

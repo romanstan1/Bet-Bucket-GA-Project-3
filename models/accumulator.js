@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 
+const eventSchema = new mongoose.Schema({
+  eventName: String,
+  marketName: String,
+  marketId: String,
+  runnerName: String,
+  runnerId: String
+});
+
 const accumulatorSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  marketId: [{ type: Number }]
+  events: [ eventSchema ]
 });
 
 module.exports = mongoose.model('Accumulator', accumulatorSchema);
-
-// bobsAccy({
-//   name: 'Shit Events',
-//   marketId: [{ marketId: 1.432436, selectionId: 345345 }]
-// });
