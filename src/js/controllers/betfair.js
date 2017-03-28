@@ -35,15 +35,14 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
       });
   }
 
-  function selectRunner(selectedMarket) {
+  function selectMarket(selectedMarket) {
     vm.markets.forEach((market) => {
       market.selected = false;
     });
     selectedMarket.selected = true;
-    vm.chosenMarket = selectedMarket;
   }
 
-  vm.selectRunner = selectRunner;
+  vm.selectMarket = selectMarket;
 
 
   vm.getMarketOdds = getMarketOdds;

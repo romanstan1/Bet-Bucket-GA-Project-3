@@ -45,18 +45,36 @@ function deleteRoute(req, res, next) {
     .catch(next);
 }
 
-function pushRoute(req, res, next) {
-  const marketId = req.body;
-  console.log(marketId);
+function addEventRoute(req, res, next) {
+
   Accumulator
     .findById(req.params.id)
     .exec()
     .then((accumulator) => {
       if(!accumulator) return res.notFound();
-      accumulator.marketId.push(req.body.marketId);
+
+      const event = accumulator.events.create(req.body);
+      accumulator.events.push(event);
+
+      return accumulator.save()
+        .then(() => res.json(event));
+    })
+    .catch(next);
+}
+
+function deleteEventRoute(req, res, next) {
+  Accumulator
+    .findById(req.params.id)
+    .exec()
+    .then((accumulator) => {
+      if(!accumulator) return res.notFound();
+
+      const event = accumulator.events.id(req.params.eventId);
+      event.remove();
+
       return accumulator.save();
     })
-    .then(() => res.status(200).end())
+    .then(() => res.status(204).end())
     .catch(next);
 }
 
@@ -64,5 +82,6 @@ module.exports = {
   show: showRoute,
   create: createRoute,
   delete: deleteRoute,
-  push: pushRoute
+  addEvent: addEventRoute,
+  deleteEvent: deleteEventRoute
 };

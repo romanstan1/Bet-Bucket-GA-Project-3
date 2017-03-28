@@ -2,16 +2,33 @@ angular
   .module('YTHO')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator'];
-function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
+UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event'];
+function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   const vm = this;
   vm.greeting = 'hello';
+  vm.chosenMarket = null;
 
-  function addEvent(runner) {
-    console.log(runner);
+  function selectMarket(selectedMarket) {
+    vm.chosenMarket = selectedMarket;
   }
 
-  vm.addEvent = addEvent;
+  vm.selectMarket = selectMarket;
+
+  function addToAccumulator(runner, index) {
+    vm.newEvent.runnerId = runner.selectionId;
+    vm.newEvent.runnerName = vm.chosenMarket.runners[index].runnerName;
+    console.log(vm.newEvent);
+
+    Event
+      .save({ accumulatorId: vm.currentAccumulator.id }, vm.newEvent)
+      .$promise
+      .then((event) => {
+        vm.currentAccumulator.events.push(event);
+        vm.newEvent = {};
+      });
+  }
+
+  vm.addToAccumulator = addToAccumulator;
 
 // delete function
 
@@ -56,8 +73,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
 
   vm.chooseAccumulator = chooseAccumulator;
 
-  function chooseAccumulator(id, name) {
-    vm.currentAccumulator = { id, name };
+  function chooseAccumulator(accy) {
+    vm.currentAccumulator = accy;
   }
 
 }
