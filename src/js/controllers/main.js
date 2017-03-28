@@ -37,9 +37,9 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   //   .then((response) => vm.user = response.data);
   // }
   //
-  // vm.dislayTrackedEvents = dislayTrackedEvents;
+  // vm.displayTrackedEvents = displayTrackedEvents;
 
-  // function dislayTrackedEvents(accumulatorId) {
+  // function displayTrackedEvents(accumulatorId) {
   //   $http
   //     .get(`/api/accumulators/${accumulatorId}`)
   //     .then((response) => vm.events = response.data);
@@ -57,6 +57,11 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   //
   // vm.createAccumulator = createAccumulator;
 
+  $rootScope.greaterThan = function(prop, val){
+    return function(item){
+      return item[prop] > val;
+    };
+  };
 
 }
 //this section is for the chart and sets parameters for how often it refreshes and what it displays

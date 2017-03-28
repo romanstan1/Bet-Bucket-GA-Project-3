@@ -27,7 +27,9 @@ router.route('/accumulators')
   .post(secureRoute, accy.create);
 
 router.route('/accumulators/:id')
-  .get(accy.show);
+  .get(accy.show)
+  .delete(secureRoute, accy.delete);
+
 
 router.all('/*', (req, res) => res.notFound());
 

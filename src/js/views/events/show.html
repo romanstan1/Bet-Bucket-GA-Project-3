@@ -1,17 +1,14 @@
-<h1>I am a market, hear me roar</h1>
-  <p ng-repeat="market in betfairShow.markets">
-  <br>{{ market.marketName }} {{ market.marketId }}
-  <span ng-repeat="runner in market.runners">
-    <br>
-    <strong>{{ runner.runnerName }} - </strong>
-    {{ runner.lastPriceTraded }}
-  </span>
-  </p>
-<div>
+<h1>{{ usersShow.currentAccumulator }}</h1>
+<ul>
+  <li ng-click="betfairShow.getMarketOdds(market.marketId); betfairShow.selectRunner(market)" ng-repeat="market in betfairShow.markets" ng-if="market.totalMatched" ng-class="{'selected': market.selected }">{{ market.marketName }}<br> <span ng-repeat="runner in market.runners | limitTo: 60">{{ runner.runnerName}}<br></span>
+  </li>
+</ul>
+<!-- <p>{{ betfairShow.specificMarket }}</p> -->
+<p>
   <ul>
-    <li class="odds" ng-repeat="runner in betfairShow.specificMarket.runners">
-      {{ runner.selectionId }} {{ runner.lastPriceTraded }}
-      <button ng-click="usersShow.addEvent(runner)">Add Event</button>
-    </li>
+    <li ng-repeat="runner in betfairShow.specificMarket.runners" ng-if="runner.lastPriceTraded" >Option {{ $index + 1 }} - Last Price Traded: {{ runner.lastPriceTraded }}</li>
+    <li ng-repeat="runner in betfairShow.specificMarket.runners" ng-if="!runner.lastPriceTraded" >Option {{ $index + 1 }} - No odds currently available</li>
   </ul>
-</div>
+</p>
+
+<p ng-repeat="runner in betfairShow.specificMarket.runners">{{ runner }}</p>

@@ -1,6 +1,7 @@
 angular
   .module('YTHO')
-  .controller('UsersShowCtrl', UsersShowCtrl);
+  .controller('UsersShowCtrl', UsersShowCtrl)
+  .controller('MainCtrl', MainCtrl);
 
 UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator'];
 function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
@@ -13,6 +14,21 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
 
   vm.addEvent = addEvent;
 
+// delete function
+
+  function accumulatorsDelete(accumulator) {
+    Accumulator
+      .delete({ id: accumulator.id })
+      .$promise
+      .then(() => {
+        const index = vm.user.accumulators.indexOf(accumulator);
+        vm.user.accumulators.splice(index, 1);
+      });
+  }
+
+  vm.delete = accumulatorsDelete;
+
+
   getUserProfile();
 
   function getUserProfile() {
@@ -21,9 +37,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
     .then((response) => vm.user = response.data);
   }
 
-  vm.dislayTrackedEvents = dislayTrackedEvents;
+  vm.displayTrackedEvents = displayTrackedEvents;
 
-  function dislayTrackedEvents(accumulatorId) {
+  function displayTrackedEvents(accumulatorId) {
     $http
       .get(`/api/accumulators/${accumulatorId}`)
       .then((response) => vm.events = response.data);
@@ -38,6 +54,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
       .then((accy) => vm.user.accumulators.push(accy));
   }
 
-
   vm.createAccumulator = createAccumulator;
+
+  vm.chooseAccumulator = chooseAccumulator;
+  function chooseAccumulator(id) {
+    vm.currentAccumulator = id;
+  }
+
 }

@@ -1,8 +1,9 @@
 <form name="register.registerForm" ng-submit="register.submit()" novalidate>
 
   <label for="username">Username</label>
-  <input type="text" name="username" id="username" ng-model="register.user.username" required>
+  <input type="text" name="username" id="username" ng-model="register.user.username" ng-minlength="2" required>
   <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched) && register.registerForm.username.$invalid" class="error">
+    <div ng-message="minlength">Too short.</div>
     <div ng-message="required">Please enter a value for this field.</div>
   </div>
 
