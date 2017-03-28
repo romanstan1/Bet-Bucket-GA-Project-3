@@ -3,8 +3,8 @@ angular
   .controller('MainCtrl', MainCtrl)
   .controller('LineCtrl', LineCtrl);
 
-MainCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator'];
-function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
+MainCtrl.$inject = ['$rootScope', '$state', '$auth'];
+function MainCtrl($rootScope, $state, $auth) {
   const vm = this;
   //vm.stateHasChanged = false;
 
@@ -29,32 +29,6 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
     $state.go('login');
   }
   vm.logout = logout;
-
-  // function getUserProfile() {
-  //   $http
-  //   .get('/api/profile')
-  //   .then((response) => vm.user = response.data);
-  // }
-  //
-  // vm.displayTrackedEvents = displayTrackedEvents;
-
-  // function displayTrackedEvents(accumulatorId) {
-  //   $http
-  //     .get(`/api/accumulators/${accumulatorId}`)
-  //     .then((response) => vm.events = response.data);
-  // }
-  //
-  // vm.newAccumulator = {};
-  //
-  // function createAccumulator() {
-  //   Accumulator
-  //     .save(vm.newAccumulator)
-  //     .$promise
-  //     .then((accy) => vm.user.accumulators.push(accy));
-  // }
-  //
-  //
-  // vm.createAccumulator = createAccumulator;
 
 }
 //this section is for the chart and sets parameters for how often it refreshes and what it displays
