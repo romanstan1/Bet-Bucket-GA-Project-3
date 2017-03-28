@@ -1,4 +1,4 @@
-<h1> Users Show </h1>
+<h1> {{ usersShow.currentAccumulator.name }}</h1>
 
 <section class="profile-accy-nav">
   {{ main.newAccumulator.name }}
@@ -7,10 +7,10 @@
     <button>Create New Accumulator</button>
   </form>
   <ul>
-    <li ng-repeat="accy in usersShow.user.accumulators">
+    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy.id, accy.name)">
       <a ng-click="usersShow.displayTrackedEvents(accy.id)">
       Accumulator {{ $index + 1 }} <br>
-      {{ accy.name }} <br>{{ accy.id }}</a>
+      {{ accy.name }} {{ accy.marketId }}</a>
       <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
     </li>
   </ul>

@@ -20,8 +20,8 @@ function BetfairSelectCtrl($http) {
   }
 }
 
-BetfairMarketCtrl.$inject = ['$http', '$state', '$stateParams', 'filterFilter'];
-function BetfairMarketCtrl($http, $state, $stateParams, filterFilter) {
+BetfairMarketCtrl.$inject = ['$http', '$state', '$stateParams'];
+function BetfairMarketCtrl($http, $state, $stateParams) {
   const vm = this;
 
   listMarkets();
@@ -32,7 +32,6 @@ function BetfairMarketCtrl($http, $state, $stateParams, filterFilter) {
       .get('/api/listMarkets', { params: $stateParams })
       .then((response) => {
         vm.markets = response.data;
-        getMarketOdds(vm.markets[0].marketId);
       });
   }
 
@@ -41,6 +40,7 @@ function BetfairMarketCtrl($http, $state, $stateParams, filterFilter) {
       market.selected = false;
     });
     selectedMarket.selected = true;
+    vm.chosenMarket = selectedMarket;
   }
 
   vm.selectRunner = selectRunner;

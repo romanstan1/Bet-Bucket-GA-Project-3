@@ -93,7 +93,7 @@ section.profile-selected-accy, section.profile-select-event {
 
 
 
-// input select paritals sections-------------------
+// events input select sections-------------------
 
 
 
@@ -159,4 +159,23 @@ li {
 }
 li.selected {
   background: tomato;
+}
+
+
+ul.showEvents {
+  width: 100%;
+  li {
+    ul {
+      li {
+          height: 30px;
+      }
+    }
+  }
+}
+
+ul.showOdds {
+  width: 40%;
+  li {
+    height: 40px;
+  }
 }

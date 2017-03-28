@@ -1,7 +1,6 @@
 angular
   .module('YTHO')
-  .controller('UsersShowCtrl', UsersShowCtrl)
-  .controller('MainCtrl', MainCtrl);
+  .controller('UsersShowCtrl', UsersShowCtrl);
 
 UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator'];
 function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
@@ -45,6 +44,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
       .then((response) => vm.events = response.data);
   }
 
+  vm.createAccumulator = createAccumulator;
   vm.newAccumulator = {};
 
   function createAccumulator() {
@@ -54,11 +54,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
       .then((accy) => vm.user.accumulators.push(accy));
   }
 
-  vm.createAccumulator = createAccumulator;
-
   vm.chooseAccumulator = chooseAccumulator;
-  function chooseAccumulator(id) {
-    vm.currentAccumulator = id;
+
+  function chooseAccumulator(id, name) {
+    vm.currentAccumulator = { id, name };
   }
 
 }
