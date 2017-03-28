@@ -9,6 +9,9 @@
   </p>
 <div>
   <ul>
-    <li class="odds" ng-repeat="odds in betfairM.specificMarket.runners">{{ odds.selectionId }}</li> <button> add </button>
+    <li class="odds" ng-repeat="runner in betfairM.specificMarket.runners">
+      {{ runner.selectionId }} {{ runner.lastPriceTraded }}
+      <button ng-click="usersShow.addEvent(runner)">Add Event</button>
+    </li>
   </ul>
 </div>

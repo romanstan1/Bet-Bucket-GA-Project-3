@@ -21,26 +21,8 @@
     </nav>
   </header>
 
-  <section class="profile-accy-nav" ng-if="main.isAuthenticated()">
-    {{ main.newAccumulator.name }}
-    <form ng-submit="main.createAccumulator()" novalidate>
-      <input type="text" value="My Accumulator" ng-model="main.newAccumulator.name">
-      <button>Create New Accumulator</button>
-    </form>
-
-
-    <ul>
-      <li ng-repeat="accy in main.user.accumulators">
-        <a ng-click="main.dislayTrackedEvents(accy.id)">
-        Accumulator {{ $index + 1 }} <br>
-        {{ accy.name }} <br>{{ accy.id }}</a>
-      </li>
-    </ul>
-
-  </section>
-
   <h1>Bet Bucket?</h1>
-    
+
   <main ui-view></main>
 
   <footer>
