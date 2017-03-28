@@ -19,13 +19,18 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('profile', {
       url: '/profile',
-      templateUrl: 'js/views/betfair/betfairSelect.html',
-      controller: 'BetfairSelectCtrl as betfair'
+      templateUrl: 'js/views/users/show.html',
+      controller: 'UsersShowCtrl as usersShow'
     })
-    .state('markets', {
-      url: '/markets/:eventId',
-      templateUrl: 'js/views/betfair/betfairMarkets.html',
-      controller: 'BetfairMarketCtrl as betfairM'
+    .state('profile.events', {
+      url: '/events',
+      templateUrl: 'js/views/events/index.html',
+      controller: 'BetfairSelectCtrl as betfairIndex'
+    })
+    .state('profile.eventsShow', {
+      url: '/events/:eventId',
+      templateUrl: 'js/views/events/show.html',
+      controller: 'BetfairMarketCtrl as betfairShow'
     });
 
   $urlRouterProvider.otherwise('/');

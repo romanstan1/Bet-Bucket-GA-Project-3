@@ -22,7 +22,6 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) {
       vm.currentUserId = $auth.getPayload().userId;
-      getUserProfile();
     }
   });
 
@@ -32,31 +31,31 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   }
   vm.logout = logout;
 
-  function getUserProfile() {
-    $http
-    .get('/api/profile')
-    .then((response) => vm.user = response.data);
-  }
+  // function getUserProfile() {
+  //   $http
+  //   .get('/api/profile')
+  //   .then((response) => vm.user = response.data);
+  // }
+  //
+  // vm.dislayTrackedEvents = dislayTrackedEvents;
 
-  vm.dislayTrackedEvents = dislayTrackedEvents;
-
-  function dislayTrackedEvents(accumulatorId) {
-    $http
-      .get(`/api/accumulators/${accumulatorId}`)
-      .then((response) => vm.events = response.data);
-  }
-
-  vm.newAccumulator = {};
-
-  function createAccumulator() {
-    Accumulator
-      .save(vm.newAccumulator)
-      .$promise
-      .then((accy) => vm.user.accumulators.push(accy));
-  }
-
-
-  vm.createAccumulator = createAccumulator;
+  // function dislayTrackedEvents(accumulatorId) {
+  //   $http
+  //     .get(`/api/accumulators/${accumulatorId}`)
+  //     .then((response) => vm.events = response.data);
+  // }
+  //
+  // vm.newAccumulator = {};
+  //
+  // function createAccumulator() {
+  //   Accumulator
+  //     .save(vm.newAccumulator)
+  //     .$promise
+  //     .then((accy) => vm.user.accumulators.push(accy));
+  // }
+  //
+  //
+  // vm.createAccumulator = createAccumulator;
 
 
 }
@@ -96,4 +95,6 @@ function LineCtrl($scope) {
     vm.labels.push(time);
     $scope.$apply();
   }
+
+
 }

@@ -27,12 +27,13 @@ function BetfairMarketCtrl($http, $state, $stateParams, filterFilter) {
   listMarkets();
   vm.listMarkets = listMarkets;
   function listMarkets() {
+    console.log($stateParams);
     $http
       .get('/api/listMarkets', { params: $stateParams })
       .then((response) => {
         vm.markets = response.data;
         vm.filteredMarkets = filterFilter(vm.markets, { runners: { selectionId: 354169 }} );
-        // vm.markets = vm.filteredMarkets;
+        getMarketOdds(vm.markets[0].marketId);  
       });
   }
 
