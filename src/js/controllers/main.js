@@ -95,4 +95,6 @@ function LineCtrl($scope) {
     vm.labels.push(time);
     $scope.$apply();
   }
+
+
 }
