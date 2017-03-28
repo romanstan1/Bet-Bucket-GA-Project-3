@@ -1,14 +1,10 @@
 const router = require('express').Router();
 const secureRoute = require('../lib/secureRoute');
-const auth = require('../controllers/auth');
 const betfairData = require('../controllers/betfairData');
-//const betfair = require('../controllers/betfair');
-
-// const betfair = require('../lib/betfair');
+const auth = require('../controllers/auth');
 const accy = require('../controllers/accumulators');
 
-// to see that the routes and user work with the angular app
-// all this does is hopefully show all users on a page, with no authentication.
+
 router.route('/profile')
   .get(secureRoute, auth.profile);
 

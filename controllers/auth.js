@@ -20,10 +20,12 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
+  console.log('Login route ');
   return betfairLogin()
     .then((response) => {
+      console.log(response);
       global.betfairToken = response.token;
-
+      console.log('global token', global.betfairToken);
       return User
         .findOne({ email: req.body.email });
     })
