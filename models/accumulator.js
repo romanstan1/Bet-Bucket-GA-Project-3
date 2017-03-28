@@ -6,3 +6,8 @@ const accumulatorSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Accumulator', accumulatorSchema);
+
+// bobsAccy({
+//   name: 'Shit Events',
+//   marketId: [{ marketId: 1.432436, selectionId: 345345 }]
+// });

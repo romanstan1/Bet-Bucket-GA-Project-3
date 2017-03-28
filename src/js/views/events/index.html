@@ -1,5 +1,5 @@
-<div class="">
-<section class="profile-input-selectboxes" >
+<div>
+<section class="profile-input-selectboxes">
 
   <label for="caption">Choose your category</label>
   <select name="EVENT TYPE" ng-model="betfairIndex.eventTypeId">
@@ -18,6 +18,6 @@
 </section>
 
 <section class="profile-select-event" >
-  <p ng-repeat="event in betfairIndex.all" ui-sref="profile.eventsShow({ eventId: event.event.id })">{{ event }}</p>
+  <p ng-repeat="event in betfairIndex.all" ui-sref="profile.eventsShow({ eventId: event.event.id })">{{ event.event.name }}</p>
 </section>
 </div>

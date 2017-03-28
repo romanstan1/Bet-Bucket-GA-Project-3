@@ -57,6 +57,11 @@ function MainCtrl($rootScope, $state, $auth, $http, Accumulator) {
   //
   // vm.createAccumulator = createAccumulator;
 
+  $rootScope.greaterThan = function(prop, val){
+    return function(item){
+      return item[prop] > val;
+    };
+  };
 
 }
 //this section is for the chart and sets parameters for how often it refreshes and what it displays

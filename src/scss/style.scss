@@ -146,3 +146,17 @@ main {
   height: 600px;
   margin: 0 auto;
 }
+
+li {
+  cursor: pointer;
+  background: grey;
+  color: white;
+  &:hover {
+    background: dodgerblue;
+    color:black;
+  }
+
+}
+li.selected {
+  background: tomato;
+}

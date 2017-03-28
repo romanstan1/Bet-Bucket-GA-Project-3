@@ -54,6 +54,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator) {
       .then((accy) => vm.user.accumulators.push(accy));
   }
 
-
   vm.createAccumulator = createAccumulator;
+
+  vm.chooseAccumulator = chooseAccumulator;
+  function chooseAccumulator(id) {
+    vm.currentAccumulator = id;
+  }
+
 }
