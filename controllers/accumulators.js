@@ -1,13 +1,17 @@
 const Accumulator = require('../models/accumulator');
 const User = require('../models/user');
+const betfairRoutes = require('../lib/betfairRoutes');
 
 
 function showRoute(req, res, next) {
   Accumulator
   .findById(req.params.id)
   .exec()
-  .then(() => {
-    console.log('fake data huehue');
+  .then((response) => {
+    const marketIds = response.events.map((event) => {
+      return event.marketId;
+    });
+    console.log(marketIds);
   })
   .catch(next);
 }

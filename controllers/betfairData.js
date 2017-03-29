@@ -1,7 +1,7 @@
 const betfairRoutes = require('../lib/betfairRoutes');
 
 function listEvents(req, res, next) {
-  return betfairRoutes.listEvents(global.betfairToken, req.query.eventTypeId, req.query.startDate, req.query.endDate)
+  return betfairRoutes.listEvents(global.betfairToken, req.query.eventTypeId)
     .then((data) => {
       res.json(data);
     })
@@ -23,6 +23,7 @@ function getMarketOdds(req, res, next) {
     })
     .catch(next);
 }
+
 
 module.exports = {
   listEvents,
