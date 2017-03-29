@@ -5,7 +5,7 @@ angular
 UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event'];
 function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   const vm = this;
-  vm.greeting = 'hello';
+
   vm.chosenMarket = null;
   vm.eventButton = true;
 
@@ -15,10 +15,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
 
   vm.selectMarket = selectMarket;
 
-  function addToAccumulator(runner, index) {
+  function addToAccumulator(runner, index, eventType) {
     vm.newEvent.runnerId = runner.selectionId;
     vm.newEvent.runnerName = vm.chosenMarket.runners[index].runnerName;
-    console.log(vm.newEvent);
+    vm.newEvent.eventType = eventType;
 
     Event
       .save({ accumulatorId: vm.currentAccumulator.id }, vm.newEvent)
@@ -38,6 +38,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
       .then(() => {
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
+        vm.currentAccumulator = null;
       });
   }
 
@@ -76,4 +77,15 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
     vm.currentAccumulator = accy;
   }
 
+  vm.deleteEvent = deleteEvent;
+
+  function deleteEvent(event) {
+    Event
+      .delete({ accumulatorId: vm.currentAccumulator.id,  id: event.id })
+      .$promise
+      .then(() => {
+        const index = vm.currentAccumulator.events.indexOf(event);
+        vm.currentAccumulator.events.splice(index, 1);
+      });
+  }
 }

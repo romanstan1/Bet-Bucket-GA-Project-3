@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
+  eventType: String,
   eventName: String,
   marketName: String,
   marketId: String,

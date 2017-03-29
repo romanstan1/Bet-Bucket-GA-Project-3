@@ -24,6 +24,11 @@ function BetfairSelectCtrl($http, $stateParams) {
     $http
       .get('/api/listEvents', { params: { eventTypeId: list[$stateParams.eventType] }})
       .then((response) => vm.all = response.data);
+
+    changeEventType();
+  }
+  function changeEventType() {
+    vm.eventType = $stateParams.eventType;
   }
 }
 
@@ -34,7 +39,7 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
   listMarkets();
   vm.listMarkets = listMarkets;
   function listMarkets() {
-    console.log($stateParams);
+    vm.eventType = $stateParams.eventType;
     $http
       .get('/api/listMarkets', { params: $stateParams })
       .then((response) => {
@@ -64,5 +69,4 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
         vm.specificMarket = response.data[0];
       });
   }
-
 }

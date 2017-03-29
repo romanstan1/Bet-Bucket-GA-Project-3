@@ -7,10 +7,8 @@ mongoose.connect(dbURI);
 const User = require('../models/user');
 const Accumulator = require('../models/accumulator');
 
-
 User.collection.drop();
 Accumulator.collection.drop();
-
 
 Accumulator
   .create([{

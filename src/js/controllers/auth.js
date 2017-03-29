@@ -40,7 +40,6 @@ function LoginCtrl($auth, $state, $scope) {
   //const now = moment().format('hh:mm:ss');
   // console.log(now);
 
-
   vm.labels = ['', '', '', '', '', '', '', '', ''];
   vm.series = ['sA','sb', 'sb' ];
   vm.data = [
