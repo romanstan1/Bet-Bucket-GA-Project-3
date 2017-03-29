@@ -15,19 +15,19 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/listEvents')
-  .get(betfairData.listEvents);
+  .get(secureRoute, betfairData.listEvents);
 
 router.route('/listMarkets')
-  .get(betfairData.listMarkets);
+  .get(secureRoute, betfairData.listMarkets);
 
 router.route('/marketOdds')
-  .get(betfairData.getMarketOdds);
+  .get(secureRoute, betfairData.getMarketOdds);
 
 router.route('/accumulators')
   .post(secureRoute, accy.create);
 
 router.route('/accumulators/:id')
-  .get(accy.show)
+  .get(secureRoute, accy.show)
   .delete(secureRoute, accy.delete);
 
 router.route('/accumulators/:id/events')
