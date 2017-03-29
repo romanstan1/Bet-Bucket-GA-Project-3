@@ -63,12 +63,13 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   vm.newAccumulator = {};
 
   function createAccumulator() {
-    Accumulator
-      .save(vm.newAccumulator)
-      .$promise
-      .then((accy) => vm.user.accumulators.push(accy));
+    if(vm.accyForm.$valid) {
+      Accumulator
+        .save(vm.newAccumulator)
+        .$promise
+        .then((accy) => vm.user.accumulators.push(accy));
+    }
   }
-
   vm.chooseAccumulator = chooseAccumulator;
 
   function chooseAccumulator(accy) {
