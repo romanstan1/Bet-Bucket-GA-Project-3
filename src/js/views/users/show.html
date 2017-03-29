@@ -1,7 +1,7 @@
 <h1 class="user-profile"> {{ usersShow.currentAccumulator.name || 'Choose an accumulator' }}</h1>
 
 <section class="profile-accy-nav">
-  <div ng-messages="usersShow.accyForm.name.$error" role="alert" ng-show="usersShow.accyForm.$submitted &&  usersShow.accyForm.name.$invalid" class="error">
+  <div ng-messages="usersShow.accyForm.name.$error" role="alert" ng-show="usersShow.accyForm.$submitted && usersShow.accyForm.name.$invalid" class="error">
     <div ng-message="required">A name is required.</div>
   </div>
   <form name="usersShow.accyForm" ng-submit="usersShow.createAccumulator()" novalidate>
@@ -19,9 +19,17 @@
   </ul>
 </section>
 <section class="profile-graphs">
-  <p>GRAPHS HERE</p>
-  <p ng-repeat="runner in usersShow.runners"><strong>{{ runner.lastPriceTraded }}</strong></p>
-  <p ng-repeat="runner in usersShow.currentAccumulator.events"><strong>{{ runner.runnerName }}</strong></p>
+
+  <p ng-repeat="runner in usersShow.runners">
+    <strong>{{ runner.lastPriceTraded }}</strong></p>
+  <p ng-repeat="runner in usersShow.currentAccumulator.events">
+    <strong>{{ runner.runnerName }}</strong></p>
+
+
+  <div class="user-animation">
+    <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-series="usersShow.series" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
+    </canvas>
+  </div>
 </section>
 
 <h3>List of Events in Accumulators</h3>

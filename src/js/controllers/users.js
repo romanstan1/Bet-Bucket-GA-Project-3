@@ -2,8 +2,8 @@ angular
   .module('YTHO')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event', 'filterFilter'];
-function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, filterFilter) {
+UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event', '$scope', 'filterFilter'];
+function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $scope) {
   const vm = this;
 
   let t = null;
@@ -73,43 +73,17 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, fil
         });
 
         clearTimeout(t);
+        console.log(vm.runners);
+        vm.runners.forEach(function(element) {
+          console.log(element.lastPriceTraded);
+        });
 
+        // console.log(vm.runners[0].lastPriceTraded);
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
         }, 1000);
       });
   }
-
-  // API
-  // events = [
-  //   market1 = {
-  //     runners = [
-  //       { selectionId: 3242 },
-  //       { selectionId: 5665 },
-  //       { selectionId: 436754 }
-  //     ]
-  //   },
-  //   market2 = {
-  //   }
-  // ]
-  // for markets in events
-  //   for runner in events.runners
-  //     return runner.selectionId if it is included in accumulator.events[all of them].runnerId
-  //
-  // ACCUMULATOR
-  // events = [
-  //   event1: {
-  //     { runnerId: 3242 }
-  //   },
-  //   event2: {
-  //
-  //   }
-  // ]
-
-
-
-
-
 
   function createAccumulator() {
     if(vm.accyForm.$valid) {
@@ -129,4 +103,63 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, fil
         vm.currentAccumulator.events.splice(index, 1);
       });
   }
+
+
+
+
+  vm.labels = ['', '', '', '', '', '', '', '', ''];
+  vm.series = [''];
+  vm.data = [
+    [65, 59, 80, 81, 66, 75, 70, 77, 87]
+  ];
+
+  let test = 1;
+  const now = moment().format('hh:mm:ss');
+
+  vm.borderWidth = 0;
+
+  setInterval(() => {
+    vm.data[0][6] = Math.floor(Math.random()*30);
+    vm.data[0][2] = Math.floor(Math.random()*40)+30;
+    $scope.$apply();
+
+  }, 3000); // stop timer after 10 seconds
+
+  vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
+
+  vm.options = {
+    elements: {
+      line: {
+        fill: true,
+        border: true,
+        borderWidth: 3
+      },
+      point: {
+        radius: 0,
+        borderWidth: 0
+      }
+    },
+    tooltips: true,
+    scales: {
+      yAxes: [
+        {
+          id: 'y-axis-1',
+          type: 'linear',
+          display: false,
+          position: 'left'
+        },
+        {
+          id: 'y-axis-2',
+          type: 'linear',
+          display: true,
+          position: 'right'
+        }
+      ],
+      xAxes: [ {
+        display: false
+      }
+      ]
+    }
+  };
+
 }
