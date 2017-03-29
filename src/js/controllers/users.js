@@ -38,6 +38,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
       .then(() => {
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
+        vm.currentAccumulator = null;
       });
   }
 
@@ -76,4 +77,15 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
     vm.currentAccumulator = accy;
   }
 
+  vm.deleteEvent = deleteEvent;
+
+  function deleteEvent(event) {
+    Event
+      .delete({ accumulatorId: vm.currentAccumulator.id,  id: event.id })
+      .$promise
+      .then(() => {
+        const index = vm.currentAccumulator.events.indexOf(event);
+        vm.currentAccumulator.events.splice(index, 1);
+      });
+  }
 }
