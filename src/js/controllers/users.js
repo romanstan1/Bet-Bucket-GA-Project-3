@@ -64,7 +64,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   vm.newAccumulator = {};
 
   function createAccumulator() {
-    if(vm.accyForm.$valid) {
+    if(vm.newAccyForm.$valid) {
       Accumulator
         .save(vm.newAccumulator)
         .$promise
@@ -73,9 +73,29 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   }
   vm.chooseAccumulator = chooseAccumulator;
 
+  function renameAccumulator(accumulator) {
+    // 
+    // .$update(id: accumulator.id)
+    // .then((accy) => vm.user.accumulators.push(accy));
+  }
+
+  vm.rename = renameAccumulator;
+
   function chooseAccumulator(accy) {
     vm.currentAccumulator = accy;
   }
+
+  vm.editToggleBoolean =  true;
+
+  function editToggle(){
+    if(vm.editToggleBoolean === true) {
+      vm.editToggleBoolean = false;
+    } else {
+      vm.editToggleBoolean = true;
+    }
+  }
+
+  vm.editToggle = editToggle;
 
   vm.deleteEvent = deleteEvent;
 

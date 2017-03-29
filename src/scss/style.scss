@@ -141,8 +141,17 @@ section.profile-accy-nav {
       display: inline-block;
       float: right;
       height: 50px;
-      width: 30%;
+      width: 100%;
     }
+    div {
+      form {
+        button {
+            width: 100%;
+        }
+      }
+    }
+
+
   }
   form {
     input {

@@ -36,6 +36,30 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 
+// ******   SW attempt to add edit route
+// function updateRoute(req, res, next) {
+//   User
+//     .findById(req.params.id)
+//     .exec()
+//     .then((****) => {
+//       if(!****) return res.notFound();
+//
+//       for(const field in req.body) {
+//         user[field] = req.body[field];
+//       }
+//
+//       return bird.save();
+//     })
+//     .then((bird) => res.json(bird))
+//     .catch(next);
+// }
+// *******************************************
+
+
+
+
+
+
 function deleteRoute(req, res, next) {
   Accumulator
     .findById(req.params.id)
