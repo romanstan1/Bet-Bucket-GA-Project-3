@@ -1,10 +1,12 @@
+<!-- Shows Accumulators available -->
 <h1 class="user-profile"> {{ usersShow.currentAccumulator.name || 'Choose an accumulator' }}</h1>
 
+<!-- this is the accy side div -->
 <section class="profile-accy-nav">
-  <div ng-messages="usersShow.accyForm.name.$error" role="alert" ng-show="usersShow.accyForm.$submitted &&  usersShow.accyForm.name.$invalid" class="error">
+  <div ng-messages="usersShow.newAccyForm.name.$error" role="alert" ng-show="usersShow.newAccyForm.$submitted &&  usersShow.newAccyForm.name.$invalid" class="error">
     <div ng-message="required">A name is required.</div>
   </div>
-  <form name="usersShow.accyForm" ng-submit="usersShow.createAccumulator()" novalidate>
+  <form name="usersShow.newAccyForm" ng-submit="usersShow.createAccumulator()" novalidate>
     <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" required>
     <button>Create New Accumulator</button>
   </form>
@@ -14,7 +16,32 @@
         {{ accy.name }}<br>
         Events: {{ accy.events.length }}<br>
       </a>
-      <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
+      <div ng-hide="usersShow.editToggleBoolean">
+        <form ng-submit="usersShow.rename()">
+          <input type="text" ng-model="usersShow.currentAccumulator.name" >
+          <button>Rename</button>
+        </form>
+
+        <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
+      </div>
+
+      <button class="button" ng-click="usersShow.editToggle()">Edit</button>
+
+
+      <!-- SW additions - check if correct files referenced?? -->
+      <!-- <a ui-sref="usersEdit({ id: usersShow.user.id })"></a>
+      <button ng-click="usersShow.edit()">Edit</button> -->
+      <!-- ** -->
+
+
+
+      <!-- SW this is to edit the accy name -->
+      <!-- <form name="usersEdit.editAccyForm" ng-submit="usersShow.editAccumulator()" novalidate>
+        <input type="text" value="My Accumulator" ng-model="usersShow.newAccumulator.name" required>
+        <button>Edit </button>
+      </form> -->
+      <!-- ** -->
+
     </li>
   </ul>
 </section>

@@ -13,6 +13,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   vm.chosenMarket = null;
   vm.eventButton = true;
   vm.newAccumulator = {};
+  vm.editAccumulator = {};
 
   vm.chooseAccumulator = chooseAccumulator;
   vm.selectMarket = selectMarket;
@@ -85,13 +86,39 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   }
 
   function createAccumulator() {
-    if(vm.accyForm.$valid) {
+    if(vm.newAccyForm.$valid) {
       Accumulator
         .save(vm.newAccumulator)
         .$promise
         .then((accy) => vm.user.accumulators.push(accy));
     }
   }
+
+  function renameAccumulator() {
+    Accumulator
+      .update({ id: vm.currentAccumulator.id }, vm.currentAccumulator)
+      .$promise
+      .then(() => {
+        vm.editToggleBoolean =  true;
+      });
+  }
+
+  vm.rename = renameAccumulator;
+
+
+  vm.editToggleBoolean =  true;
+
+  function editToggle(){
+    if(vm.editToggleBoolean === true) {
+      vm.editToggleBoolean = false;
+    } else {
+      vm.editToggleBoolean = true;
+    }
+  }
+
+  vm.editToggle = editToggle;
+
+  vm.deleteEvent = deleteEvent;
 
   function deleteEvent(event) {
     Event

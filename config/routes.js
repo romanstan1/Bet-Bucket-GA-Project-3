@@ -28,6 +28,7 @@ router.route('/accumulators')
 
 router.route('/accumulators/:id')
   .get(secureRoute, accy.show)
+  .put(secureRoute, accy.update)
   .delete(secureRoute, accy.delete);
 
 router.route('/accumulators/:id/events')

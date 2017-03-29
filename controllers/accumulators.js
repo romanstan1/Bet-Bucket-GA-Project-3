@@ -39,6 +39,30 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 
+// ******   SW attempt to add edit route
+function updateRoute(req, res, next) {
+  Accumulator
+    .findById(req.params.id)
+    .exec()
+    .then((accumulator) => {
+      if(!accumulator) return res.notFound();
+
+      for(const field in req.body) {
+        accumulator[field] = req.body[field];
+      }
+
+      return accumulator.save();
+    })
+    .then((accumulator) => res.json(accumulator))
+    .catch(next);
+}
+// *******************************************
+
+
+
+
+
+
 function deleteRoute(req, res, next) {
   Accumulator
     .findById(req.params.id)
@@ -88,6 +112,7 @@ function deleteEventRoute(req, res, next) {
 module.exports = {
   show: showRoute,
   create: createRoute,
+  update: updateRoute,
   delete: deleteRoute,
   addEvent: addEventRoute,
   deleteEvent: deleteEventRoute
