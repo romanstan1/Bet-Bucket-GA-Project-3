@@ -3,16 +3,18 @@
 <head>
   <base href="/">
   <title>Project 3</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
   <!-- endinject -->
-  <script src="/css/style.css"></script>
 </head>
 <body ng-controller="MainCtrl as main">
   <header>
     <nav>
       <ul>
+        <li><a href="#">BET BUCKET</a></li>
         <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
         <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
 
