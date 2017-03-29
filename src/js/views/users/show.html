@@ -1,9 +1,11 @@
+<!-- Shows Accumulators available -->
 <h1 class="user-profile"> {{ usersShow.currentAccumulator.name || 'Choose an accumulator' }}</h1>
 
 <ul ng-repeat="event in usersShow.currentAccumulator.events">
   <li>{{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }}</li>
 </ul>
 
+<!-- this is the accy side div -->
 <section class="profile-accy-nav">
   {{ usersShow.newAccumulator.name }}
   <form name="usersShow.accyForm" ng-submit="usersShow.createAccumulator()" novalidate>
@@ -16,6 +18,22 @@
       {{ accy.name }} <br>
       Events: {{ accy.events.length }} <br></a>
       <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
+
+
+      <!-- SW additions - check if correct files referenced?? -->
+      <a ui-sref="usersEdit({ id: usersShow.user.id })"></a>
+      <button ng-click="usersShow.edit()">Edit</button>
+      <!-- ** -->
+
+
+
+      <!-- SW this is to edit the accy name -->
+      <form name="usersEdit.accyForm" ng-submit="usersShow.editAccumulator()" novalidate>
+        <input type="text" value="My Accumulator" ng-model="usersShow.newAccumulator.name" required>
+        <button>Edit Accumulator</button>
+      </form>
+      <!-- ** -->
+
     </li>
   </ul>
 </section>
