@@ -325,8 +325,29 @@ ul.showEvents {
 }
 
 ul.showOdds {
-  width: 40%;
+  width: 75%;
+  display:  block;
   li {
-    height: 40px;
+    position: relative;
+    // height: 40px;
+    display:  block;
+    width: 100%;
+    background: grey;
+    line-height: 40px;
+    &:hover {
+    background: $grey;
+    color:white;
+    }
+    p{
+      display: inline-block;
+    }
+    button {
+      margin-top: 0;
+      height: 40px;
+      display: inline-block;
+      width: 30%;
+      position: absolute;
+      right: 0;
+    }
   }
 }
