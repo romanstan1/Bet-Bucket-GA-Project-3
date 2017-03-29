@@ -72,9 +72,15 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
         }, []).filter((runner) => {
           return runnerIds.includes(runner.selectionId);
         });
+
         vm.runnerNames = [];
-        vm.currentAccumulator.events.forEach((element) => {
-          return vm.runnerNames.push(element.runnerName);
+        vm.currentAccumulator.events.forEach((runner) => {
+          return vm.runnerNames.push(runner.runnerName);
+        });
+
+        vm.runnerPrices = [];
+        vm.runners.forEach((runner) => {
+          return vm.runnerPrices.push(runner.lastPriceTraded);
         });
 
         clearTimeout(t);
