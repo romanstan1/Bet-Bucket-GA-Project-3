@@ -1,7 +1,7 @@
 <h1> {{ usersShow.currentAccumulator.name || 'Choose an accumulator' }}</h1>
 
 <ul ng-repeat="event in usersShow.currentAccumulator.events">
-  <li>{{ event.eventName }} - {{ event.marketName }}</li>
+  <li>{{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }}</li>
 </ul>
 
 <section class="profile-accy-nav">
@@ -13,9 +13,8 @@
   <ul>
     <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)">
       <a ng-click="usersShow.displayTrackedEvents(accy.id)">
-      {{ accy }}
-      Accumulator {{ $index + 1 }} <br>
-      {{ accy.name }} </a>
+      {{ accy.name }} <br>
+      Events: {{ accy.events.length }} <br></a>
       <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
     </li>
   </ul>
