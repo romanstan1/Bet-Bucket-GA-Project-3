@@ -115,8 +115,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   vm.rename = renameAccumulator;
-
-
   vm.editToggleBoolean =  true;
 
   function editToggle(){
