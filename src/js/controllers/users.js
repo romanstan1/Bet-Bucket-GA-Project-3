@@ -30,8 +30,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
 
   vm.addToAccumulator = addToAccumulator;
 
-// delete function
-
   function accumulatorsDelete(accumulator) {
     Accumulator
       .delete({ id: accumulator.id })
@@ -43,7 +41,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   }
 
   vm.delete = accumulatorsDelete;
-
 
   getUserProfile();
 

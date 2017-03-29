@@ -1,3 +1,4 @@
+/* global moment */
 angular
   .module('YTHO')
   .controller('MainCtrl', MainCtrl)
@@ -42,7 +43,6 @@ function LineCtrl($scope) {
   const now = moment().format('hh:mm:ss');
   // console.log(now);
 
-
   vm.labels = [now];
   vm.series = ['Series A'];
   vm.data = [
@@ -67,6 +67,5 @@ function LineCtrl($scope) {
     vm.labels.push(time);
     $scope.$apply();
   }
-
 
 }

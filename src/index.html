@@ -13,7 +13,7 @@
   <header>
     <nav>
       <ul>
-        <li ng-if="main.isAuthenticated()"><a href="#">Username:{{ main.user.username }}</a></li>
+        <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
         <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
 
         <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
@@ -22,8 +22,8 @@
     </nav>
   </header>
 
-
-
+  <h1>Bet Bucket?</h1>
+  <div class="message" ng-if="main.message">{{ main.message }}</div>
   <main ui-view></main>
 
   <footer>

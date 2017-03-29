@@ -10,8 +10,6 @@ function BetfairSelectCtrl($http) {
   vm.all = [];
   vm.listEvents = listEvents;
   vm.eventTypeId = 1;
-  vm.startDate = new Date();
-  vm.endDate = vm.startDate;
 
   function listEvents() {
     $http
@@ -35,16 +33,19 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
       });
   }
 
+  vm.runnerNames = [];
+
   function selectMarket(selectedMarket) {
     vm.markets.forEach((market) => {
       market.selected = false;
     });
     selectedMarket.selected = true;
+    selectedMarket.runners.forEach((element) => {
+      return vm.runnerNames.push(element.runnerName);
+    });
   }
 
   vm.selectMarket = selectMarket;
-
-
   vm.getMarketOdds = getMarketOdds;
 
   function getMarketOdds(marketId) {
