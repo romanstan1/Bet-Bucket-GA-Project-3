@@ -5,16 +5,18 @@
 <h1 class="login">BET BUCKET</h1>
 
 <form class="login" name="login.loginForm" ng-submit="login.submit()" novalidate>
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" ng-model="login.credentials.email" required>
+  <!-- <label for="email">Email</label> -->
+  <input type="email" name="email" id="email" ng-model="login.credentials.email" placeholder="email" required>
   <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted || login.loginForm.email.$touched) && login.loginForm.email.$invalid" class="error">
     <div ng-message="required">Please enter a value for this field.</div>
     <div ng-message="email">This field must be a valid email address.</div>
   </div>
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" ng-model="login.credentials.password" required>
+
+  <!-- <label for="password">Password</label> -->
+  <input type="password" name="password" id="password" ng-model="login.credentials.password" placeholder="password" required>
   <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.$submitted || login.loginForm.password.$touched) && login.loginForm.password.$invalid" class="error">
     <div ng-message="required">Please enter a value for this field.</div>
   </div>
+
   <button class="button">Login</button>
 </form>
