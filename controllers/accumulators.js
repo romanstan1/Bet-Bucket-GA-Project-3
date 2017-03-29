@@ -11,7 +11,10 @@ function showRoute(req, res, next) {
     const marketIds = response.events.map((event) => {
       return event.marketId;
     });
-    console.log(marketIds);
+    return betfairRoutes.getAccumulatorOdds(global.betfairToken, marketIds)
+      .then((response) => {
+        res.json(response);
+      });
   })
   .catch(next);
 }
