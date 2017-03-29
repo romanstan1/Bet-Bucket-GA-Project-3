@@ -11,17 +11,14 @@
     <button>Create New Accumulator</button>
   </form>
   <ul>
-    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)">
-      <a ng-click="usersShow.displayTrackedEvents(accy.id)">
+    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy); usersShow.displayTrackedEvents(accy.id)">
+      <a>
         {{ accy.name }} <br>
         Events: {{ accy.events.length }} <br>
       </a>
       <div ng-hide="usersShow.editToggleBoolean">
-
-        {{ usersShow.editAccumulator.name }}
-
-        <form ng-model="usersShow.rename(accy)">
-          <input type="text" ng-model="usersShow.editAccumulator.name" >
+        <form ng-submit="usersShow.rename()">
+          <input type="text" ng-model="usersShow.currentAccumulator.name" >
           <button>Rename</button>
         </form>
 
@@ -48,10 +45,10 @@
     </li>
   </ul>
 </section>
-
 <section class="profile-graphs">
-  GRAPHS HERE <br><br>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <p>GRAPHS HERE</p>
+  <p ng-repeat="runner in usersShow.runners"><strong>{{ runner.lastPriceTraded }}</strong></p>
+  <p ng-repeat="runner in usersShow.currentAccumulator.events"><strong>{{ runner.runnerName }}</strong></p>
 </section>
 
 <h3>List of Events in Accumulators</h3>

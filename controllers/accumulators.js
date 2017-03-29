@@ -11,7 +11,10 @@ function showRoute(req, res, next) {
     const marketIds = response.events.map((event) => {
       return event.marketId;
     });
-    console.log(marketIds);
+    return betfairRoutes.getAccumulatorOdds(global.betfairToken, marketIds)
+      .then((response) => {
+        res.json(response);
+      });
   })
   .catch(next);
 }
@@ -37,22 +40,22 @@ function createRoute(req, res, next) {
 }
 
 // ******   SW attempt to add edit route
-// function updateRoute(req, res, next) {
-//   User
-//     .findById(req.params.id)
-//     .exec()
-//     .then((****) => {
-//       if(!****) return res.notFound();
-//
-//       for(const field in req.body) {
-//         user[field] = req.body[field];
-//       }
-//
-//       return bird.save();
-//     })
-//     .then((bird) => res.json(bird))
-//     .catch(next);
-// }
+function updateRoute(req, res, next) {
+  Accumulator
+    .findById(req.params.id)
+    .exec()
+    .then((accumulator) => {
+      if(!accumulator) return res.notFound();
+
+      for(const field in req.body) {
+        accumulator[field] = req.body[field];
+      }
+
+      return accumulator.save();
+    })
+    .then((accumulator) => res.json(accumulator))
+    .catch(next);
+}
 // *******************************************
 
 
@@ -109,6 +112,7 @@ function deleteEventRoute(req, res, next) {
 module.exports = {
   show: showRoute,
   create: createRoute,
+  update: updateRoute,
   delete: deleteRoute,
   addEvent: addEventRoute,
   deleteEvent: deleteEventRoute

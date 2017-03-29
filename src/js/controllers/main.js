@@ -10,6 +10,12 @@ function MainCtrl($rootScope, $state, $auth) {
   //vm.stateHasChanged = false;
 
   vm.isAuthenticated = $auth.isAuthenticated;
+  vm.logout = logout;
+
+  function logout() {
+    $auth.logout();
+    $state.go('login');
+  }
 
   $rootScope.$on('error', (e, err) => {
     vm.stateHasChanged = false;
@@ -24,12 +30,6 @@ function MainCtrl($rootScope, $state, $auth) {
       vm.currentUserId = $auth.getPayload().userId;
     }
   });
-
-  function logout() {
-    $auth.logout();
-    $state.go('login');
-  }
-  vm.logout = logout;
 
 }
 //this section is for the chart and sets parameters for how often it refreshes and what it displays

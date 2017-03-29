@@ -2,18 +2,40 @@ angular
   .module('YTHO')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event'];
-function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
+UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event', 'filterFilter'];
+function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, filterFilter) {
   const vm = this;
+
+  let t = null;
+
+  getUserProfile();
 
   vm.chosenMarket = null;
   vm.eventButton = true;
+  vm.newAccumulator = {};
+  vm.editAccumulator = {};
+
+  vm.chooseAccumulator = chooseAccumulator;
+  vm.selectMarket = selectMarket;
+  vm.addToAccumulator = addToAccumulator;
+  vm.delete = accumulatorsDelete;
+  vm.displayTrackedEvents = displayTrackedEvents;
+  vm.createAccumulator = createAccumulator;
+  vm.deleteEvent = deleteEvent;
+
+  function getUserProfile() {
+    $http
+    .get('/api/profile')
+    .then((response) => vm.user = response.data);
+  }
+
+  function chooseAccumulator(accy) {
+    vm.currentAccumulator = accy;
+  }
 
   function selectMarket(selectedMarket) {
     vm.chosenMarket = selectedMarket;
   }
-
-  vm.selectMarket = selectMarket;
 
   function addToAccumulator(runner, index, eventType) {
     vm.newEvent.runnerId = runner.selectionId;
@@ -29,8 +51,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
       });
   }
 
-  vm.addToAccumulator = addToAccumulator;
-
   function accumulatorsDelete(accumulator) {
     Accumulator
       .delete({ id: accumulator.id })
@@ -42,26 +62,55 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
       });
   }
 
-  vm.delete = accumulatorsDelete;
-
-  getUserProfile();
-
-  function getUserProfile() {
-    $http
-    .get('/api/profile')
-    .then((response) => vm.user = response.data);
-  }
-
-  vm.displayTrackedEvents = displayTrackedEvents;
-
   function displayTrackedEvents(accumulatorId) {
+    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
     $http
       .get(`/api/accumulators/${accumulatorId}`)
-      .then((response) => vm.events = response.data);
+      .then((response) => {
+        vm.runners = response.data.reduce((runners, data) => {
+          return runners.concat(data.runners);
+        }, []).filter((runner) => {
+          return runnerIds.includes(runner.selectionId);
+        });
+
+        clearTimeout(t);
+
+        t = setTimeout(() => {
+          displayTrackedEvents(accumulatorId);
+        }, 1000);
+      });
   }
 
-  vm.createAccumulator = createAccumulator;
-  vm.newAccumulator = {};
+  // API
+  // events = [
+  //   market1 = {
+  //     runners = [
+  //       { selectionId: 3242 },
+  //       { selectionId: 5665 },
+  //       { selectionId: 436754 }
+  //     ]
+  //   },
+  //   market2 = {
+  //   }
+  // ]
+  // for markets in events
+  //   for runner in events.runners
+  //     return runner.selectionId if it is included in accumulator.events[all of them].runnerId
+  //
+  // ACCUMULATOR
+  // events = [
+  //   event1: {
+  //     { runnerId: 3242 }
+  //   },
+  //   event2: {
+  //
+  //   }
+  // ]
+
+
+
+
+
 
   function createAccumulator() {
     if(vm.newAccyForm.$valid) {
@@ -71,19 +120,18 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
         .then((accy) => vm.user.accumulators.push(accy));
     }
   }
-  vm.chooseAccumulator = chooseAccumulator;
 
-  function renameAccumulator(accumulator) {
-    // 
-    // .$update(id: accumulator.id)
-    // .then((accy) => vm.user.accumulators.push(accy));
+  function renameAccumulator() {
+    Accumulator
+      .update({ id: vm.currentAccumulator.id }, vm.currentAccumulator)
+      .$promise
+      .then(() => {
+        vm.editToggleBoolean =  true;
+      });
   }
 
   vm.rename = renameAccumulator;
 
-  function chooseAccumulator(accy) {
-    vm.currentAccumulator = accy;
-  }
 
   vm.editToggleBoolean =  true;
 

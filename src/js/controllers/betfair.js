@@ -6,6 +6,7 @@ angular
 BetfairSelectCtrl.$inject = ['$http', '$stateParams'];
 function BetfairSelectCtrl($http, $stateParams) {
   const vm = this;
+
   const list = {
     Soccer: 1,
     Tennis: 2,
@@ -17,9 +18,11 @@ function BetfairSelectCtrl($http, $stateParams) {
     Motor: 8,
     Special: 10
   };
+
   vm.all = [];
 
   listEvents();
+
   function listEvents() {
     $http
       .get('/api/listEvents', { params: { eventTypeId: list[$stateParams.eventType] }})
@@ -27,17 +30,27 @@ function BetfairSelectCtrl($http, $stateParams) {
 
     changeEventType();
   }
+
   function changeEventType() {
     vm.eventType = $stateParams.eventType;
   }
+
 }
+
+
 
 BetfairMarketCtrl.$inject = ['$http', '$state', '$stateParams'];
 function BetfairMarketCtrl($http, $state, $stateParams) {
   const vm = this;
 
   listMarkets();
+
   vm.listMarkets = listMarkets;
+  vm.runnerNames = [];
+
+  vm.selectMarket = selectMarket;
+  vm.getMarketOdds = getMarketOdds;
+
   function listMarkets() {
     vm.eventType = $stateParams.eventType;
     $http
@@ -46,8 +59,6 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
         vm.markets = response.data;
       });
   }
-
-  vm.runnerNames = [];
 
   function selectMarket(selectedMarket) {
     vm.markets.forEach((market) => {
@@ -59,9 +70,6 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
     });
   }
 
-  vm.selectMarket = selectMarket;
-  vm.getMarketOdds = getMarketOdds;
-
   function getMarketOdds(marketId) {
     $http
       .get('/api/marketOdds', { params: { marketId }})
@@ -69,4 +77,5 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
         vm.specificMarket = response.data[0];
       });
   }
+  
 }
