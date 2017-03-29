@@ -5,7 +5,7 @@ angular
 UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event'];
 function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   const vm = this;
-  vm.greeting = 'hello';
+
   vm.chosenMarket = null;
   vm.eventButton = true;
 
@@ -15,10 +15,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
 
   vm.selectMarket = selectMarket;
 
-  function addToAccumulator(runner, index) {
+  function addToAccumulator(runner, index, eventType) {
     vm.newEvent.runnerId = runner.selectionId;
     vm.newEvent.runnerName = vm.chosenMarket.runners[index].runnerName;
-    console.log(vm.newEvent);
+    vm.newEvent.eventType = eventType;
 
     Event
       .save({ accumulatorId: vm.currentAccumulator.id }, vm.newEvent)
