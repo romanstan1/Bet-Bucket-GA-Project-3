@@ -1,39 +1,55 @@
-html, main, body, a, li, ul, nav, div, section, article, header, footer, {
-  list-style: none;
-  text-decoration: none;
-  font-family: sans-serif;
-  color: black;
+$black: #0e1922;
+$grey: #1d323f;
+
+* {
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
 }
 
+// General styles -------------------------
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+}
 
-// main styles -------------------------
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
 nav {
   position: absolute;
-  height: 50px;
-  background: ghostwhite;
+  height: 60px;
+  background: $black;
   top: 0;
   width: 100%;
   ul{
     width: 80%;
     margin: 0 auto;
     li{
+      font-size: 14px;
+      background: none;
       display: inline-block;
       margin-right: 30px;
-      background: red;
       opacity: 1;
       cursor: pointer;
       a {
+        color: white;
+        font-weight: 600;
         display:block;
-        line-height: 50px;
-        background: white;
+        text-transform: uppercase;
+        line-height: 60px;
         padding: 0 10px;
         &:hover {
-          opacity: 0.7;
+          background: $grey;
+          // opacity: 0.7;
         }
       }
     }
@@ -47,15 +63,44 @@ section.wrapper {
 }
 
 h1 {
-  margin-top: 70px;
   text-align: center;
   font-size: 18px;
-  margin-bottom: 50px;
 }
 
+form {
+  label {
+    line-height: 30px;
+    text-align: right;
+  }
+  input {
+    // padding-left: 10px;
+    outline: none;
+    background: ghostwhite;
+    height: 30px;
+    &:focus {
+      opacity: 0.5;
+  }
+  }
+}
+
+button {
+  cursor: pointer;
+  padding: 0 2%;
+  line-height: 30px;
+  outline: none;
+  &:hover {
+    background: tomato;
+    opacity: 0.7;
+  }
+}
 
 // profile page styles ---------------------------
 
+h1.user-profile {
+
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
 
 section.profile-accy-nav {
   width: 20%;
@@ -141,10 +186,77 @@ button.profile-search-event {
 }
 
 main {
-  background-color: ghostwhite;
+  //background-color: ghostwhite;
   width: 900px;
   height: 600px;
   margin: 0 auto;
+}
+
+
+//------ login page styles
+
+div.login-animation {
+  margin-top: 0px;
+  background: grey;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 450px;
+  overflow: hidden;
+  #line {
+    height: 200px;
+    width: 900px;
+    background: grey;
+    overflow: hidden;
+  }
+}
+
+h1.login {
+  margin-top: 200px;
+  color: white;
+  font-size: 26px;
+}
+
+form.login {
+  // position: relative;
+  margin: 20px auto;
+  height: 500px;
+  width: 400px;
+  background: white;
+  label {
+    font-size: 14px;
+    display: inline-block;
+    float: left;
+    width: 28%;
+    padding-right: 2%;
+  }
+  input {
+    font-size: 14px;
+    display: inline-block;
+    float: right;
+    width: 100%;
+    text-align: center;
+
+    // border: 2px solid grey;
+  }
+  div {
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    float: left;
+    width: 100%;
+    line-height: 30px;
+    background: white;
+    color: tomato;
+  }
+  // margin-top: 150px;
+  // height: 400px;
+  // border: 1px black solid;
+  button {
+    width: 100%;
+  }
 }
 
 li {
@@ -155,8 +267,8 @@ li {
     background: dodgerblue;
     color:black;
   }
-
 }
+
 li.selected {
   background: tomato;
 }
