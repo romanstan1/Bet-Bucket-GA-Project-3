@@ -14,12 +14,13 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.eventButton = true;
   vm.newAccumulator = {};
   vm.editAccumulator = {};
+  vm.runnerNames = [];
 
+  vm.displayTrackedEvents = displayTrackedEvents;
   vm.chooseAccumulator = chooseAccumulator;
   vm.selectMarket = selectMarket;
   vm.addToAccumulator = addToAccumulator;
   vm.delete = accumulatorsDelete;
-  vm.displayTrackedEvents = displayTrackedEvents;
   vm.createAccumulator = createAccumulator;
   vm.deleteEvent = deleteEvent;
 
@@ -31,6 +32,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function chooseAccumulator(accy) {
     vm.currentAccumulator = accy;
+
+    vm.currentAccumulator.events.forEach((e) => {
+      return vm.runnerNames.unshift(e.runnerName);
+    });
   }
 
   function selectMarket(selectedMarket) {
@@ -62,34 +67,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       });
   }
 
-  function displayTrackedEvents(accumulatorId) {
-    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
-    $http
-      .get(`/api/accumulators/${accumulatorId}`)
-      .then((response) => {
-        vm.runners = response.data.reduce((runners, data) => {
-          return runners.concat(data.runners);
-        }, []).filter((runner) => {
-          return runnerIds.includes(runner.selectionId);
-        });
-        vm.runnerNames = [];
-        vm.currentAccumulator.events.forEach((element) => {
-          return vm.runnerNames.push(element.runnerName);
-        });
-
-        clearTimeout(t);
-        console.log(vm.runners);
-        vm.runners.forEach(function(element) {
-          console.log(element.lastPriceTraded);
-        });
-
-        // console.log(vm.runners[0].lastPriceTraded);
-        t = setTimeout(() => {
-          displayTrackedEvents(accumulatorId);
-        }, 1000);
-      });
-  }
-
   function createAccumulator() {
     if(vm.newAccyForm.$valid) {
       Accumulator
@@ -109,7 +86,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   vm.rename = renameAccumulator;
-
 
   vm.editToggleBoolean =  true;
 
@@ -135,30 +111,66 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       });
   }
 
+  function displayTrackedEvents(accumulatorId) {
+    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
+    $http
+      .get(`/api/accumulators/${accumulatorId}`)
+      .then((response) => {
+        vm.runners = response.data.reduce((runners, data) => {
+          return runners.concat(data.runners);
+        }, []).filter((runner) => {
+          return runnerIds.includes(runner.selectionId);
+        });
+        clearTimeout(t);
 
 
+        // vm.runnerNames = [];
+        // vm.currentAccumulator.events.forEach((element) => {
+        //   return vm.runnerNames.push(element.runnerName);
+        // });
 
-  vm.labels = ['', '', '', '', '', '', '', '', ''];
-  vm.series = [''];
+        console.log(vm.runners[0].lastPriceTraded);
+        // console.log(vm.currentAccumulator.events[0].eventName);
+        // console.log(vm.currentAccumulator.events[0].eventType);
+        // console.log(vm.currentAccumulator.events[0].marketName);
+        console.log(vm.currentAccumulator.events[0].runnerName);
+
+        vm.runners.forEach((element) => {
+          vm.data[0].push(element.lastPriceTraded);
+        });
+
+        t = setTimeout(() => {
+          displayTrackedEvents(accumulatorId);
+          updateGraph();
+        }, 1000);
+      });
+  }
+
+
+  // vm.series = list of runnerNames
+
+
+  vm.labels = [];
+  vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
   vm.data = [
-    [65, 59, 80, 81, 66, 75, 70, 77, 87]
+    []
   ];
 
-  let test = 1;
   const now = moment().format('hh:mm:ss');
 
-  vm.borderWidth = 0;
-
-  setInterval(() => {
-    vm.data[0][6] = Math.floor(Math.random()*30);
-    vm.data[0][2] = Math.floor(Math.random()*40)+30;
+  function updateGraph() {
+    const time = moment().format('hh:mm:ss');
+    vm.labels.push(time);
+    console.log(time);
     $scope.$apply();
+  }
 
-  }, 3000); // stop timer after 10 seconds
 
-  vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
 
   vm.options = {
+    animation: {
+      duration: 0
+    },
     elements: {
       line: {
         fill: true,
