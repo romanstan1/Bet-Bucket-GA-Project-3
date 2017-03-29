@@ -8,7 +8,7 @@
   <li ng-repeat="runner in betfairShow.specificMarket.runners" ng-if="runner.lastPriceTraded">
     <p> {{ betfairShow.runnerNames[$index] }} - Last Price Traded: {{ runner.lastPriceTraded }} </p>
 
-    <button ng-click="usersShow.addToAccumulator(runner, $index); usersShow.eventButton = true">Add To Accumulator
+    <button ng-click="usersShow.addToAccumulator(runner, $index, betfairShow.eventType); usersShow.eventButton = true">Add To Accumulator
     </button>
   </li>
 

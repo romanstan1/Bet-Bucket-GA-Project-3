@@ -2,8 +2,8 @@ angular
   .module('YTHO')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event', 'filterFilter'];
-function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, filterFilter) {
+UsersShowCtrl.$inject = ['$rootScope', '$state', '$auth', '$http', 'Accumulator', 'Event'];
+function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   const vm = this;
 
   let t = null;
@@ -71,6 +71,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, fil
         }, []).filter((runner) => {
           return runnerIds.includes(runner.selectionId);
         });
+        vm.runnerNames = [];
+        vm.currentAccumulator.events.forEach((element) => {
+          return vm.runnerNames.push(element.runnerName);
+        });
 
         clearTimeout(t);
 
@@ -79,37 +83,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, fil
         }, 1000);
       });
   }
-
-  // API
-  // events = [
-  //   market1 = {
-  //     runners = [
-  //       { selectionId: 3242 },
-  //       { selectionId: 5665 },
-  //       { selectionId: 436754 }
-  //     ]
-  //   },
-  //   market2 = {
-  //   }
-  // ]
-  // for markets in events
-  //   for runner in events.runners
-  //     return runner.selectionId if it is included in accumulator.events[all of them].runnerId
-  //
-  // ACCUMULATOR
-  // events = [
-  //   event1: {
-  //     { runnerId: 3242 }
-  //   },
-  //   event2: {
-  //
-  //   }
-  // ]
-
-
-
-
-
 
   function createAccumulator() {
     if(vm.accyForm.$valid) {

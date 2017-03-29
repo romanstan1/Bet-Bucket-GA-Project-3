@@ -11,8 +11,8 @@
   <ul>
     <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy); usersShow.displayTrackedEvents(accy.id)">
       <a>
-        {{ accy.name }} <br>
-        Events: {{ accy.events.length }} <br>
+        {{ accy.name }}<br>
+        Events: {{ accy.events.length }}<br>
       </a>
       <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
     </li>
@@ -20,8 +20,7 @@
 </section>
 <section class="profile-graphs">
   <p>GRAPHS HERE</p>
-  <p ng-repeat="runner in usersShow.runners"><strong>{{ runner.lastPriceTraded }}</strong></p>
-  <p ng-repeat="runner in usersShow.currentAccumulator.events"><strong>{{ runner.runnerName }}</strong></p>
+  <p ng-repeat="runner in usersShow.runners"><strong>{{ usersShow.runnerNames[$index] }} - {{ runner.lastPriceTraded }}</strong></p>
 </section>
 
 <h3>List of Events in Accumulators</h3>
