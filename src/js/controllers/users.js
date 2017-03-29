@@ -73,7 +73,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, fil
         });
 
         clearTimeout(t);
-        console.log(vm.runners);
 
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);

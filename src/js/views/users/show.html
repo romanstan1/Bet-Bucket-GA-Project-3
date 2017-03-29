@@ -20,9 +20,8 @@
 </section>
 <section class="profile-graphs">
   <p>GRAPHS HERE</p>
-  <div ng-repeat="markets in usersShow.events">
-    <p ng-repeat="runner in markets.runners">{{ runner }}</p>
-  </div>
+  <p ng-repeat="runner in usersShow.runners"><strong>{{ runner.lastPriceTraded }}</strong></p>
+  <p ng-repeat="runner in usersShow.currentAccumulator.events"><strong>{{ runner.runnerName }}</strong></p>
 </section>
 
 <h3>List of Events in Accumulators</h3>
