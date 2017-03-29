@@ -85,7 +85,7 @@ function LoginCtrl($auth, $state, $scope) {
     $scope.$apply();
     // });
 
-  }, 3000); // stop timer after 10 seconds
+  }, 100); // stop timer after 10 seconds
 
 
   // vm.options = {
