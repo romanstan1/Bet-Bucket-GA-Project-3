@@ -261,6 +261,25 @@ div.login-animation {
   }
 }
 
+div.user-animation {
+  margin-top: 0px;
+  background: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 450px;
+  overflow: hidden;
+  #line {
+    height: 200px;
+    width: 900px;
+    
+    overflow: hidden;
+  }
+}
+
+
 h1.login {
   margin-top: 200px;
   color: white;
