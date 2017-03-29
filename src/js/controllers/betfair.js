@@ -3,17 +3,26 @@ angular
   .controller('BetfairSelectCtrl', BetfairSelectCtrl)
   .controller('BetfairMarketCtrl', BetfairMarketCtrl);
 
-BetfairSelectCtrl.$inject = ['$http'];
-function BetfairSelectCtrl($http) {
+BetfairSelectCtrl.$inject = ['$http', '$stateParams'];
+function BetfairSelectCtrl($http, $stateParams) {
   const vm = this;
-
+  const list = {
+    Soccer: 1,
+    Tennis: 2,
+    Golf: 3,
+    Cricket: 4,
+    Rugby: 5,
+    Boxing: 6,
+    Horse: 7,
+    Motor: 8,
+    Special: 10
+  };
   vm.all = [];
-  vm.listEvents = listEvents;
-  vm.eventTypeId = 1;
 
+  listEvents();
   function listEvents() {
     $http
-      .get('/api/listEvents', { params: { eventTypeId: vm.eventTypeId, startDate: vm.startDate, endDate: vm.endDate }})
+      .get('/api/listEvents', { params: { eventTypeId: list[$stateParams.eventType] }})
       .then((response) => vm.all = response.data);
   }
 }

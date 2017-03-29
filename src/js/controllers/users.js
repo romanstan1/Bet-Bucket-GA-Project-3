@@ -7,6 +7,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event) {
   const vm = this;
   vm.greeting = 'hello';
   vm.chosenMarket = null;
+  vm.eventButton = true;
 
   function selectMarket(selectedMarket) {
     vm.chosenMarket = selectedMarket;

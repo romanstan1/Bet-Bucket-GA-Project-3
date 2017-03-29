@@ -23,12 +23,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'UsersShowCtrl as usersShow'
     })
     .state('profile.events', {
-      url: '/events',
+      url: '/events/:eventType',
       templateUrl: 'js/views/events/index.html',
       controller: 'BetfairSelectCtrl as betfairIndex'
     })
     .state('profile.eventsShow', {
-      url: '/events/:eventId',
+      url: '/events/:eventType/:eventId',
       templateUrl: 'js/views/events/show.html',
       controller: 'BetfairMarketCtrl as betfairShow'
     });

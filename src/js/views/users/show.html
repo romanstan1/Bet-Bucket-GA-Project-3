@@ -20,9 +20,26 @@
   </ul>
 </section>
 
-<button ui-sref="profile.events">Add Event</button>
+<button ng-click="usersShow.eventButton = false" ng-if="usersShow.eventButton">Add Event</button>
 
 <p>The new event: {{ usersShow.newEvent.eventName }} - {{ usersShow.newEvent.marketName }}</p>
+<section class="profile-input-selectboxes" ng-if="!usersShow.eventButton">
+
+  <label for="caption">Choose your category</label>
+  <select name="EVENT TYPE" ng-model="usersShow.eventType">
+    <option value="Soccer">Soccer</option>
+    <option value="Tennis">Tennis</option>
+    <option value="Golf">Golf</option>
+    <option value="Cricket">Cricket</option>
+    <option value="Rugby">Rugby</option>
+    <option value="Boxing">Boxing</option>
+    <option value="Horse">Horse</option>
+    <option value="Motor">Motor</option>
+    <option value="Special">Special</option>
+  </select>
+
+  <button class="profile-search-event" type="button" name="button" ui-sref="profile.events({ eventType: usersShow.eventType })">SEARCH</button>
+</section>
 
 <!-- loads in events index.html and show.html -->
 <div ui-view></div>

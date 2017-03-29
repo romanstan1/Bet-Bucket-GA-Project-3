@@ -1,22 +1,4 @@
 <div>
-  <section class="profile-input-selectboxes">
-
-    <label for="caption">Choose your category</label>
-    <select name="EVENT TYPE" ng-model="betfairIndex.eventTypeId">
-      <option value="1">Soccer</option>
-      <option value="2">Tennis</option>
-      <option value="3">Golf</option>
-      <option value="4">Cricket</option>
-      <option value="5">Rugby</option>
-      <option value="6">Boxing</option>
-      <option value="7">Horse</option>
-      <option value="8">Motor</option>
-      <option value="10">Special</option>
-    </select>
-
-    <button class="profile-search-event" type="button" name="button" ng-click="betfairIndex.listEvents()">SEARCH</button>
-  </section>
-
   <section class="profile-select-event" >
     <p ng-repeat="event in betfairIndex.all" ui-sref="profile.eventsShow({ eventId: event.event.id })" ng-click="usersShow.newEvent.eventName = event.event.name">{{ event.event.name }}</p>
   </section>
