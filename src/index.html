@@ -18,7 +18,7 @@
           <li><img src="images/BetBucketLogo.v2.png" height="20"></li>
           <li><h1>BET BUCKET</h1></li>
           <li ng-if="main.isAuthenticated()" ui-sref="profile"><a ui-sref="profile">Profile</a></li>
-          <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
+          <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="login">Logout</a></li>
 
           <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
           <li ng-if="!main.isAuthenticated()" ui-sref="register"><a href="#">Register</a></li>
@@ -32,7 +32,7 @@
     <div class="push"></div>
   </div>
   <footer>
-    <p><img src="images/BetBucketLogo.v2.png" class="circle" height="20"> made with &#9829;  - Ytho 2017</p>
+    <p><img src="images/BetBucketLogo.v2.png" height="20"> made with &#9829;  - Ytho 2017</p>
   </footer>
 </body>
 </html>
