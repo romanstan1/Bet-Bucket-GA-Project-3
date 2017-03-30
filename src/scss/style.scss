@@ -1,5 +1,8 @@
 $black: #0e1922;
 $grey: #1d323f;
+$slategray: #263f4f;
+$green: #289c96;
+$pink: #d72b71;
 
 * {
   margin: 0;
@@ -65,6 +68,7 @@ section.wrapper {
 h1 {
   text-align: center;
   font-size: 18px;
+  text-transform: uppercase;
 }
 
 form {
@@ -79,7 +83,7 @@ form {
     height: 30px;
     &:focus {
       opacity: 0.5;
-  }
+    }
   }
 }
 
@@ -88,15 +92,14 @@ button {
   padding: 0 2%;
   line-height: 30px;
   outline: none;
-  &:hover {
-    background: tomato;
+  &:focus {
     opacity: 0.7;
   }
 }
 
 main {
   //background-color: ghostwhite;
-  width: 85%;
+  width: 90%;
   // height: 600px;
   margin: 0 auto;
 }
@@ -167,27 +170,36 @@ section.profile-accy-nav {
   }
 }
 
-// section.profile-selected-accy, section.profile-select-event {
-//   width: 70%;
-//   background: red;
-//   border: 2px solid black;
-//   display: inline-block;
-//   float: left;
-// }
-
 // graph styles -------------------------------------
 
 section.profile-graphs {
-  width: 75%;
+  width: 74%;
   border: 2px solid black;
   display: block;
   height: 400px;
+  margin-right: 1%;
+  div.user-animation {
+    margin-top: 0px;
+    background: white;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 450px;
+    overflow: hidden;
+    #line {
+      height: 400px;
+      width: 900px;
+      overflow: hidden;
+    }
+  }
 }
 
 //  input select sections ------------------------- ---------------
 
 section.profile-input-selectboxes {
-  width: 75%;
+  width: 100%;
   height: 150px;
   margin: 30px 0;
   text-align: center;
@@ -203,18 +215,16 @@ section.profile-input-selectboxes {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
-    text-indent: 34%;
+    // text-indent: 34%;
+    text-align-last: center;
+    cursor: pointer;
     option {
-      text-align: center;
-      width: 100%;
-      line-height: 30px;
-      background: red;
     }
   }
   button {
   }
 }
-
+// tomato
 
 section.profile-select-event {
   background: grey;
@@ -237,10 +247,68 @@ button.profile-choose-event, button.profile-search-event {
   }
 }
 
+
+
 button.profile-search-event {
   background: tomato;
 }
+// --------- tracked ul li styles --------------------
 
+h3.profile-h3 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  span {
+    color: $green;
+  }
+}
+
+ul.profile-tracked-accumulator {
+  li {
+    display: block;
+    font-size: 0;
+    p{
+      background: $grey;
+      font-size: 14px;
+      display: inline-block;
+      line-height: 40px;
+      color: white;
+      font-weight:600;
+    }
+    p:first-child{
+      width: 70%;
+      padding-left: 2%;
+    }
+    p:nth-child(2) {
+      width: 20%;
+      // display: inline-block;
+      // width: 50px;
+      // background: red;
+      text-align: left;
+      span {
+        color: $pink;
+      }
+    }
+    button {
+      font-size: 14px;
+      display: inline-block;
+      line-height: 40px;
+      width: 10%;
+      background: $green;
+      color: white;
+      &:hover {
+        background: $slategray;
+        opacity: 0.4;
+      }
+    }
+  }
+}
+
+
+
+//-------------- login page styles ---------------------------------------------------
+//-------------- login page styles ---------------------------------------------------
+//-------------- login page styles ---------------------------------------------------
+//-------------- login page styles ---------------------------------------------------
 //-------------- login page styles ---------------------------------------------------
 
 div.login-animation {
@@ -260,25 +328,6 @@ div.login-animation {
     overflow: hidden;
   }
 }
-
-div.user-animation {
-  margin-top: 0px;
-  background: white;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 450px;
-  overflow: hidden;
-  #line {
-    height: 400px;
-    width: 900px;
-
-    overflow: hidden;
-  }
-}
-
 
 h1.login {
   margin-top: 200px;
@@ -326,15 +375,15 @@ form.login {
   }
 }
 
-li {
-  cursor: pointer;
-  background: grey;
-  color: white;
-  &:hover {
-    background: dodgerblue;
-    color:black;
-  }
-}
+// li {
+//   cursor: pointer;
+//   background: grey;
+//   color: white;
+//   &:hover {
+//     background: dodgerblue;
+//     color:black;
+//   }
+// }
 
 li.selected {
   background: tomato;
