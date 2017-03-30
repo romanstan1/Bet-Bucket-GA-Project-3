@@ -1,3 +1,4 @@
+<button ui-sref="profile.events({ eventType: betfairShow.eventType })">Go back to {{ betfairShow.eventType }} events</button>
 <ul class="showEvents">
   <li ng-click="betfairShow.getMarketOdds(market.marketId); betfairShow.selectMarket(market); usersShow.selectMarket(market); usersShow.newEvent.marketName = market.marketName; usersShow.newEvent.marketId = market.marketId" ng-repeat="market in betfairShow.markets" ng-class="{'selected': market.selected }">
     <h3>{{ market.marketName }} <span ng-if="!market.totalMatched"> - No odds Available</span></h3>
