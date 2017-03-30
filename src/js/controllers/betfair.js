@@ -16,6 +16,7 @@ function BetfairSelectCtrl($http, $stateParams) {
     Boxing: 6,
     Horse: 7,
     Motor: 8,
+    ESports: 27454571,
     Special: 10
   };
 
