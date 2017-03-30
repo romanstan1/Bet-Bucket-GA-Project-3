@@ -328,9 +328,11 @@ form.login {
 
 //SW 3 divs styling on login page
 .loginTrio {
-  margin: 30px auto 0;
+  margin: 50px auto 0;
   text-align: center;
   display: inline-block;
+  float: left;
+  width: 100%;
   h2 {
     text-align: center;
     text-transform: uppercase;
@@ -339,15 +341,6 @@ form.login {
     text-align: center;
     font-size: 16px;
   }
-  // ul {
-  //   display: inline-block;
-  //   margin: 20px auto;
-  //   // position: relative;
-  //   li {
-  //     list-style: none;
-  //     display: inline-block;
-  //     margin: 0 15px;
-  //     margin-left: 0;
   img {
     max-height: 200px;
     border: 2px solid;
