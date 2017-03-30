@@ -96,8 +96,8 @@ button {
 
 main {
   //background-color: ghostwhite;
-  width: 90%;
-  height: 600px;
+  width: 85%;
+  // height: 600px;
   margin: 0 auto;
 }
 
@@ -381,11 +381,12 @@ ul.showOdds {
 }
 
 footer {
-  background-color: rgba(20, 20, 20, 1);
+  background-color: $black;
   padding: 10px 0;
+  height: 250px;
   text-align: center;
   color: white;
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
 }
