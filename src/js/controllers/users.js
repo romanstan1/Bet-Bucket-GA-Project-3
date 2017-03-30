@@ -27,6 +27,17 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.delete = accumulatorsDelete;
   vm.editToggle = editToggle;
   vm.selectMarket = selectMarket;
+
+  //
+  // vm.createAccumulator = createAccumulator;
+  // vm.chooseAccumulator = chooseAccumulator;
+  // vm.addToAccumulator = addToAccumulator;
+  // vm.rename = renameAccumulator;
+  // vm.delete = accumulatorsDelete;
+  //
+  // vm.selectMarket = selectMarket;
+  // vm.displayTrackedEvents = displayTrackedEvents;
+
   vm.deleteEvent = deleteEvent;
   vm.editToggleBoolean =  true;
 
@@ -75,7 +86,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.currentAccumulator = null;
       });
   }
-
 
   function createAccumulator() {
     if(vm.newAccyForm.$valid) {
