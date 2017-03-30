@@ -28,16 +28,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.editToggle = editToggle;
   vm.selectMarket = selectMarket;
 
-  //
-  // vm.createAccumulator = createAccumulator;
-  // vm.chooseAccumulator = chooseAccumulator;
-  // vm.addToAccumulator = addToAccumulator;
-  // vm.rename = renameAccumulator;
-  // vm.delete = accumulatorsDelete;
-  //
-  // vm.selectMarket = selectMarket;
-  // vm.displayTrackedEvents = displayTrackedEvents;
-
   vm.deleteEvent = deleteEvent;
 
   function getUserProfile() {
@@ -145,11 +135,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.runners = response.data.reduce((runners, data) => {
           return runners.concat(data.runners);
         }, [])
-        .filter((runner) => runnerIds.includes(runner.selectionId))
-        .sort((a, b) => b.selectionId - a.selectionId);
+        .filter((runner) => runnerIds.includes(runner.selectionId));
 
         vm.runnerPrices = [];
-        console.log(vm.runners);
+        
         vm.runners.forEach((element) => vm.runnerPrices.push(element.lastPriceTraded));
 
         clearTimeout(t);
@@ -218,7 +207,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           type: 'linear',
           display: true,
           position: 'left',
-          ticks: { min: 0, max: 12 },
+          ticks: { min: 0, max: 2 },
           gridLines: {
             display: true
           }
