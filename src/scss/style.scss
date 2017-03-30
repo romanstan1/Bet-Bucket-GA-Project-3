@@ -99,6 +99,7 @@ main {
   width: 85%;
   // height: 600px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 // PROFILE profile page styles --------------------------- -------------------------->>>>>>>>>>
@@ -295,14 +296,14 @@ form.login {
   label {
     font-size: 14px;
     display: inline-block;
-    float: left;
+    // float: left;
     width: 28%;
     padding-right: 2%;
   }
   input {
     font-size: 14px;
     display: inline-block;
-    float: right;
+    // float: right;
     width: 100%;
     text-align: center;
 
@@ -426,19 +427,19 @@ ul.showOdds {
 }
 
 footer {
-  background-color: $black;
+  background-color: black;
   padding: 10px 0;
-  height: 250px;
+  height: 90px;
   text-align: center;
   color: white;
-  position: relative;
+  // position: ;
   bottom: 0;
   width: 100%;
 }
-
-
-
-
+//
+//
+//
+//
 
 
 h3 {
