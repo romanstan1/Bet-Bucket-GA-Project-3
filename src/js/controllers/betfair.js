@@ -77,5 +77,5 @@ function BetfairMarketCtrl($http, $state, $stateParams) {
         vm.specificMarket = response.data[0];
       });
   }
-  
+
 }

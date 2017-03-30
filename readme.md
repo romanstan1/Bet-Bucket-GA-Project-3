@@ -10,7 +10,9 @@ Roman Stankiewicz
 
 #### An application for obtaining betting data with which to build accumulators, with odds which can be tracked in real time.  
 
+
 The site is designed to enable a user to obtain information on events by category, event and outcome and build an accumulator bet with the data.  The API used is provided by Betfair.
+
 
 XXX
 
@@ -97,5 +99,9 @@ The greatest challenges were:
 
 #### Wins
 
+<<<<<<< HEAD
 1. understanding the complex Betfair API documentation to access the data required
 2. linking the API data to graphs for real-time visualisation of the performance of an accumulator.
+=======
+1. Understanding the complex Betfair API documentation to access the data required
+>>>>>>> bug-fixes
