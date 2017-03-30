@@ -3,6 +3,9 @@ $grey: #1d323f;
 $slategray: #263f4f;
 $green: #289c96;
 $pink: #d72b71;
+$lightgreen: #32d1c8;
+$lightgrey: #cccccc;
+$lightergrey: #ededed;
 
 * {
   margin: 0;
@@ -104,51 +107,87 @@ main {
 }
 
 h1.user-profile {
+  text-transform: none;
   margin-top: 100px;
   margin-bottom: 50px;
+  color: $green;
 }
 
 // Accumlator nav bar side-section
+
 section.profile-accy-nav {
+  //edits buttons!!! --
+  button.editForm {
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  background: $lightgrey;
+    &:hover {
+      background: $lightergrey;
+    }
+  }
+  form.newForm, form.editForm{
+    button {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    background: $lightgrey;
+      &:hover {
+        background: $lightergrey;
+      }
+    }
+  }
+
   width: 25%;
-  background: $slategray;
-  border: 5px solid black;
   display: block;
   float: right;
   margin-left: 10px;
   ul {
+    margin: 40px 0;
     li {
-      margin: 5px 0;
+      background: $slategray;
+      margin: 0px 0;
       cursor: pointer;
       overflow: hidden;
       line-height: 25px;
       color: white;
       display: block;
-      .edit {
+      div.edit {
         display: none;
       }
       &.selected {
-        background-color: tomato;
-        .edit {
+        background-color: $green;
+        div.edit {
           display: block;
+          button {
+            display: inline-block;
+            float: right;
+            height: 30px;
+            width: 100%;
+          }
         }
       }
       a {
+        font-weight: 600;
         display: inline-block;
         color: inherit;
-        width: 80%;
-      }
-    }
-    div.edit {
-      width: 20%;
-      display: inline-block;
-      button {
-        display: inline-block;
-        float: right;
-        height: 50px;
         width: 100%;
+        text-align: center;
+        &:hover {
+          background: $green;
+        }
+        span {
+          font-weight: 400;
+          font-size: 11px;
+            text-transform: uppercase;
+        }
+
       }
     }
+    // div.edit {
+    //   width: 20%;
+    //   display: inline-block;
+    // }
     div {
       form {
         button {
@@ -165,7 +204,7 @@ section.profile-accy-nav {
       width: 100%;
       &:focus {
         background: gold;
-    }
+      }
     }
     button {
       width: 100%;
@@ -418,15 +457,14 @@ div.logoInLogin {
 // END of styling for loginPage
 
 
-li {
-  cursor: pointer;
-  background: grey;
-  color: white;
-  &:hover {
-    background: dodgerblue;
-    color:black;
-  }
-}
+// li {
+//   cursor: pointer;
+//   color: white;
+  // &:hover {
+  //   background: dodgerblue;
+  //   color:black;
+  // }
+// }
 // li {
 //   cursor: pointer;
 //   background: grey;
@@ -482,7 +520,7 @@ ul.showOdds {
 }
 
 footer {
-  background-color: $black;
+  background-color: $slategray;
   padding: 10px 0;
   height: 250px;
   text-align: center;
