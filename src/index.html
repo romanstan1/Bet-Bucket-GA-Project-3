@@ -11,23 +11,25 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <header>
-    <nav>
-      <ul>
-        <li>BET BUCKET</li>
-        <li ng-if="main.isAuthenticated()" ui-sref="profile"><a ui-sref="profile">Profile</a></li>
-        <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <ul>
+          <li>BET BUCKET</li>
+          <li ng-if="main.isAuthenticated()" ui-sref="profile"><a ui-sref="profile">Profile</a></li>
+          <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
 
-        <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
-        <li ng-if="!main.isAuthenticated()" ui-sref="register"><a href="#">Register</a></li>
-      </ul>
-    </nav>
-  </header>
+          <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
+          <li ng-if="!main.isAuthenticated()" ui-sref="register"><a href="#">Register</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <h1>Bet Bucket?</h1>
-  <div class="message" ng-if="main.message">{{ main.message }}</div>
-  <main ui-view></main>
-
+    <h1>Bet Bucket?</h1>
+    <div class="message" ng-if="main.message">{{ main.message }}</div>
+    <main ui-view></main>
+    <div class="push"></div>
+  </div>
   <footer>
     <p><img src="images/BetBucketLogo.v2.png" class="circle" height="20"> made with &#9829;  - Ytho 2017</p>
   </footer>

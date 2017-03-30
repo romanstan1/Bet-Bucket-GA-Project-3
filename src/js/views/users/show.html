@@ -25,7 +25,7 @@
           </form>
           <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
         </div>
-        <button ng-show="usersShow.editToggleBoolean" class="button" ng-click="usersShow.editToggle()">Edit</button>
+        <button class="edit" ng-show="usersShow.editToggleBoolean" ng-click="usersShow.editToggle()">Edit</button>
       </div>
     </li>
   </ul>
@@ -42,11 +42,18 @@
   <h4>If you placed your bet now and won, the return would be: £{{ usersShow.stake * usersShow.accumulatorOdds || '0' }}</h4>
 </div>
 
+<h3 class="profile-h3" ng-show="usersShow.currentAccumulator.name">Tracked live events in <span>{{ usersShow.currentAccumulator.name}}</span> </h3>
 
-<h3>List of Events in Accumulators</h3>
-<ul ng-repeat="event in usersShow.currentAccumulator.events">
-  <li>{{ event.eventType }} - {{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }} - latest trade price: {{ usersShow.runnerPrices[$index] }}<button ng-click="usersShow.deleteEvent(event)">Delete</button></li>
-</ul><br>
+<ul class="profile-tracked-accumulator" ng-repeat="event in usersShow.currentAccumulator.events">
+  <li>
+    <p>{{ event.eventType }} - {{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }}
+    </p>
+    <p> LATEST ODDS: <span> {{ usersShow.runnerPrices[$index] }}</span></p>
+    <button ng-click="usersShow.deleteEvent(event)">Delete</button>
+  </li>
+</ul>
+
+<br>
 
 <button ng-click="usersShow.eventButton = false" ng-if="usersShow.eventButton">Add Event</button>
 
