@@ -5,7 +5,6 @@
   <title>Project 3</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -15,8 +14,8 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#">BET BUCKET</a></li>
-        <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
+        <li>BET BUCKET</li>
+        <li ng-if="main.isAuthenticated()" ui-sref="profile"><a ui-sref="profile">Profile</a></li>
         <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
 
         <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
@@ -29,7 +28,9 @@
   <div class="message" ng-if="main.message">{{ main.message }}</div>
   <main ui-view></main>
 
-  <footer>
+  <footer class="footer">
+    <img src="../images/BetBucketLogo3.png" class="circle" height="20">
+    <p>&copy; made with &#9829;  Ytho 2017</p>
   </footer>
 </body>
 </html>
