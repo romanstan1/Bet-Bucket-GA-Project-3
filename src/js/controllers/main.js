@@ -16,6 +16,11 @@ function MainCtrl($rootScope, $state, $auth) {
     $state.go('login');
   }
 
+  $rootScope.$on('loggedIn', (e, message) => {
+    vm.stateHasChanged = false;
+    vm.message = message;
+  });
+
   $rootScope.$on('error', (e, err) => {
     vm.stateHasChanged = false;
     vm.message = err.data.message;
