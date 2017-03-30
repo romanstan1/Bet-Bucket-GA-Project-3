@@ -10,7 +10,7 @@ Roman Stankiewicz
 
 #### An application for obtaining core betting data to build accumulators using odds which can be reviewed in real time.
 
-The site is designed to enable a pundit to obtain information on events by category and date, and build an accumulator bet with the data.  The API used is prvided from Betfair.
+The site is designed to enable a pundit to obtain information on events by category and date, and build an accumulator bet with the data.  The API used is provided from Betfair.
 
 XXX
 
@@ -81,4 +81,4 @@ The greatest challenges were:
 
 #### Wins
 
-1. understanding the complex Betfair API documentation to access the data required
+1. Understanding the complex Betfair API documentation to access the data required

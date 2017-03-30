@@ -58,11 +58,6 @@ function updateRoute(req, res, next) {
 }
 // *******************************************
 
-
-
-
-
-
 function deleteRoute(req, res, next) {
   Accumulator
     .findById(req.params.id)
