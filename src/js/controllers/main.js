@@ -1,8 +1,7 @@
 /* global moment */
 angular
   .module('YTHO')
-  .controller('MainCtrl', MainCtrl)
-  .controller('LineCtrl', LineCtrl);
+  .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$rootScope', '$state', '$auth'];
 function MainCtrl($rootScope, $state, $auth) {
@@ -33,39 +32,3 @@ function MainCtrl($rootScope, $state, $auth) {
 
 }
 //this section is for the chart and sets parameters for how often it refreshes and what it displays
-
-LineCtrl.$inject = ['$scope'];
-function LineCtrl($scope) {
-  // console.log('LineCtrl loading');
-  const vm = this;
-  let test = 1;
-
-  const now = moment().format('hh:mm:ss');
-  // console.log(now);
-
-  vm.labels = [now];
-  vm.series = ['Series A'];
-  vm.data = [
-    [test]
-  ];
-  vm.options = {
-    animation: false
-  };
-
-  const timerId = setInterval(() => {
-    updateGraph();
-  }, 1000); // every 10 seconds get new data and push into vm.data and vm.labels
-
-  setTimeout(() => {
-    clearInterval(timerId);
-  }, 2000); // stop timer after 10 seconds
-
-  function updateGraph() {
-    test++;
-    const time = moment().format('hh:mm:ss');
-    vm.data[0].push(test);
-    vm.labels.push(time);
-    $scope.$apply();
-  }
-
-}
