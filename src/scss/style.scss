@@ -274,7 +274,7 @@ div.user-animation {
   #line {
     height: 200px;
     width: 900px;
-    
+
     overflow: hidden;
   }
 }
@@ -289,7 +289,7 @@ h1.login {
 form.login {
   // position: relative;
   margin: 20px auto;
-  height: 500px;
+  // height: 500px;
   width: 400px;
   background: white;
   label {
@@ -325,6 +325,38 @@ form.login {
     width: 100%;
   }
 }
+
+//SW 3 divs styling on login page
+.loginTrio {
+  margin: 30px auto 0;
+  text-align: center;
+  display: inline-block;
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  h3 {
+    text-align: center;
+    font-size: 16px;
+  }
+  // ul {
+  //   display: inline-block;
+  //   margin: 20px auto;
+  //   // position: relative;
+  //   li {
+  //     list-style: none;
+  //     display: inline-block;
+  //     margin: 0 15px;
+  //     margin-left: 0;
+  img {
+    max-height: 200px;
+    border: 2px solid;
+    border-radius: 2px;
+  }
+}
+
+// END of styling for login
+
 
 li {
   cursor: pointer;
