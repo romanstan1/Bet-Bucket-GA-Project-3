@@ -33,13 +33,17 @@
     </li>
   </ul>
 </section>
-
 <section class="profile-graphs">
   <div class="user-animation">
     <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-series="usersShow.runnerName" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
     </canvas>
   </div>
 </section>
+
+<div  ng-if="usersShow.currentAccumulator">
+  <h4>Please enter your stake: </h4><input type="number" placeholder="£" ng-model="usersShow.stake">
+  <h4>If you placed your bet now and won, the return would be: £{{ usersShow.stake * usersShow.accumulatorOdds || '0' }}</h4>
+</div>
 
 <h3 class="profile-h3" ng-show="usersShow.currentAccumulator.name">Tracked live events in <span>{{ usersShow.currentAccumulator.name}}</span> </h3>
 

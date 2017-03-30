@@ -7,6 +7,22 @@ $lightgreen: #32d1c8;
 $lightgrey: #cccccc;
 $lightergrey: #ededed;
 
+// Sticky footer styles -------------------------
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -60px;
+}
+
+.push {
+  height: 60px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -456,6 +472,11 @@ div.logoInLogin {
 }
 // END of styling for loginPage
 
+//SW  - register styles
+div.register {
+  margin-top: 100px;
+
+}
 
 // li {
 //   cursor: pointer;
@@ -522,13 +543,10 @@ ul.showOdds {
 footer {
   background-color: $slategray;
   padding: 10px 0;
-  height: 250px;
+  margin-top: 10px;
+  height: 50px;
   text-align: center;
   color: white;
   bottom: 0;
   width: 100%;
-}
-
-h3 {
-  margin-top: 100px;
 }

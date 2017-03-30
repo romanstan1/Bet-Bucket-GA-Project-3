@@ -8,6 +8,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   const vm = this;
 
   let t = null;
+  let i = 0;
 
   getUserProfile();
 
@@ -17,7 +18,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.editAccumulator = {};
   vm.runnerNames = [];
   vm.data = [];
-  let i = 0;
   vm.chooseAccumulator = chooseAccumulator;
   vm.createAccumulator = createAccumulator;
   vm.displayTrackedEvents = displayTrackedEvents;
@@ -27,8 +27,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.delete = accumulatorsDelete;
   vm.editToggle = editToggle;
   vm.selectMarket = selectMarket;
-
   vm.deleteEvent = deleteEvent;
+
 
   function getUserProfile() {
     $http
@@ -138,8 +138,13 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         .filter((runner) => runnerIds.includes(runner.selectionId));
 
         vm.runnerPrices = [];
-        
         vm.runners.forEach((element) => vm.runnerPrices.push(element.lastPriceTraded));
+
+
+        vm.accumulatorOdds = 1;
+        vm.runnerPrices.forEach((element) => {
+          return vm.accumulatorOdds *= element;
+        });
 
         clearTimeout(t);
 
@@ -160,7 +165,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function updateGraph(i) {
     const time = moment().format('mm:ss');
-    const fullTime = moment().format('hh:mm:ss');
+
     if(i < 20) {
       for(let p = 0; p < vm.data.length; p++) {
         vm.data[p][i] = vm.runners[p].lastPriceTraded;
@@ -207,7 +212,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           type: 'linear',
           display: true,
           position: 'left',
-          ticks: { min: 0, max: 2 },
+          ticks: { min: 1, max: 2 },
           gridLines: {
             display: true
           }
