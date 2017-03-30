@@ -42,7 +42,7 @@
 
 <div  ng-if="usersShow.currentAccumulator">
   <h4>Please enter your stake: </h4><input type="number" placeholder="£" ng-model="usersShow.stake">
-  <h4>If you placed your bet now and won, the return would be: {{ usersShow.stake * usersShow.accumulatorOdds || '0'  | currency: '£' }}</h4>
+  <h4>If you placed your bet now and won, the return would be: {{ usersShow.stake * usersShow.accumulatorOdds || '0' | currency: '£' }}</h4>
 </div>
 
 <h3 class="profile-h3" ng-show="usersShow.currentAccumulator.name">Tracked live events in <span>{{ usersShow.currentAccumulator.name}}</span> </h3>

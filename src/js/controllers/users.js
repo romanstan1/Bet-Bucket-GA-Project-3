@@ -212,7 +212,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           type: 'linear',
           display: true,
           position: 'left',
-          ticks: { min: 1, max: 8 },
+          ticks: { min: 1 },
           gridLines: {
             display: true
           }
