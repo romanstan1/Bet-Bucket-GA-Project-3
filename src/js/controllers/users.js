@@ -1,3 +1,4 @@
+/* global moment */
 angular
   .module('YTHO')
   .controller('UsersShowCtrl', UsersShowCtrl);
@@ -15,13 +16,16 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.newAccumulator = {};
   vm.editAccumulator = {};
 
-  vm.chooseAccumulator = chooseAccumulator;
-  vm.selectMarket = selectMarket;
-  vm.addToAccumulator = addToAccumulator;
-  vm.delete = accumulatorsDelete;
-  vm.displayTrackedEvents = displayTrackedEvents;
   vm.createAccumulator = createAccumulator;
+  vm.chooseAccumulator = chooseAccumulator;
+  vm.addToAccumulator = addToAccumulator;
+  vm.rename = renameAccumulator;
+  vm.delete = accumulatorsDelete;
+
+  vm.selectMarket = selectMarket;
+  vm.displayTrackedEvents = displayTrackedEvents;
   vm.deleteEvent = deleteEvent;
+  vm.editToggleBoolean =  true;
 
   function getUserProfile() {
     $http
@@ -67,6 +71,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     $http
       .get(`/api/accumulators/${accumulatorId}`)
       .then((response) => {
+
         vm.runners = response.data.reduce((runners, data) => {
           return runners.concat(data.runners);
         }, []).filter((runner) => {
@@ -84,12 +89,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         });
 
         clearTimeout(t);
-        console.log(vm.runners);
+
         vm.runners.forEach(function(element) {
           console.log(element.lastPriceTraded);
         });
 
-        // console.log(vm.runners[0].lastPriceTraded);
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
         }, 1000);
@@ -114,8 +118,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       });
   }
 
-  vm.rename = renameAccumulator;
-  vm.editToggleBoolean =  true;
+
 
   function editToggle(){
     if(vm.editToggleBoolean === true) {
@@ -141,7 +144,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
 
 
-
+  // Chart.js
   vm.labels = ['', '', '', '', '', '', '', '', ''];
   vm.series = [''];
   vm.data = [
