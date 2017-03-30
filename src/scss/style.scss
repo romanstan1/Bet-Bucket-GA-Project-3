@@ -284,7 +284,19 @@ section.profile-input-selectboxes {
 }
 
 section.profile-select-event {
-  background: grey;
+  background: $grey;
+  p {
+    border-bottom: 6px $lightergrey solid;
+    color: $black;
+    padding-left: 2%;
+    line-height: 35px;
+    cursor: pointer;
+    background: $lightgrey;
+    &:hover {
+      color: white;
+      background: $grey;
+    }
+  }
 }
 
 button.profile-choose-event, button.profile-search-event {
