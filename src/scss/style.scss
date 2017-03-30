@@ -49,7 +49,7 @@ li {
 nav {
   position: absolute;
   height: 60px;
-  background: $black;
+  background: $slategray;
   top: 0;
   width: 100%;
   ul{
@@ -284,7 +284,19 @@ section.profile-input-selectboxes {
 }
 
 section.profile-select-event {
-  background: grey;
+  background: $grey;
+  p {
+    border-bottom: 6px $lightergrey solid;
+    color: $black;
+    padding-left: 2%;
+    line-height: 35px;
+    cursor: pointer;
+    background: $lightgrey;
+    &:hover {
+      color: white;
+      background: $grey;
+    }
+  }
 }
 
 button.profile-choose-event, button.profile-search-event {
@@ -305,7 +317,7 @@ button.profile-choose-event, button.profile-search-event {
 }
 
 button.profile-search-event {
-  background: tomato;
+  background: $green;
 }
 
 // --------- tracked ul li styles --------------------
@@ -502,46 +514,83 @@ div.register {
 //   }
 // }
 
-li.selected {
-  background: tomato;
-}
 
-
-ul.showEvents {
-  width: 100%;
-  li {
-    ul {
-      li {
-          height: 30px;
-      }
-    }
+button.goBackButton {
+  background: $green;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  &:hover {
+    background: $pink;
+    color: white;
   }
 }
 
+ul.showEvents {
+  margin-top: 30px;
+  width: 100%;
+  li {
+    padding-left: 2%;
+    color: $black;
+    cursor: pointer;
+    background: $lightgrey;
+    border-bottom: 6px $lightergrey solid;
+    line-height: 35px;
+    &:hover {
+      background: $grey;
+      color: white;
+    }
+    ul {
+      li {
+          line-height: 35px;
+      }
+    }
+  }
+  li.selected {
+    background: $pink;
+    color: white;
+  }
+}
+
+
+li.selected {
+  background: $pink;
+}
 ul.showOdds {
-  width: 75%;
+  margin-top: 10px;
+  margin-bottom: 150px;
+  width: 100%;
   display:  block;
   li {
     position: relative;
-    // height: 40px;
+    color:white;
     display:  block;
     width: 100%;
-    background: grey;
+    background: $slategray;;
     line-height: 40px;
-    &:hover {
-    background: $grey;
-    color:white;
-    }
+    border-bottom: 5px solid white;
     p{
+      padding-left: 5%;
+      font-size: 14px;
+      font-weight: 600;
       display: inline-block;
     }
     button {
       margin-top: 0;
       height: 40px;
       display: inline-block;
-      width: 30%;
+      width: 25%;
       position: absolute;
       right: 0;
+      background: $green;
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      &:hover {
+        background: $pink;
+      }
     }
   }
 }
