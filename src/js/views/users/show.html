@@ -7,25 +7,28 @@
   <div ng-messages="usersShow.accyForm.name.$error" role="alert" ng-show="usersShow.accyForm.$submitted && usersShow.accyForm.name.$invalid" class="error">
     <div ng-message="required">A name is required.</div>
   </div>
-  <form name="usersShow.newAccyForm" ng-submit="usersShow.createAccumulator()" novalidate>
+  <form class="newForm" name="usersShow.newAccyForm" ng-submit="usersShow.createAccumulator()" novalidate>
     <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" required>
     <button>Create New Accumulator</button>
   </form>
   <ul>
     <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)" ng-class="{'selected': usersShow.currentAccumulator.name === accy.name }">
       <a>
-        {{ accy.name }}<br>
-        Events: {{ accy.events.length }}<br>
+        {{ accy.name }} <br>
+        <span> EVENTS: {{ accy.events.length }}  </span>
       </a>
       <div class="edit">
+
         <div ng-hide="usersShow.editToggleBoolean">
-          <form ng-submit="usersShow.rename()">
+          <form class="editForm" ng-submit="usersShow.rename()">
             <input type="text" ng-model="usersShow.currentAccumulator.name">
-            <button>Rename</button>
+            <button class="editForm">Rename</button>
           </form>
-          <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
+          <button class="editForm" ng-click="usersShow.delete(accy)">Delete</button>
         </div>
-        <button class="edit" ng-show="usersShow.editToggleBoolean" ng-click="usersShow.editToggle()">Edit</button>
+
+        <button class="editForm" ng-show="usersShow.editToggleBoolean" ng-click="usersShow.editToggle()">Edit</button>
+
       </div>
     </li>
   </ul>
