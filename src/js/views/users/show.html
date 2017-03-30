@@ -12,32 +12,31 @@
     <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" required>
     <button>Create New Accumulator</button>
   </form>
-  <button class="button" ng-click="usersShow.editToggle()">Edit</button>
   <ul>
-    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)">
+    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)" ng-class="{'selected': usersShow.currentAccumulator.name === accy.name }">
       <a>
         {{ accy.name }}<br>
         Events: {{ accy.events.length }}<br>
       </a>
-      <div ng-hide="usersShow.editToggleBoolean">
-        <form ng-submit="usersShow.rename()">
-          <input type="text" ng-model="usersShow.currentAccumulator.name">
-          <button>Rename</button>
-        </form>
-
-        <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
+      <div class="edit">
+        <div ng-hide="usersShow.editToggleBoolean">
+          <form ng-submit="usersShow.rename()">
+            <input type="text" ng-model="usersShow.currentAccumulator.name">
+            <button>Rename</button>
+          </form>
+          <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
+        </div>
+        <button ng-show="usersShow.editToggleBoolean" class="button" ng-click="usersShow.editToggle()">Edit</button>
       </div>
     </li>
   </ul>
 </section>
+
 <section class="profile-graphs">
-
-
   <div class="user-animation">
     <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-series="usersShow.runnerName" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
     </canvas>
   </div>
-
 </section>
 
 <h3>List of Events in Accumulators</h3>
@@ -48,7 +47,6 @@
 <button ng-click="usersShow.eventButton = false" ng-if="usersShow.eventButton">Add Event</button>
 
 <section class="profile-input-selectboxes" ng-if="!usersShow.eventButton">
-
   <select name="EVENT TYPE" ng-model="usersShow.eventType">
     <option value="" disabled selected>Select your option</option>
     <option value="Soccer">Soccer</option>
@@ -62,7 +60,6 @@
     <option value="ESports">E-Sports</option>
     <option value="Special">Special</option>
   </select>
-
   <button class="profile-search-event" type="button" name="button" ui-sref="profile.events({ eventType: usersShow.eventType })">SEARCH</button>
 </section>
 

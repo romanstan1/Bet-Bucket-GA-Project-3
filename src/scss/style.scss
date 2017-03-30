@@ -124,10 +124,19 @@ section.profile-accy-nav {
     li {
       margin: 5px 0;
       cursor: pointer;
-      height: 50px;
+      overflow: hidden;
       line-height: 25px;
       color: black;
       display: block;
+      .edit {
+        display: none;
+      }
+      &.selected {
+        background-color: tomato;
+        .edit {
+          display: block;
+        }
+      }
       a {
         display: inline-block;
         color: inherit;

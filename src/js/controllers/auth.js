@@ -33,13 +33,6 @@ function LoginCtrl($auth, $state, $scope) {
   vm.submit = submit;
 
 
-
-
-  // let test = 1;
-
-  //const now = moment().format('hh:mm:ss');
-  // console.log(now);
-
   vm.labels = ['', '', '', '', '', '', '', '', ''];
   vm.series = ['sA','sb', 'sb' ];
   vm.data = [
@@ -84,31 +77,9 @@ function LoginCtrl($auth, $state, $scope) {
     $scope.$apply();
     // });
 
-  }, 100); // stop timer after 10 seconds
+  }, 1000); // stop timer after 10 seconds
 
 
-  // vm.options = {
-  //   animation: true
-  // };
-//   var ctx = "myChart";
-//   var myChart = new Chart(ctx, {
-//     type: 'line',
-//     data: {
-//         labels: ['Item 1', 'Item 2', 'Item 3'],
-//         datasets: [
-//             {
-//                 type: 'line',
-//                 label: 'Bar Component',
-//                 data: [10, 20, 30, 22 ,12, 3,],
-//             },
-//             {
-//                 type: 'line',
-//                 label: 'Line Component',
-//                 data: [30, 20, 10, 23, 31],
-//             }
-//         ]
-//     }
-// });
   vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
 
   vm.options = {
@@ -146,36 +117,5 @@ function LoginCtrl($auth, $state, $scope) {
     }
 
   };
-
-  // vm.override = [
-  //     {
-  //       borderColor: '#FAEBD7',
-  //       pointBorderColor: '#fff'
-  //     },
-  //     {
-  //       borderColor: '#FAEBD7',
-  //        pointBorderColor: '#fff'
-  //     },
-  //     {
-  //       borderColor: '#FAEBD7',
-  //       pointBorderColor: '#fff'
-  //     }
-  //   ];
-
-  // const timerId = setInterval(() => {
-  //   updateGraph();
-  // }, 1000); // every 10 seconds get new data and push into vm.data and vm.labels
-
-  // setTimeout(() => {
-  //   clearInterval(timerId);
-  // }, 20000); // stop timer after 10 seconds
-
-  // function updateGraph() {
-    // test++;
-    // const time = moment().format('hh:mm:ss');
-    // vm.data[0].push(test);
-    // vm.labels.push(time);
-  //  v
-  // }
 
 }

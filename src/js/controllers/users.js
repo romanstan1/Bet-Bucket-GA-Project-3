@@ -39,12 +39,13 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   // vm.displayTrackedEvents = displayTrackedEvents;
 
   vm.deleteEvent = deleteEvent;
-  vm.editToggleBoolean =  true;
 
   function getUserProfile() {
     $http
     .get('/api/profile')
-    .then((response) => vm.user = response.data);
+    .then((response) => {
+      vm.user = response.data;
+    });
   }
 
   function chooseAccumulator(accy) {
@@ -109,6 +110,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.editToggleBoolean =  true;
       });
   }
+
+  vm.editToggleBoolean =  true;
 
   function editToggle(){
     if(vm.editToggleBoolean === true) {
