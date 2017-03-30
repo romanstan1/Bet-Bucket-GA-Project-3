@@ -132,8 +132,26 @@ h1.user-profile {
   color: $green;
 }
 
-// Accumlator nav bar side-section
+// stake Styling ----------------------
 
+div.stakeClass {
+  line-height: 40px;
+  padding-left: 2%;
+  margin-top: 10px;
+  color: white;
+  background: $grey;
+  p {
+    display: inline-block;
+  }
+  input {
+    outline: none;
+  }
+  h4 {
+
+  }
+}
+
+// Accumlator nav bar side-section
 section.profile-accy-nav {
   //edits buttons!!! --
   button.editForm {
