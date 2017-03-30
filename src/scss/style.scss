@@ -49,7 +49,7 @@ li {
 nav {
   position: absolute;
   height: 60px;
-  background: $black;
+  background: $slategray;
   top: 0;
   width: 100%;
   ul{
@@ -447,27 +447,33 @@ div.logoInLogin {
   }
 }
 
-.loginTrio {
-  margin: 20px auto 0;
-  text-align: center;
-  display: inline-block;
-  float: left;
-  width: 100%;
-  padding-bottom: 40px;
-  h2 {
-    padding-top: 10px;
+div.loginTrio {
+  margin-top: 20px;
+  div {
+    margin: 3.5%;
+    padding-top: 0px;
     text-align: center;
-    text-transform: uppercase;
-  }
-  h3 {
-    text-align: center;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  img {
-    max-height: 200px;
-    border: 2px solid;
-    border-radius: 2px;
+    display: inline-block;
+    float: left;
+    width: 26%;
+    padding-bottom: 40px;
+    h2 {
+      padding-top: 10px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    h3 {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    img {
+      width: 100%;
+      margin-top: 20px;
+      // max-height: 200px;
+      border: 2px solid;
+      border-radius: 2px;
+    }
   }
 }
 // END of styling for loginPage
