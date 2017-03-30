@@ -15,9 +15,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.newAccumulator = {};
   vm.editAccumulator = {};
   vm.runnerNames = [];
-
-  vm.displayTrackedEvents = displayTrackedEvents;
+  vm.data = [];
+  let i = 0;
+  // const twentyZeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   vm.chooseAccumulator = chooseAccumulator;
+  vm.displayTrackedEvents = displayTrackedEvents;
   vm.selectMarket = selectMarket;
   vm.addToAccumulator = addToAccumulator;
   vm.delete = accumulatorsDelete;
@@ -32,10 +34,13 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function chooseAccumulator(accy) {
     vm.currentAccumulator = accy;
+    vm.data = [];
+    vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
-    vm.currentAccumulator.events.forEach((e) => {
-      return vm.runnerNames.unshift(e.runnerName);
-    });
+    i = 0;
+    createLinesOnGraph(accy);
+    // displayTrackedEvents(accy.id);
+
   }
 
   function selectMarket(selectedMarket) {
@@ -54,6 +59,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.currentAccumulator.events.push(event);
         vm.newEvent = {};
       });
+
+    vm.data.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
   function accumulatorsDelete(accumulator) {
@@ -66,6 +73,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.currentAccumulator = null;
       });
   }
+
 
   function createAccumulator() {
     if(vm.newAccyForm.$valid) {
@@ -99,7 +107,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   vm.editToggle = editToggle;
 
-  vm.deleteEvent = deleteEvent;
+  // vm.deleteEvent = deleteEvent;
 
   function deleteEvent(event) {
     Event
@@ -123,59 +131,85 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         });
         clearTimeout(t);
 
-
-        // vm.runnerNames = [];
-        // vm.currentAccumulator.events.forEach((element) => {
-        //   return vm.runnerNames.push(element.runnerName);
-        // });
-
-        console.log(vm.runners[0].lastPriceTraded);
+        // console.log(vm.runners[0].lastPriceTraded);
         // console.log(vm.currentAccumulator.events[0].eventName);
         // console.log(vm.currentAccumulator.events[0].eventType);
         // console.log(vm.currentAccumulator.events[0].marketName);
-        console.log(vm.currentAccumulator.events[0].runnerName);
-
-        vm.runners.forEach((element) => {
-          vm.data[0].push(element.lastPriceTraded);
-        });
+        // console.log(vm.currentAccumulator.events[0].runnerName);
 
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
-          updateGraph();
+          updateGraph(i);
+          i++;
         }, 1000);
       });
   }
 
-
-  // vm.series = list of runnerNames
-
-
-  vm.labels = [];
-  vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
-  vm.data = [
-    []
-  ];
-
-  const now = moment().format('hh:mm:ss');
-
-  function updateGraph() {
-    const time = moment().format('hh:mm:ss');
-    vm.labels.push(time);
-    console.log(time);
-    $scope.$apply();
+  function createLinesOnGraph(accy) {
+    // const twentyZeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    vm.currentAccumulator.events.forEach(() => {
+      return vm.data.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    });
+    console.log('create lines on graph', vm.data);
+    displayTrackedEvents(accy.id);
   }
 
 
+  // vm.labels = ['00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00'];
+
+  // vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
+
+  // const now = moment().format('hh:mm:ss');
+
+  function updateGraph(i) {
+    const time = moment().format('ss');
+    const fullTime = moment().format('hh:mm:ss');
+    if(i < 20) {
+      // console.log(vm.data);
+      for(let p = 0; p < vm.data.length; p++) {
+        vm.data[p][i] = vm.runners[p].lastPriceTraded;
+        // console.log('p', vm.runners[p].lastPriceTraded);
+        // console.log(vm.data[p][i]);
+        //console.log(vm.data[p]);
+        console.log('vmdata', vm.data);
+      }
+      vm.labels[i] = time;
+    } else {
+      for (let r = 0; r<19; r++) {
+        for(let p = 0; p < vm.data.length; p++) {
+          vm.data[p][r] = vm.data[p][r+1];
+        }
+        vm.labels[r] = vm.labels[r+1];
+      }
+      for(let p = 0; p < vm.data.length; p++) {
+        vm.data[p][19] = vm.runners[p].lastPriceTraded;
+      }
+      vm.labels[19] = time;
+    }
+
+
+    // console.log('0', vm.runners[0].lastPriceTraded);
+    // console.log(vm.data[0]);
+    // console.log(' ');
+  //  console.log('1',vm.runners[1].lastPriceTraded);
+  //  console.log('2',vm.runners[2].lastPriceTraded);
+    // console.log(vm.data[1]);
+    // console.log('=============');
+    // console.log('=========');
+    // console.log(vm.data);
+    $scope.$apply();
+  }
 
   vm.options = {
+    scaleShowGridLines: false,
     animation: {
       duration: 0
     },
     elements: {
       line: {
-        fill: true,
+        fill: false,
         border: true,
-        borderWidth: 3
+        borderWidth: 8
       },
       point: {
         radius: 0,
@@ -188,21 +222,35 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         {
           id: 'y-axis-1',
           type: 'linear',
-          display: false,
-          position: 'left'
+          display: true,
+          position: 'left',
+          ticks: { min: 0, max: 12 },
+          gridLines: {
+            display: false
+          }
         },
         {
           id: 'y-axis-2',
           type: 'linear',
-          display: true,
-          position: 'right'
+          display: false,
+          position: 'right',
+          gridLines: {
+            display: false
+          }
         }
       ],
       xAxes: [ {
-        display: false
+        display: true,
+        gridLines: {
+          display: false
+        }
       }
       ]
     }
   };
 
 }
+
+        // vm.runners.forEach((element) => {
+        //   vm.data[0].push(element.lastPriceTraded);
+        // });
