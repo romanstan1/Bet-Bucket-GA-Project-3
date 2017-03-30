@@ -12,6 +12,7 @@
     <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" required>
     <button>Create New Accumulator</button>
   </form>
+  <button class="button" ng-click="usersShow.editToggle()">Edit</button>
   <ul>
     <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)">
       <a>
@@ -20,30 +21,12 @@
       </a>
       <div ng-hide="usersShow.editToggleBoolean">
         <form ng-submit="usersShow.rename()">
-          <input type="text" ng-model="usersShow.currentAccumulator.name" >
+          <input type="text" ng-model="usersShow.currentAccumulator.name">
           <button>Rename</button>
         </form>
 
         <button class="button" ng-click="usersShow.delete(accy)">Delete</button>
       </div>
-
-      <button class="button" ng-click="usersShow.editToggle()">Edit</button>
-
-
-      <!-- SW additions - check if correct files referenced?? -->
-      <!-- <a ui-sref="usersEdit({ id: usersShow.user.id })"></a>
-      <button ng-click="usersShow.edit()">Edit</button> -->
-      <!-- ** -->
-
-
-
-      <!-- SW this is to edit the accy name -->
-      <!-- <form name="usersEdit.editAccyForm" ng-submit="usersShow.editAccumulator()" novalidate>
-        <input type="text" value="My Accumulator" ng-model="usersShow.newAccumulator.name" required>
-        <button>Edit </button>
-      </form> -->
-      <!-- ** -->
-
     </li>
   </ul>
 </section>

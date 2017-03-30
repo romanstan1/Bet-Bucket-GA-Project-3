@@ -33,5 +33,5 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'BetfairMarketCtrl as betfairShow'
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/login');
 }

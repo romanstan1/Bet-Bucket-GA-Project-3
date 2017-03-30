@@ -65,6 +65,12 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     vm.newEvent.runnerName = vm.chosenMarket.runners[index].runnerName;
     vm.newEvent.eventType = eventType;
 
+    vm.data = [];
+    vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+
+    i = 0;
+    createLinesOnGraph(vm.currentAccumulator);
+
     Event
       .save({ accumulatorId: vm.currentAccumulator.id }, vm.newEvent)
       .$promise
@@ -72,7 +78,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.currentAccumulator.events.push(event);
       });
 
-    vm.data.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    vm.data.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
   function accumulatorsDelete(accumulator) {
@@ -113,12 +119,18 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function deleteEvent(event) {
+
     Event
       .delete({ accumulatorId: vm.currentAccumulator.id,  id: event.id })
       .$promise
       .then(() => {
         const index = vm.currentAccumulator.events.indexOf(event);
         vm.currentAccumulator.events.splice(index, 1);
+        vm.data = [];
+        vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+
+        i = 0;
+        createLinesOnGraph(vm.currentAccumulator);
       });
   }
 
@@ -129,14 +141,16 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then((response) => {
         vm.runners = response.data.reduce((runners, data) => {
           return runners.concat(data.runners);
-        }, []).filter((runner) => {
-          return runnerIds.includes(runner.selectionId);
-        });
+        }, [])
+        .filter((runner) => runnerIds.includes(runner.selectionId))
+        .sort((a, b) => b.selectionId - a.selectionId);
+
+        vm.runnerPrices = [];
+        console.log(vm.runners);
+        vm.runners.forEach((element) => vm.runnerPrices.push(element.lastPriceTraded));
+
         clearTimeout(t);
-        // console.log(vm.currentAccumulator.events[0].eventName);
-        // console.log(vm.currentAccumulator.events[0].eventType);
-        // console.log(vm.currentAccumulator.events[0].marketName);
-        // console.log(vm.currentAccumulator.events[0].runnerName);
+
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
           updateGraph(i);
@@ -149,18 +163,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     vm.currentAccumulator.events.forEach(() => {
       return vm.data.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     });
-    console.log('create lines on graph', vm.data);
     displayTrackedEvents(accy.id);
   }
 
-  vm.labels = ['', '', '', '', '', '', '', '', ''];
-  vm.series = [''];
-  vm.data = [
-    [65, 59, 80, 81, 66, 75, 70, 77, 87]
-  ];
-
   function updateGraph(i) {
-    const time = moment().format('ss');
+    const time = moment().format('mm:ss');
     const fullTime = moment().format('hh:mm:ss');
     if(i < 20) {
       for(let p = 0; p < vm.data.length; p++) {
@@ -182,9 +189,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     }
     $scope.$apply();
   }
-
+  //             1           2          3         4          5
+  vm.colors = ['#4286f4','#833b89', '#639b5e', '#b72630', '#e0dd2c'];
+  // vm.data = [  [],        [],        ,[]         [],          []       ]
   vm.options = {
-    scaleShowGridLines: false,
     animation: {
       duration: 0
     },
@@ -209,7 +217,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           position: 'left',
           ticks: { min: 0, max: 12 },
           gridLines: {
-            display: false
+            display: true
           }
         },
         {
@@ -225,7 +233,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       xAxes: [ {
         display: true,
         gridLines: {
-          display: false
+          display: true
         }
       }
       ]
