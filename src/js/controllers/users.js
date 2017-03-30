@@ -51,7 +51,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .$promise
       .then((event) => {
         vm.currentAccumulator.events.push(event);
-        vm.newEvent = {};
       });
   }
 
