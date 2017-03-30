@@ -15,15 +15,29 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.eventButton = true;
   vm.newAccumulator = {};
   vm.editAccumulator = {};
-
-  vm.createAccumulator = createAccumulator;
+  vm.runnerNames = [];
+  vm.data = [];
+  let i = 0;
   vm.chooseAccumulator = chooseAccumulator;
+  vm.createAccumulator = createAccumulator;
+  vm.displayTrackedEvents = displayTrackedEvents;
+  vm.selectMarket = selectMarket;
   vm.addToAccumulator = addToAccumulator;
   vm.rename = renameAccumulator;
   vm.delete = accumulatorsDelete;
-
+  vm.editToggle = editToggle;
   vm.selectMarket = selectMarket;
-  vm.displayTrackedEvents = displayTrackedEvents;
+
+  //
+  // vm.createAccumulator = createAccumulator;
+  // vm.chooseAccumulator = chooseAccumulator;
+  // vm.addToAccumulator = addToAccumulator;
+  // vm.rename = renameAccumulator;
+  // vm.delete = accumulatorsDelete;
+  //
+  // vm.selectMarket = selectMarket;
+  // vm.displayTrackedEvents = displayTrackedEvents;
+
   vm.deleteEvent = deleteEvent;
   vm.editToggleBoolean =  true;
 
@@ -35,6 +49,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function chooseAccumulator(accy) {
     vm.currentAccumulator = accy;
+    vm.data = [];
+    vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+
+    i = 0;
+    createLinesOnGraph(accy);
   }
 
   function selectMarket(selectedMarket) {
@@ -52,6 +71,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then((event) => {
         vm.currentAccumulator.events.push(event);
       });
+
+    vm.data.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
   function accumulatorsDelete(accumulator) {
@@ -62,40 +83,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
         vm.currentAccumulator = null;
-      });
-  }
-
-  function displayTrackedEvents(accumulatorId) {
-    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
-    $http
-      .get(`/api/accumulators/${accumulatorId}`)
-      .then((response) => {
-
-        vm.runners = response.data.reduce((runners, data) => {
-          return runners.concat(data.runners);
-        }, []).filter((runner) => {
-          return runnerIds.includes(runner.selectionId);
-        });
-
-        vm.runnerNames = [];
-        vm.currentAccumulator.events.forEach((runner) => {
-          return vm.runnerNames.push(runner.runnerName);
-        });
-
-        vm.runnerPrices = [];
-        vm.runners.forEach((runner) => {
-          return vm.runnerPrices.push(runner.lastPriceTraded);
-        });
-
-        clearTimeout(t);
-
-        vm.runners.forEach(function(element) {
-          console.log(element.lastPriceTraded);
-        });
-
-        t = setTimeout(() => {
-          displayTrackedEvents(accumulatorId);
-        }, 1000);
       });
   }
 
@@ -117,8 +104,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       });
   }
 
-
-
   function editToggle(){
     if(vm.editToggleBoolean === true) {
       vm.editToggleBoolean = false;
@@ -126,10 +111,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       vm.editToggleBoolean = true;
     }
   }
-
-  vm.editToggle = editToggle;
-
-  vm.deleteEvent = deleteEvent;
 
   function deleteEvent(event) {
     Event
@@ -141,35 +122,77 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       });
   }
 
+  function displayTrackedEvents(accumulatorId) {
+    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
+    $http
+      .get(`/api/accumulators/${accumulatorId}`)
+      .then((response) => {
+        vm.runners = response.data.reduce((runners, data) => {
+          return runners.concat(data.runners);
+        }, []).filter((runner) => {
+          return runnerIds.includes(runner.selectionId);
+        });
+        clearTimeout(t);
+        // console.log(vm.currentAccumulator.events[0].eventName);
+        // console.log(vm.currentAccumulator.events[0].eventType);
+        // console.log(vm.currentAccumulator.events[0].marketName);
+        // console.log(vm.currentAccumulator.events[0].runnerName);
+        t = setTimeout(() => {
+          displayTrackedEvents(accumulatorId);
+          updateGraph(i);
+          i++;
+        }, 1000);
+      });
+  }
 
+  function createLinesOnGraph(accy) {
+    vm.currentAccumulator.events.forEach(() => {
+      return vm.data.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    });
+    console.log('create lines on graph', vm.data);
+    displayTrackedEvents(accy.id);
+  }
 
-  // Chart.js
   vm.labels = ['', '', '', '', '', '', '', '', ''];
   vm.series = [''];
   vm.data = [
     [65, 59, 80, 81, 66, 75, 70, 77, 87]
   ];
 
-  let test = 1;
-  const now = moment().format('hh:mm:ss');
-
-  vm.borderWidth = 0;
-
-  setInterval(() => {
-    vm.data[0][6] = Math.floor(Math.random()*30);
-    vm.data[0][2] = Math.floor(Math.random()*40)+30;
+  function updateGraph(i) {
+    const time = moment().format('ss');
+    const fullTime = moment().format('hh:mm:ss');
+    if(i < 20) {
+      for(let p = 0; p < vm.data.length; p++) {
+        vm.data[p][i] = vm.runners[p].lastPriceTraded;
+        console.log('vmdata', vm.data);
+      }
+      vm.labels[i] = time;
+    } else {
+      for (let r = 0; r<19; r++) {
+        for(let p = 0; p < vm.data.length; p++) {
+          vm.data[p][r] = vm.data[p][r+1];
+        }
+        vm.labels[r] = vm.labels[r+1];
+      }
+      for(let p = 0; p < vm.data.length; p++) {
+        vm.data[p][19] = vm.runners[p].lastPriceTraded;
+      }
+      vm.labels[19] = time;
+    }
     $scope.$apply();
-
-  }, 3000); // stop timer after 10 seconds
-
-  vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
+  }
 
   vm.options = {
+    scaleShowGridLines: false,
+    animation: {
+      duration: 0
+    },
     elements: {
       line: {
-        fill: true,
+        fill: false,
         border: true,
-        borderWidth: 3
+        borderWidth: 8
       },
       point: {
         radius: 0,
@@ -182,21 +205,30 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         {
           id: 'y-axis-1',
           type: 'linear',
-          display: false,
-          position: 'left'
+          display: true,
+          position: 'left',
+          ticks: { min: 0, max: 12 },
+          gridLines: {
+            display: false
+          }
         },
         {
           id: 'y-axis-2',
           type: 'linear',
-          display: true,
-          position: 'right'
+          display: false,
+          position: 'right',
+          gridLines: {
+            display: false
+          }
         }
       ],
       xAxes: [ {
-        display: false
+        display: true,
+        gridLines: {
+          display: false
+        }
       }
       ]
     }
   };
-
 }

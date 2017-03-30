@@ -13,7 +13,7 @@
     <button>Create New Accumulator</button>
   </form>
   <ul>
-    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy); usersShow.displayTrackedEvents(accy.id)">
+    <li ng-repeat="accy in usersShow.user.accumulators" ng-click="usersShow.chooseAccumulator(accy)">
       <a>
         {{ accy.name }}<br>
         Events: {{ accy.events.length }}<br>
@@ -49,8 +49,9 @@
 </section>
 <section class="profile-graphs">
 
+
   <div class="user-animation">
-    <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-series="usersShow.series" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
+    <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-series="usersShow.runnerName" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
     </canvas>
   </div>
 
