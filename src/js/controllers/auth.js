@@ -18,15 +18,18 @@ function RegisterCtrl($auth, $state) {
   vm.submit = submit;
 }
 
-LoginCtrl.$inject = ['$auth', '$state', '$scope'];
-function LoginCtrl($auth, $state, $scope) {
+LoginCtrl.$inject = ['$auth', '$state', '$scope', '$rootScope'];
+function LoginCtrl($auth, $state, $scope, $rootScope) {
   const vm = this;
   vm.credentials = {};
 
   function submit() {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
-        .then(() => $state.go('profile'));
+        .then((res) => {
+          $rootScope.$broadcast('loggedIn', res.data.message);
+          $state.go('profile');
+        });
     }
   }
 
