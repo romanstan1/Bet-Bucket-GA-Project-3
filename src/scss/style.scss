@@ -79,7 +79,7 @@ form {
     height: 30px;
     &:focus {
       opacity: 0.5;
-  }
+    }
   }
 }
 
@@ -95,18 +95,10 @@ button {
 }
 
 main {
-  //background-color: ghostwhite;
   width: 85%;
-  // height: 600px;
   margin: 0 auto;
   overflow: hidden;
 }
-
-// PROFILE profile page styles --------------------------- -------------------------->>>>>>>>>>
-// PROFILE profile page styles --------------------------- -------------------------->>>>>>>>>>
-// PROFILE profile page styles --------------------------- -------------------------->>>>>>>>>>
-// PROFILE profile page styles --------------------------- -------------------------->>>>>>>>>>
-// PROFILE profile page styles --------------------------- -------------------------->>>>>>>>>>
 
 h1.user-profile {
   margin-top: 100px;
@@ -282,7 +274,7 @@ div.user-animation {
 
 
 h1.login {
-  margin-top: 200px;
+  margin-top: 100px;
   color: white;
   font-size: 26px;
 }
@@ -346,20 +338,21 @@ div.logoInLogin {
 }
 
 .loginTrio {
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   text-align: center;
   display: inline-block;
   float: left;
   width: 100%;
   padding-bottom: 40px;
   h2 {
-    // padding-top: 10px;
+    padding-top: 10px;
     text-align: center;
     text-transform: uppercase;
   }
   h3 {
     text-align: center;
     font-size: 16px;
+    margin-top: 10px;
   }
   img {
     max-height: 200px;
@@ -367,9 +360,7 @@ div.logoInLogin {
     border-radius: 2px;
   }
 }
-
-
-// END of styling for login
+// END of styling for loginPage
 
 
 li {
@@ -427,20 +418,14 @@ ul.showOdds {
 }
 
 footer {
-  background-color: black;
+  background-color: $black;
   padding: 10px 0;
-  height: 90px;
+  height: 80px;
   text-align: center;
   color: white;
-  // position: ;
   bottom: 0;
   width: 100%;
 }
-//
-//
-//
-//
-
 
 h3 {
   margin-top: 100px;
