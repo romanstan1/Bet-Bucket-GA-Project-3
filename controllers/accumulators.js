@@ -8,6 +8,7 @@ function showRoute(req, res, next) {
   .findById(req.params.id)
   .exec()
   .then((response) => {
+    if(!response) return res.notFound('Accumulator not found');
     const marketIds = response.events.map((event) => {
       return event.marketId;
     });
@@ -29,7 +30,7 @@ function createRoute(req, res, next) {
       User.findById(req.user.id)
       .exec()
       .then((user) => {
-        if(!user) return res.notFound();
+        if(!user) return res.notFound('User not found');
 
         user.accumulators.push(accy);
         return user.save()
@@ -45,7 +46,7 @@ function updateRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((accumulator) => {
-      if(!accumulator) return res.notFound();
+      if(!accumulator) return res.notFound('Accumulator not found');
 
       for(const field in req.body) {
         accumulator[field] = req.body[field];
@@ -63,7 +64,7 @@ function deleteRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((accumulator) => {
-      if(!accumulator) return res.notFound();
+      if(!accumulator) return res.notFound('Accumulator not found');
 
       return accumulator.remove();
     })
@@ -77,7 +78,7 @@ function addEventRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((accumulator) => {
-      if(!accumulator) return res.notFound();
+      if(!accumulator) return res.notFound('Accumulator not found');
 
       const event = accumulator.events.create(req.body);
       accumulator.events.push(event);
@@ -93,7 +94,7 @@ function deleteEventRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((accumulator) => {
-      if(!accumulator) return res.notFound();
+      if(!accumulator) return res.notFound('Accumulator not found');
 
       const event = accumulator.events.id(req.params.eventId);
       event.remove();
