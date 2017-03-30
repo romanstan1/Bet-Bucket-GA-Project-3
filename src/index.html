@@ -15,7 +15,7 @@
     <nav>
       <ul>
         <li><a href="#">BET BUCKET</a></li>
-        <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
+        <li ng-if="main.isAuthenticated()" ui-sref="profile"><a ui-sref="profile">Profile</a></li>
         <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
 
         <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
