@@ -169,7 +169,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     if(i < 20) {
       for(let p = 0; p < vm.data.length; p++) {
         vm.data[p][i] = vm.runners[p].lastPriceTraded;
-        console.log('vmdata', vm.data);
       }
       vm.labels[i] = time;
     } else {
@@ -205,7 +204,14 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         borderWidth: 0
       }
     },
-    tooltips: true,
+    tooltips: {
+      enabled: true,
+      callbacks: {
+        label: function(tooltipItem) {
+          return vm.currentAccumulator.events[tooltipItem.datasetIndex].runnerName;
+        }
+      }
+    },
     scales: {
       yAxes: [
         {
