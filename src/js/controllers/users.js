@@ -186,6 +186,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     }
     $scope.$apply();
   }
+
   //             1           2          3         4          5
   vm.colors = ['#4286f4','#833b89', '#639b5e', '#b72630', '#e0dd2c'];
   // vm.data = [  [],        [],        ,[]         [],          []       ]
@@ -200,7 +201,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         borderWidth: 8
       },
       point: {
-        radius: 0,
+        radius: 5,
         borderWidth: 0
       }
     },
