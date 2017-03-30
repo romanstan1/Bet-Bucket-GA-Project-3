@@ -1,3 +1,4 @@
+/* global moment */
 angular
   .module('YTHO')
   .controller('UsersShowCtrl', UsersShowCtrl);
@@ -17,14 +18,17 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.runnerNames = [];
   vm.data = [];
   let i = 0;
-  // const twentyZeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   vm.chooseAccumulator = chooseAccumulator;
+  vm.createAccumulator = createAccumulator;
   vm.displayTrackedEvents = displayTrackedEvents;
   vm.selectMarket = selectMarket;
   vm.addToAccumulator = addToAccumulator;
+  vm.rename = renameAccumulator;
   vm.delete = accumulatorsDelete;
-  vm.createAccumulator = createAccumulator;
+  vm.editToggle = editToggle;
+  vm.selectMarket = selectMarket;
   vm.deleteEvent = deleteEvent;
+  vm.editToggleBoolean =  true;
 
   function getUserProfile() {
     $http
@@ -39,8 +43,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
     i = 0;
     createLinesOnGraph(accy);
-    // displayTrackedEvents(accy.id);
-
   }
 
   function selectMarket(selectedMarket) {
@@ -93,10 +95,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       });
   }
 
-  vm.rename = renameAccumulator;
-
-  vm.editToggleBoolean =  true;
-
   function editToggle(){
     if(vm.editToggleBoolean === true) {
       vm.editToggleBoolean = false;
@@ -104,10 +102,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       vm.editToggleBoolean = true;
     }
   }
-
-  vm.editToggle = editToggle;
-
-  // vm.deleteEvent = deleteEvent;
 
   function deleteEvent(event) {
     Event
@@ -130,13 +124,10 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           return runnerIds.includes(runner.selectionId);
         });
         clearTimeout(t);
-
-        // console.log(vm.runners[0].lastPriceTraded);
         // console.log(vm.currentAccumulator.events[0].eventName);
         // console.log(vm.currentAccumulator.events[0].eventType);
         // console.log(vm.currentAccumulator.events[0].marketName);
         // console.log(vm.currentAccumulator.events[0].runnerName);
-
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
           updateGraph(i);
@@ -146,7 +137,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function createLinesOnGraph(accy) {
-    // const twentyZeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     vm.currentAccumulator.events.forEach(() => {
       return vm.data.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     });
@@ -154,23 +144,18 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     displayTrackedEvents(accy.id);
   }
 
-
-  // vm.labels = ['00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00'];
-
-  // vm.colors = ['#332f56', '#514d7a', '#2f2a60'];
-
-  // const now = moment().format('hh:mm:ss');
+  vm.labels = ['', '', '', '', '', '', '', '', ''];
+  vm.series = [''];
+  vm.data = [
+    [65, 59, 80, 81, 66, 75, 70, 77, 87]
+  ];
 
   function updateGraph(i) {
     const time = moment().format('ss');
     const fullTime = moment().format('hh:mm:ss');
     if(i < 20) {
-      // console.log(vm.data);
       for(let p = 0; p < vm.data.length; p++) {
         vm.data[p][i] = vm.runners[p].lastPriceTraded;
-        // console.log('p', vm.runners[p].lastPriceTraded);
-        // console.log(vm.data[p][i]);
-        //console.log(vm.data[p]);
         console.log('vmdata', vm.data);
       }
       vm.labels[i] = time;
@@ -186,17 +171,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       }
       vm.labels[19] = time;
     }
-
-
-    // console.log('0', vm.runners[0].lastPriceTraded);
-    // console.log(vm.data[0]);
-    // console.log(' ');
-  //  console.log('1',vm.runners[1].lastPriceTraded);
-  //  console.log('2',vm.runners[2].lastPriceTraded);
-    // console.log(vm.data[1]);
-    // console.log('=============');
-    // console.log('=========');
-    // console.log(vm.data);
     $scope.$apply();
   }
 
@@ -248,9 +222,4 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       ]
     }
   };
-
 }
-
-        // vm.runners.forEach((element) => {
-        //   vm.data[0].push(element.lastPriceTraded);
-        // });
