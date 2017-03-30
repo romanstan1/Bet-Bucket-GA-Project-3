@@ -44,21 +44,7 @@ function LoginCtrl($auth, $state, $scope) {
   vm.borderWidth = 0;
 
   setInterval(() => {
-    //const first = vm.data[0];
-    // first.forEach(function (x) {
-    //   x = Math.floor(Math.random()*90);
-    //   first.pop();
-    //   first.unshift(x);
-    //   $scope.$apply();
-    // });
-    //
-    // const second = vm.data[1];
-    // second.forEach(function (x) {
-    //   x = Math.floor(Math.random()*90);
-    //   second.pop();
-    //   second.unshift(x);
-    //   $scope.$apply();
-    // });
+    
     vm.data[1][6] = Math.floor(Math.random()*30);
     vm.data[1][4] = Math.floor(Math.random()*30);
     vm.data[1][2] = Math.floor(Math.random()*30);
