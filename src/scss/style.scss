@@ -274,7 +274,7 @@ div.user-animation {
   #line {
     height: 200px;
     width: 900px;
-    
+
     overflow: hidden;
   }
 }
@@ -378,4 +378,14 @@ ul.showOdds {
       right: 0;
     }
   }
+}
+
+footer {
+  background-color: rgba(20, 20, 20, 1);
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
