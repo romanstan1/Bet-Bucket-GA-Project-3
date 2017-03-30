@@ -47,7 +47,10 @@ li {
 }
 
 nav {
-  position: absolute;
+  h1 {
+    color: ghostwhite;
+  }
+    position: absolute;
   height: 60px;
   background: $slategray;
   top: 0;
@@ -124,13 +127,31 @@ main {
 
 h1.user-profile {
   text-transform: none;
-  margin-top: 100px;
+  margin-top: 40px;
   margin-bottom: 50px;
   color: $green;
 }
 
-// Accumlator nav bar side-section
+// stake Styling ----------------------
 
+div.stakeClass {
+  line-height: 40px;
+  padding-left: 2%;
+  margin-top: 10px;
+  color: white;
+  background: $grey;
+  p {
+    display: inline-block;
+  }
+  input {
+    outline: none;
+  }
+  h4 {
+
+  }
+}
+
+// Accumlator nav bar side-section
 section.profile-accy-nav {
   //edits buttons!!! --
   button.editForm {
@@ -254,6 +275,11 @@ section.profile-graphs {
   }
 }
 
+div.message {
+  font-size: 20px;
+  margin-top: 40px;
+  padding-left: 20px;
+}
 //  input select sections ------------------------- ---------------
 
 section.profile-input-selectboxes {
