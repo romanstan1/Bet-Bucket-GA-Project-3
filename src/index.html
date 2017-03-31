@@ -19,7 +19,6 @@
           <li ui-sref="home"><a href="#"><h1 ui-sref="home">BET BUCKET</h1></a></li>
           <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
           <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
-
           <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
           <li ng-if="!main.isAuthenticated()" ui-sref="register"><a href="#">Register</a></li>
         </ul>
@@ -41,8 +40,5 @@
 
     </main>
   </div>
-  <!-- <footer>
-    <p> made with &#9829; by Ytho 2017</p>
-  </footer> -->
 </body>
 </html>

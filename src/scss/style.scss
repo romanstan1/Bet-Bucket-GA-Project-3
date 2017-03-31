@@ -177,26 +177,8 @@ h1.user-profile {
   color: $green;
 }
 
-// stake Styling ----------------------
-
-div.stakeClass {
-  line-height: 40px;
-  padding-left: 2%;
-  margin-top: 10px;
-  color: white;
-  background: $grey;
-  p {
-    display: inline-block;
-  }
-  input {
-    outline: none;
-  }
-  h4 {
-
-  }
-}
-
 // Accumlator nav bar side-section
+
 section.profile-accy-nav {
   //edits buttons!!! --
   button.editForm {
@@ -541,29 +523,30 @@ div.logoInLogin {
 }
 
 div.loginTrio {
-  margin-top: 20px;
+  color: $slategray;
+  margin-top: 70px;
+  text-align: center;
   div {
     margin: 3.5%;
-    padding-top: 0px;
+    // padding-top: 0px;
     text-align: center;
     display: inline-block;
     float: left;
     width: 26%;
     padding-bottom: 00px;
     h2 {
-      padding-top: 10px;
+      // padding-top: 10px;
       text-align: center;
       text-transform: uppercase;
     }
     h3 {
       text-align: center;
       font-size: 16px;
-      margin-top: 10px;
+      // margin-top: 10px;
     }
     img {
       width: 100%;
-      margin-top: 20px;
-      // max-height: 200px;
+      margin-top: 5px;
       border: 2px solid;
       border-radius: 2px;
     }
