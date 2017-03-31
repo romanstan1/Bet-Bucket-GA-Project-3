@@ -55,7 +55,7 @@
   <li ng-repeat="event in usersShow.currentAccumulator.events">
     <p>{{ event.eventType }} - {{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }}
     </p>
-    <p> LATEST ODDS: <span> {{ usersShow.runnerPrices[$index].lastPriceTraded }}</span></p>
+    <p> LATEST ODDS: <span> {{ usersShow.runnerPrices[$index] }}</span></p>
     <button ng-click="usersShow.deleteEvent(event)">Delete</button>
   </li>
 </ul>

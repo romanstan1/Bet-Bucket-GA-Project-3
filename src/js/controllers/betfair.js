@@ -35,7 +35,6 @@ function BetfairSelectCtrl($http, $stateParams) {
   function changeEventType() {
     vm.eventType = $stateParams.eventType;
   }
-
 }
 
 
