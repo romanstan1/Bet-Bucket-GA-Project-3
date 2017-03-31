@@ -1,8 +1,5 @@
 # Project 3
-Fabricio Ferreira
-Sam Wakefield
-Roman Stankiewicz
-Ben Currie
+Team Ytho: Fabricio Ferreira, Sam Wakefield, Roman Stankiewicz, Ben Currie
 
 # Bet Bucket - Accumulator App
 
@@ -10,11 +7,16 @@ Ben Currie
 
 #### An application for obtaining betting data with which to build accumulators.  Betting odds are tracked in real time.  
 
-The site is designed to enable a user to obtain information on sporting and 'special' events by category, event and outcome and build an accumulator bet with the data.  The API used is provided by Betfair.
+The site is aimed at Users that take their gambling seriously and want to maximise potential income from an accumulator bet, based on the timing of when they place their bet.
 
-The accumulator can hold any amount of events, and the data will automatically update a live graph which tracks the odds.
+The app is designed to enable a user to obtain information on sporting and 'special' events by category, event and outcome and build an accumulator bet with that data.  The ability to add a stake allows Users to balance the risk and likely return to maximise their gains should the accumulator win.  The API used is provided by Betfair.
 
-  [Link to App](http://powerful-mountain-50329.herokuapp.com/login)
+The accumulator can hold any number of events, and the data will automatically update a live graph which tracks the odds.
+
+  [Link to App](https://bet-bucket.herokuapp.com/)
+  
+![](./src/images/BetBucketHome.png)
+
 
 #### Home Screen
 
@@ -24,7 +26,7 @@ The landing page is simple, showing a route to login and a brief description of 
 2. Add events
 3. Track odds
 
-![](./src/images/loginPage.png)
+![](./src/images/LoginPage2.png)
 
 From this page, users must login and authenticate by registering through the app directly.
 
@@ -94,6 +96,21 @@ The following tools are used to build the site.
 * AngularJS
 * SCSS
 * Charts.js
+* Mongo DB
+
+Dependencies:
+
+* angular-chart.js
+* bcrypt
+* bluebird
+* body-parser
+* express
+* jsonwebtoken
+* mongoose
+* morgan
+* request
+* request-promise
+
 
 In addition, the following planning and management tools were used:
 
@@ -119,6 +136,11 @@ The greatest challenges were:
 2. Making sense of the API documentation which was complicated and assumed higher then a beginners knowledge of programming and gambling.
 3. Identifying the correct filters and data sets to make the data meaningful to a user.
 4. Using the data!
+
+Future upgrades:
+
+1. Search and user filtering capability
+2. Links to placing bets directly to the bookmakers website.
 
 
 #### Wins
