@@ -1,11 +1,18 @@
 $black: #0e1922;
-$grey: #1d323f;
 $slategray: #263f4f;
+$grey: #001727;
 $green: #289c96;
 $pink: #d72b71;
 $lightgreen: #32d1c8;
 $lightgrey: #cccccc;
 $lightergrey: #ededed;
+
+$nBlack: #001727;
+$nlightBlack: #062735;
+//$ndarkestGreen: #062735;
+$ndarkGreen: #063846;
+$nGreen: rgb(13,170,176);
+$nlightGreen: rgb(0, 205, 215);
 
 // Sticky footer styles -------------------------
 
@@ -31,7 +38,7 @@ html, body {
 }
 
 // General styles -------------------------
-
+// font-family: Gilroy, sans-serif; 'Open Sans'
 body {
   font-family: 'Open Sans', sans-serif;
   color: black;
@@ -48,15 +55,18 @@ li {
 
 nav {
   h1 {
+    font-size: 17px;
+    font-family: 'Gilroy-ExtraBold', sans-serif;
     color: ghostwhite;
   }
     position: absolute;
-  height: 60px;
-  background: $slategray;
+  height: 65px;
+  //border-bottom: 1px solid $ndarkGreen;
+  background: $grey;
   top: 0;
   width: 100%;
   ul{
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
     li{
       font-size: 14px;
@@ -66,21 +76,56 @@ nav {
       opacity: 1;
       cursor: pointer;
       a {
-        color: white;
-        font-weight: 600;
+        font-size: 16px;
+        font-family: 'Gilroy-Light', sans-serif;
+        color: $nGreen;
+        font-weight: 400;
         display:block;
         text-transform: uppercase;
-        line-height: 60px;
+        line-height: 65px;
         padding: 0 10px;
         &:hover {
-          background: $grey;
+          //background: $slategray;
+          color: $nlightGreen;
           // opacity: 0.7;
         }
       }
     }
   }
 }
-
+// ------------------------
+div.homeBlock {
+  margin: 33vh auto;
+  width: 500px;
+  text-align: center;
+  h1 {
+    font-size: 450%;
+    color: white;
+    font-family: 'Gilroy-ExtraBold', sans-serif;
+    // font-family: 'Gilroy-Light', sans-serif;
+    font-weight: normal;
+    span {
+      font-family: 'Gilroy-ExtraBold', sans-serif;
+      font-weight: normal;
+    }
+  }
+  h2 {
+    font-size: 180%;
+    margin-top: 1vh;
+    color: $nGreen;
+    text-transform: uppercase;
+    font-family: 'Gilroy-Light', sans-serif;
+    font-weight: normal;
+  }
+  h3 {
+    margin-top: 8%;
+    font-size: 90%;
+    color: $nGreen;
+    text-transform: none;
+    font-family: 'Gilroy-Light', sans-serif;
+    font-weight: normal;
+  }
+}
 
 section.wrapper {
   width: 80%;
@@ -132,26 +177,8 @@ h1.user-profile {
   color: $green;
 }
 
-// stake Styling ----------------------
-
-div.stakeClass {
-  line-height: 40px;
-  padding-left: 2%;
-  margin-top: 10px;
-  color: white;
-  background: $grey;
-  p {
-    display: inline-block;
-  }
-  input {
-    outline: none;
-  }
-  h4 {
-
-  }
-}
-
 // Accumlator nav bar side-section
+
 section.profile-accy-nav {
   //edits buttons!!! --
   button.editForm {
@@ -252,12 +279,12 @@ section.profile-accy-nav {
 // graph styles -------------------------------------
 
 section.profile-graphs {
+  background: ghostwhite;
   width: 74%;
-  border: 2px solid black;
+  // border: 2px solid black;
   display: block;
-  height: 400px;
   margin-right: 1%;
-  margin-bottom: 20px;
+  min-height: 300px;
   div.user-animation {
     margin-top: 0px;
     background: white;
@@ -269,14 +296,44 @@ section.profile-graphs {
     height: 450px;
     overflow: hidden;
     #line {
-      height: 400px;
-      width: 900px;
+      // height: 400px;
+      // width: 900px;
       overflow: hidden;
     }
   }
 }
 
+// stake styling area ------------
+
+div.stakeClass {
+  // float: right;
+  padding: 20px 0;
+  width: 74%;
+  margin-top: 5vh;
+  background: $grey;
+  color: white;
+  font-weight: 600;
+  p, input, h4 {
+    text-transform: uppercase;
+    margin-left: 2%;
+    display: inline-block;
+  }
+  input {
+    text-indent: 10px;
+    -webkit-appearance: none;
+    line-height: 30px;
+    outline: none;
+  }
+
+  h4 {
+    span {
+      color: $pink;
+    }
+  }
+}
+
 div.message {
+  display: none;
   font-size: 20px;
   margin-top: 40px;
   padding-left: 20px;
@@ -314,7 +371,7 @@ section.profile-select-event {
   background: $grey;
   p {
     border-bottom: 6px $lightergrey solid;
-    color: $black;
+    color: $nBlack;
     padding-left: 2%;
     line-height: 35px;
     cursor: pointer;
@@ -406,19 +463,20 @@ ul.profile-tracked-accumulator {
 
 div.login-animation {
   margin-top: 0px;
-  background: grey;
+  background: $nBlack;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: -1;
-  height: 350px;
+  height: 95vh;
   overflow: hidden;
+  margin-top: 5vh;
   #line {
-    height: 200px;
-    width: 900px;
-    background: grey;
-    overflow: hidden;
+    // height: vh;
+    // width: 900px;
+    background: $nBlack;
+    //overflow: hidden;
   }
 }
 
@@ -428,11 +486,12 @@ h1.login {
   font-size: 26px;
 }
 
-form.login {
+form.login, form.register {
   // position: relative;
   margin: 20px auto;
+  margin-top: 15vh;
   // height: 500px;
-  width: 400px;
+  width: 50%;
   background: white;
   label {
     font-size: 14px;
@@ -442,6 +501,7 @@ form.login {
     padding-right: 2%;
   }
   input {
+    line-height: 30px;
     font-size: 14px;
     display: inline-block;
     // float: right;
@@ -464,7 +524,14 @@ form.login {
   // height: 400px;
   // border: 1px black solid;
   button {
+    background: $nGreen;
     width: 100%;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    &:hover {
+      background: $nlightGreen;
+    }
   }
 }
 
@@ -472,7 +539,7 @@ form.login {
 
 div.logoInLogin {
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 90px;
   text-align: center;
   p {
     color: white;
@@ -487,29 +554,30 @@ div.logoInLogin {
 }
 
 div.loginTrio {
-  margin-top: 20px;
+  color: $slategray;
+  margin-top: 70px;
+  text-align: center;
   div {
     margin: 3.5%;
-    padding-top: 0px;
+    // padding-top: 0px;
     text-align: center;
     display: inline-block;
     float: left;
     width: 26%;
-    padding-bottom: 40px;
+    padding-bottom: 00px;
     h2 {
-      padding-top: 10px;
+      // padding-top: 10px;
       text-align: center;
       text-transform: uppercase;
     }
     h3 {
       text-align: center;
       font-size: 16px;
-      margin-top: 10px;
+      // margin-top: 10px;
     }
     img {
       width: 100%;
-      margin-top: 20px;
-      // max-height: 200px;
+      margin-top: 5px;
       border: 2px solid;
       border-radius: 2px;
     }
@@ -518,10 +586,6 @@ div.loginTrio {
 // END of styling for loginPage
 
 //SW  - register styles
-div.register {
-  margin-top: 100px;
-
-}
 
 // li {
 //   cursor: pointer;
@@ -559,7 +623,7 @@ ul.showEvents {
   width: 100%;
   li {
     padding-left: 2%;
-    color: $black;
+    color: $nBlack;
     cursor: pointer;
     background: $lightgrey;
     border-bottom: 6px $lightergrey solid;
@@ -623,12 +687,29 @@ ul.showOdds {
 }
 
 footer {
-  background-color: $slategray;
-  padding: 10px 0;
-  margin-top: 10px;
-  height: 50px;
+  background-color: $grey;
+  padding-bottom: 100px;
+  margin-top: 50px;
+  line-height: 100px;
   text-align: center;
   color: white;
+  // position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   width: 100%;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+@font-face {
+    font-family: Gilroy-ExtraBold;
+    src: url("fonts/Gilroy-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Gilroy-Light;
+    src: url("fonts/Gilroy-Light.otf") format("opentype");
 }

@@ -43,7 +43,7 @@
 <div class="stakeClass" ng-if="usersShow.currentAccumulator">
   <p>Stake: </p>
   <input type="number" placeholder="£" ng-model="usersShow.stake">
-  <h4>Return: {{ usersShow.stake * usersShow.accumulatorOdds || '0' | currency: '£' }}</h4>
+  <h4>Return: <span> {{ usersShow.stake * usersShow.accumulatorOdds || '0' | currency: '£' }} </span></h4>
 </div>
 
 
@@ -83,3 +83,7 @@
 
 <!-- loads in events index.html and show.html -->
 <div ui-view></div>
+
+<footer>
+  <p> made with &#9829; by Ytho 2017</p>
+</footer>

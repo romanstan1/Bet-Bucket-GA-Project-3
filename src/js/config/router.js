@@ -7,6 +7,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
+    .state('home', {
+      url: '/'
+      // templateUrl: 'js/login.html',
+      // controller: 'LoginCtrl as login'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'js/views/auth/login.html',
@@ -33,5 +38,5 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'BetfairMarketCtrl as betfairShow'
     });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/');
 }
