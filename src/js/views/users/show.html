@@ -51,11 +51,11 @@
 
 <h3 class="profile-h3" ng-show="usersShow.currentAccumulator.name">Tracked live events in <span>{{ usersShow.currentAccumulator.name}}</span> </h3>
 
-<ul class="profile-tracked-accumulator" ng-repeat="event in usersShow.currentAccumulator.events">
-  <li>
+<ul class="profile-tracked-accumulator">
+  <li ng-repeat="event in usersShow.currentAccumulator.events">
     <p>{{ event.eventType }} - {{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }}
     </p>
-    <p> LATEST ODDS: <span> {{ usersShow.runnerPrices[$index] }}</span></p>
+    <p> LATEST ODDS: <span> {{ usersShow.runnerPrices[$index].lastPriceTraded }}</span></p>
     <button ng-click="usersShow.deleteEvent(event)">Delete</button>
   </li>
 </ul>

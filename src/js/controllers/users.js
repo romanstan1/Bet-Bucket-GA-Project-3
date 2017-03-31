@@ -40,6 +40,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function chooseAccumulator(accy) {
     vm.currentAccumulator = accy;
+    vm.currentAccumulator.events.sort((a, b) => a.runnerId - b.runnerId);
     vm.data = [];
     vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
@@ -119,6 +120,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then(() => {
         const index = vm.currentAccumulator.events.indexOf(event);
         vm.currentAccumulator.events.splice(index, 1);
+        vm.runnerPrices.splice(index, 1);
         vm.data = [];
         vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
@@ -135,12 +137,16 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         vm.runners = response.data.reduce((runners, data) => {
           return runners.concat(data.runners);
         }, [])
-        .filter((runner) => runnerIds.includes(runner.selectionId));
+        .filter((runner) => runnerIds.includes(runner.selectionId))
+        .sort((a, b) => {
+          return a.selectionId - b.selectionId;
+        });
 
-        vm.runnerPrices = [];
-        vm.runners.forEach((element) => vm.runnerPrices.push(element.lastPriceTraded));
+        vm.runnerPrices = vm.runners.map((element) => {
+          return { selectionId: element.selectionId, lastPriceTraded: element.lastPriceTraded };
+        });
 
-
+        // Returns the total gains from all the accumulator odds added in.
         vm.accumulatorOdds = 1;
         vm.runnerPrices.forEach((element) => {
           return vm.accumulatorOdds *= element;
