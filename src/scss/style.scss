@@ -1,9 +1,9 @@
 $black: #0e1922;
-$slategray: #263f4f;
+$slategray: #001727;
 $grey: #001727;
-$green: #289c96;
+$green: rgb(13,170,176);
 $pink: #d72b71;
-$lightgreen: #32d1c8;
+$lightgreen: rgb(13,170,176);
 $lightgrey: #cccccc;
 $lightergrey: #ededed;
 
@@ -159,9 +159,6 @@ button {
   padding: 0 2%;
   line-height: 30px;
   outline: none;
-  &:focus {
-    opacity: 0.7;
-  }
 }
 
 main {
@@ -320,9 +317,13 @@ div.stakeClass {
   }
   input {
     text-indent: 10px;
-    -webkit-appearance: none;
+    // -webkit-appearance: none;
     line-height: 30px;
     outline: none;
+    // &::-webkit-outer-spin-button {
+    //   -webkit-appearance: none;
+    //   margin: 0;
+    // }
   }
 
   h4 {
@@ -383,20 +384,32 @@ section.profile-select-event {
   }
 }
 
+button.eventButton {
+  background: $nGreen;
+  color:white;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  &:hover {
+    color: white;
+    background: $nlightGreen;
+  }
+}
+
 button.profile-choose-event, button.profile-search-event {
   width: 50%;
   height : 30px;
   margin: 0 auto;
   color: white;
-  background: dodgerblue;
   border: none;
+  font-weight: 600;
   font-size: 14px;
   text-align: center;
   display: block;
   margin-bottom: 30px;
   cursor: pointer;
   &:hover {
-    opacity: 0.7;
+    background: $nlightGreen;
   }
 }
 
@@ -415,12 +428,13 @@ h3.profile-h3 {
 }
 
 ul.profile-tracked-accumulator {
+  font-size: 0;
   li {
     display: block;
     font-size: 0;
     p{
       background: $grey;
-      font-size: 14px;
+      font-size: 12px;
       display: inline-block;
       line-height: 40px;
       color: white;
@@ -439,15 +453,16 @@ ul.profile-tracked-accumulator {
       }
     }
     button {
-      font-size: 14px;
+      font-size: 12px;
       display: inline-block;
       line-height: 40px;
       width: 10%;
+      font-weight: 600;
       background: $green;
       color: white;
+      text-transform: uppercase;
       &:hover {
-        background: $slategray;
-        opacity: 0.4;
+        background: $nlightGreen;
       }
     }
   }
@@ -609,11 +624,11 @@ div.loginTrio {
 button.goBackButton {
   background: $green;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
   &:hover {
-    background: $pink;
+    background: $nlightGreen;
     color: white;
   }
 }
@@ -645,9 +660,6 @@ ul.showEvents {
 }
 
 
-li.selected {
-  background: $pink;
-}
 ul.showOdds {
   margin-top: 10px;
   margin-bottom: 150px;
@@ -658,16 +670,19 @@ ul.showOdds {
     color:white;
     display:  block;
     width: 100%;
-    background: $slategray;;
-    line-height: 40px;
+    background: $slategray;
     border-bottom: 5px solid white;
+    font-size: 0;
     p{
       padding-left: 5%;
+      line-height: 40px;
       font-size: 14px;
       font-weight: 600;
       display: inline-block;
+      width: 75%;
     }
     button {
+      line-height: 40px;
       margin-top: 0;
       height: 40px;
       display: inline-block;
@@ -680,7 +695,7 @@ ul.showOdds {
       font-size: 12px;
       font-weight: 600;
       &:hover {
-        background: $pink;
+        background: $nlightGreen;
       }
     }
   }

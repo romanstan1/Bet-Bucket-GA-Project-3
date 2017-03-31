@@ -206,11 +206,11 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       line: {
         fill: false,
         border: true,
-        borderWidth: 8
+        borderWidth: 5
       },
       point: {
         radius: 5,
-        borderWidth: 0
+        borderWidth: 2
       }
     },
     tooltips: {
@@ -223,14 +223,16 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
     },
     scales: {
       yAxes: [
-        {
+        { borderWidth: 3,
           id: 'y-axis-1',
           type: 'linear',
           display: true,
           position: 'left',
           ticks: { min: 1 },
           gridLines: {
-            display: true
+            borderWidth: 3,
+            display: true,
+            fill: 'rgba(255,99,132,1)'
           }
         },
         {
@@ -246,10 +248,27 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       xAxes: [ {
         display: true,
         gridLines: {
-          display: true
+          display: false
         }
       }
       ]
     }
   };
+
+  vm.override = [
+
+    {
+      label: 'Line chart',
+      // borderWidth: 3,
+      // pointColor: 'rgba(255,99,132,1)',
+      // strokeColor: "rgba(220,220,220,1)",
+			// pointColor: "rgba(220,220,220,1)",
+			// pointStrokeColor: "#fff",
+      // borderColor: 'rgba(255,99,132,1)',
+      backgroundColor: 'rgba(255,99,132,1)',
+      // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      // hoverBorderColor: 'rgba(255,99,132,1',
+      type: 'line'
+    }
+  ];
 }
