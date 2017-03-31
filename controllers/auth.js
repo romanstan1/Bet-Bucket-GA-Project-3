@@ -23,6 +23,7 @@ function login(req, res, next) {
 
   return betfairLogin()
     .then((response) => {
+      console.log(response);
       global.betfairToken = response.token;
       return User
         .findOne({ email: req.body.email });
