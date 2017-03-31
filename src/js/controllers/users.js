@@ -47,8 +47,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
       i = 0;
       createLinesOnGraph(accy);
-    } else {
-      console.log('praise kek');
     }
   }
 
@@ -72,6 +70,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .$promise
       .then((event) => {
         vm.currentAccumulator.events.push(event);
+        vm.currentAccumulator.events.sort((a, b) => a.runnerId - b.runnerId);
+        displayTrackedEvents(vm.currentAccumulator.id);
       });
 
     vm.data.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -124,7 +124,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then(() => {
         const index = vm.currentAccumulator.events.indexOf(event);
         vm.currentAccumulator.events.splice(index, 1);
-        vm.runnerPrices.splice(index, 1);
         vm.data = [];
         vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
@@ -147,13 +146,13 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         });
 
         vm.runnerPrices = vm.runners.map((element) => {
-          return element.lastPriceTraded;
+          return { selectionId: element.selectionId, lastPriceTraded: element.lastPriceTraded };
         });
 
         // Returns the total gains from all the accumulator odds added in.
         vm.accumulatorOdds = 1;
         vm.runnerPrices.forEach((element) => {
-          return vm.accumulatorOdds *= element;
+          return vm.accumulatorOdds *= element.lastPriceTraded;
         });
 
         clearTimeout(t);
