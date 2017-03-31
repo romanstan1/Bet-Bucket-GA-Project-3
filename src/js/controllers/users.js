@@ -39,13 +39,17 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function chooseAccumulator(accy) {
-    vm.currentAccumulator = accy;
-    vm.currentAccumulator.events.sort((a, b) => a.runnerId - b.runnerId);
-    vm.data = [];
-    vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+    if(accy) {
+      vm.currentAccumulator = accy;
+      vm.currentAccumulator.events.sort((a, b) => a.runnerId - b.runnerId);
+      vm.data = [];
+      vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
-    i = 0;
-    createLinesOnGraph(accy);
+      i = 0;
+      createLinesOnGraph(accy);
+    } else {
+      console.log('praise kek');
+    }
   }
 
   function selectMarket(selectedMarket) {
@@ -80,7 +84,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then(() => {
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
-        vm.currentAccumulator = null;
+        vm.currentAccumulator = false;
       });
   }
 
@@ -143,7 +147,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         });
 
         vm.runnerPrices = vm.runners.map((element) => {
-          return { selectionId: element.selectionId, lastPriceTraded: element.lastPriceTraded };
+          return element.lastPriceTraded;
         });
 
         // Returns the total gains from all the accumulator odds added in.
