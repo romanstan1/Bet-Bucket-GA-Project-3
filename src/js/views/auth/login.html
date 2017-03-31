@@ -1,24 +1,30 @@
-<div class="login-animation">
+<!-- <div class="login-animation">
   <canvas id="line" class="chart chart-line" chart-data="login.data" chart-labels="login.labels" chart-series="login.series" chart-options="login.options" chart-colors="login.colors" chart-dataset-override="login.override">
   </canvas>
-</div>
+</div> -->
 
 <!-- <h1 class="login">BET BUCKET</h1> -->
-<div class="logoInLogin">
+<!-- <div class="logoInLogin">
   <img src="images/BetBucketLogo.v2.png" alt="img" width="300">
   <p> BET BUCKET</p>
-</div>
+</div> -->
+
+<!-- <div class="homeBlock">
+  <h1> BET BUCKET</h1>
+  <h2> We want your money </h2>
+  <h3>Betfair Api meets data visualisation.</h3>
+</div> -->
 
 
 <form class="login" name="login.loginForm" ng-submit="login.submit()" novalidate>
-  <!-- <label for="email">Email</label> -->
+
   <input type="email" name="email" id="email" ng-model="login.credentials.email" placeholder="email" required>
   <div ng-messages="login.loginForm.email.$error" role="alert" ng-show="(login.loginForm.$submitted || login.loginForm.email.$touched) && login.loginForm.email.$invalid" class="error">
     <div ng-message="required">Please enter a value for this field.</div>
     <div ng-message="email">This field must be a valid email address.</div>
   </div>
 
-  <!-- <label for="password">Password</label> -->
+
   <input type="password" name="password" id="password" ng-model="login.credentials.password" placeholder="password" required>
   <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.$submitted || login.loginForm.password.$touched) && login.loginForm.password.$invalid" class="error">
     <div ng-message="required">Please enter a value for this field.</div>

@@ -1,30 +1,29 @@
-<div class="register">
 <h3>Please register to use the site</h3><br>
-  <form name="register.registerForm" ng-submit="register.submit()" novalidate>
+  <form class="register" name="register.registerForm" ng-submit="register.submit()" novalidate>
 
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" ng-model="register.user.username" ng-minlength="2" required>
+    <!-- <label for="username">Username</label> -->
+    <input type="text" name="username" id="username" ng-model="register.user.username" ng-minlength="2" placeholder="username" required>
     <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched) && register.registerForm.username.$invalid" class="error">
       <div ng-message="minlength">Too short.</div>
       <div ng-message="required">Please enter a username.</div>
     </div>
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" ng-model="register.user.email" required>
+    <!-- <label for="email">Email</label> -->
+    <input type="email" name="email" id="email" ng-model="register.user.email" placeholder="email" required>
     <div ng-messages="register.registerForm.email.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched) && register.registerForm.email.$invalid" class="error">
       <div ng-message="required">Please enter your email address</div>
       <div ng-message="email">This field must be a valid email address</div>
     </div>
 
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" ng-model="register.user.password" required>
+    <!-- <label for="password">Password</label> -->
+    <input type="password" name="password" id="password" ng-model="register.user.password" placeholder="password" required>
     <div ng-messages="register.registerForm.password.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.password.$touched) && register.registerForm.password.$invalid" class="error">
       <div ng-message="required">Please enter your password.</div>
     </div>
 
-    <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required>
+    <!-- <label for="passwordConfirmation">Password Confirmation</label> -->
+    <input type="password" placeholder="Password Confirmation" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required>
     <div ng-messages="register.registerForm.passwordConfirmation.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.passwordConfirmation.$touched) && register.registerForm.passwordConfirmation.$invalid" ng-minlength="5" ng-maxlength="16" class="error">
       <div ng-message="required">Please re-enter your password.</div>
       <br>
@@ -32,4 +31,3 @@
 
     <button class="button">Register</button>
   </form>
-</div>

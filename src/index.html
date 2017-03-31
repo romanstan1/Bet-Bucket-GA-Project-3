@@ -16,8 +16,8 @@
       <nav>
         <ul>
           <li><img src="images/BetBucketLogo.v2.png" height="20"></li>
-          <li><h1>BET BUCKET</h1></li>
-          <li ng-if="main.isAuthenticated()" ui-sref="profile"><a ui-sref="profile">Profile</a></li>
+          <li ui-sref="home"><a href="#"><h1 ui-sref="home">BET BUCKET</h1></a></li>
+          <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
           <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
 
           <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
@@ -25,14 +25,24 @@
         </ul>
       </nav>
     </header>
-
-    <h1>Bet Bucket?</h1>
     <div class="message" ng-if="main.message">{{ main.message }}</div>
-    <main ui-view></main>
-    <div class="push"></div>
+    <main ui-view>
+
+      <div class="login-animation">
+        <canvas id="line" class="chart chart-line" chart-data="main.data" chart-labels="main.labels" chart-series="main.series" chart-options="main.options" chart-colors="main.colors" chart-dataset-override="main.override">
+        </canvas>
+      </div>
+
+      <div class="homeBlock">
+        <h1> BET <span>BUCKET</span></h1>
+        <h2> We want your money </h2>
+        <h3>Betfair Api meets data visualisation.</h3>
+      </div>
+
+    </main>
   </div>
-  <footer>
-    <p><img src="images/BetBucketLogo.v2.png" class="circle" height="20"> made with &#9829;  - Ytho 2017</p>
-  </footer>
+  <!-- <footer>
+    <p> made with &#9829; by Ytho 2017</p>
+  </footer> -->
 </body>
 </html>
