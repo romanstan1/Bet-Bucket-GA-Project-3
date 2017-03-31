@@ -279,11 +279,12 @@ section.profile-accy-nav {
 // graph styles -------------------------------------
 
 section.profile-graphs {
+  background: ghostwhite;
   width: 74%;
-  border: 2px solid black;
+  // border: 2px solid black;
   display: block;
-  height: 400px;
   margin-right: 1%;
+  min-height: 300px;
   div.user-animation {
     margin-top: 0px;
     background: white;
@@ -295,14 +296,44 @@ section.profile-graphs {
     height: 450px;
     overflow: hidden;
     #line {
-      height: 400px;
-      width: 900px;
+      // height: 400px;
+      // width: 900px;
       overflow: hidden;
     }
   }
 }
 
+// stake styling area ------------
+
+div.stakeClass {
+  // float: right;
+  padding: 20px 0;
+  width: 74%;
+  margin-top: 5vh;
+  background: $grey;
+  color: white;
+  font-weight: 600;
+  p, input, h4 {
+    text-transform: uppercase;
+    margin-left: 2%;
+    display: inline-block;
+  }
+  input {
+    text-indent: 10px;
+    -webkit-appearance: none;
+    line-height: 30px;
+    outline: none;
+  }
+
+  h4 {
+    span {
+      color: $pink;
+    }
+  }
+}
+
 div.message {
+  display: none;
   font-size: 20px;
   margin-top: 40px;
   padding-left: 20px;
