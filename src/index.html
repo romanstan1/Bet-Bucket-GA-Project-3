@@ -16,7 +16,7 @@
       <nav>
         <ul>
           <li><img src="images/BetBucketLogo.v2.png" height="20"></li>
-          <li ui-sref="home"><a href="#"><h1 ui-sref="home">BET BUCKET</h1></a></li>
+          <li ui-sref="home"><a href="#"><h1 ui-sref="home"><span>BET</span> BUCKET</h1></a></li>
           <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
           <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
           <li ng-if="!main.isAuthenticated()" ui-sref="login"><a href="#">Login</a></li>
@@ -34,8 +34,8 @@
 
       <div class="homeBlock">
         <h1> BET <span>BUCKET</span></h1>
-        <h2> We want your money </h2>
-        <h3>Betfair Api meets data visualisation.</h3>
+        <h2> LIVE ODDS TRACKING USING BETFAIR'S API</h2>
+        <!-- <h3>Betfair Api meets data visualisation.</h3> -->
       </div>
 
     </main>

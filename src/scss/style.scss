@@ -11,7 +11,8 @@ $nBlack: #001727;
 $nlightBlack: #062735;
 //$ndarkestGreen: #062735;
 $ndarkGreen: #063846;
-$nGreen: rgb(13,170,176);
+// $nGreen: rgb(13,170,176);
+$nGreen: rgb(0, 132, 139);
 $nlightGreen: rgb(0, 205, 215);
 
 // Sticky footer styles -------------------------
@@ -55,6 +56,9 @@ li {
 
 nav {
   h1 {
+    span {
+      font-family: 'gilroylight', sans-serif;
+    }
     font-size: 17px;
     font-family: 'gilroyextrabold', sans-serif;
     color: ghostwhite;
@@ -95,14 +99,14 @@ nav {
 }
 // ------------------------
 div.homeBlock {
-  margin: 33vh auto;
+  margin: 38vh auto;
   width: 500px;
   text-align: center;
   h1 {
     font-size: 450%;
     color: white;
-    font-family: 'gilroyextrabold', sans-serif;
-    // font-family: 'Gilroy-Light', sans-serif;
+    // font-family: 'gilroyextrabold', sans-serif;
+    font-family: 'Gilroy-Light', sans-serif;
     font-weight: normal;
     span {
       font-family: 'gilroyextrabold', sans-serif;
@@ -110,7 +114,7 @@ div.homeBlock {
     }
   }
   h2 {
-    font-size: 180%;
+    font-size: 110%;
     margin-top: 1vh;
     color: $nGreen;
     text-transform: uppercase;
