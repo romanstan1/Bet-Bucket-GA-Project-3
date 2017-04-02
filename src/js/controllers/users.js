@@ -196,7 +196,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   //             1           2          3         4          5
-  vm.colors = ['#4286f4','#833b89', '#639b5e', '#b72630', '#e0dd2c'];
+  vm.colors = ['rgb(216,78,134)','rgb(49,180,114)', 'rgb(242,61,76)', 'rgb(13,170,176)' ];
   // vm.data = [  [],        [],        ,[]         [],          []       ]
   vm.options = {
     animation: {
@@ -209,8 +209,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         borderWidth: 5
       },
       point: {
-        radius: 5,
-        borderWidth: 2
+        radius: 4,
+        borderWidth: 0.1
       }
     },
     tooltips: {
@@ -228,11 +228,29 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           type: 'linear',
           display: true,
           position: 'left',
-          ticks: { min: 1 },
-          gridLines: {
-            borderWidth: 3,
+          ticks: {
+            min: 1,
+            // labelOffset: 40,
+            fontStyle: 600,
+            fontColor: 'rgba(0,50,56,0.2)',
+            padding: 10
+          },
+          scaleLabel: {
             display: true,
-            fill: 'rgba(255,99,132,1)'
+            labelString: 'ODDS',
+            fontColor: 'rgba(0,50,56,0.2)',
+            fontFamily: 'Open Sans',
+            fontStyle: '600'
+          },
+          gridLines: {
+            color: 'white',
+            lineWidth: 4,
+            //zeroLineWidth: 5,
+            // zeroLineColor: 'tomato',
+            display: true,
+            fill: 'rgba(255,99,132,1)',
+            offsetGridlines: false,
+            drawBorder: true
           }
         },
         {
@@ -247,8 +265,23 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       ],
       xAxes: [ {
         display: true,
+        ticks: {
+          fontStyle: 600,
+          fontColor: 'rgba(0,50,56,0.2)',
+          padding: 100
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'TIME (MM:SS)',
+          fontFamily: 'Open Sans',
+          fontColor: 'rgba(0,50,56,0.2)',
+          fontStyle: '600'
+        },
         gridLines: {
-          display: false
+          display: true,
+          lineWidth: 0.1,
+          zeroLineWidth: 4,
+          zeroLineColor: 'white'
         }
       }
       ]
