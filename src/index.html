@@ -15,7 +15,7 @@
     <header>
       <nav>
         <ul>
-          <li><img src="images/BetBucketLogo.v2.png" height="20"></li>
+          <!-- <li><img src="images/BetBucketLogo.v2.png" height="20"></li> -->
           <li ui-sref="home"><a href="#"><h1 ui-sref="home"><span>BET</span> BUCKET</h1></a></li>
           <li ng-if="main.isAuthenticated()" ui-sref="profile"><a href="#">Profile</a></li>
           <li ng-if="main.isAuthenticated()" ng-click="main.logout()"><a href="#">Logout</a></li>
@@ -28,6 +28,9 @@
     <main ui-view>
 
       <div class="login-animation">
+        <!-- <canvas id="line">
+
+        </canvas> -->
         <canvas id="line" class="chart chart-line" chart-data="main.data" chart-labels="main.labels" chart-series="main.series" chart-options="main.options" chart-colors="main.colors" chart-dataset-override="main.override">
         </canvas>
       </div>

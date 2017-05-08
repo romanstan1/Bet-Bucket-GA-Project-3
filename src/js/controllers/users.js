@@ -238,7 +238,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           scaleLabel: {
             display: true,
             labelString: 'ODDS',
-            fontColor: 'rgba(0,50,56,0.2)',
+            fontColor: 'rgba(142,142,142,0.4)',
             fontFamily: 'Open Sans',
             fontStyle: '600'
           },
@@ -272,9 +272,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         },
         scaleLabel: {
           display: true,
-          labelString: 'TIME (MM:SS)',
+          labelString: 'TIME',
           fontFamily: 'Open Sans',
-          fontColor: 'rgba(0,50,56,0.2)',
+          fontColor: 'rgba(142,142,142,0.4)',
           fontStyle: '600'
         },
         gridLines: {

@@ -92,8 +92,14 @@ function MainCtrl($rootScope, $state, $auth, $scope) {
 
   vm.colors = ['rgba(0,50,56,1)', 'rgba(1,75,79,1)', 'rgba(0,132,139,1)'];
   vm.options = {
+    // size: {
+    //   height: 0.2,
+    //   width: 0.40
+    // },
     animation: {
       duration: 6000
+      // height: 12.2,
+      // width: 12.40
     },
     elements: {
       line: {
@@ -103,7 +109,6 @@ function MainCtrl($rootScope, $state, $auth, $scope) {
         opacity: 1
       },
       point: {
-        //fill: ['#062735'],
         background: '#062735',
         radius: 0,
         borderWidth: 0

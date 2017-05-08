@@ -1,15 +1,14 @@
-<h3>Please register to use the site</h3><br>
   <form class="register" name="register.registerForm" ng-submit="register.submit()" novalidate>
 
     <!-- <label for="username">Username</label> -->
-    <input type="text" name="username" id="username" ng-model="register.user.username" ng-minlength="2" placeholder="username" required>
+    <input type="text" name="username" id="username" ng-model="register.user.username" ng-minlength="2" placeholder="Username" required>
     <div ng-messages="register.registerForm.username.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched) && register.registerForm.username.$invalid" class="error">
-      <div ng-message="minlength">Too short.</div>
-      <div ng-message="required">Please enter a username.</div>
+      <div ng-message="minlength">Too short</div>
+      <div ng-message="required">Please enter a username</div>
     </div>
 
     <!-- <label for="email">Email</label> -->
-    <input type="email" name="email" id="email" ng-model="register.user.email" placeholder="email" required>
+    <input type="email" name="email" id="email" ng-model="register.user.email" placeholder="Email Address" required>
     <div ng-messages="register.registerForm.email.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched) && register.registerForm.email.$invalid" class="error">
       <div ng-message="required">Please enter your email address</div>
       <div ng-message="email">This field must be a valid email address</div>
@@ -17,9 +16,9 @@
 
 
     <!-- <label for="password">Password</label> -->
-    <input type="password" name="password" id="password" ng-model="register.user.password" placeholder="password" required>
+    <input type="password" name="password" id="password" ng-model="register.user.password" placeholder="Password" required>
     <div ng-messages="register.registerForm.password.$error" role="alert" ng-show="(register.registerForm.$submitted || register.registerForm.password.$touched) && register.registerForm.password.$invalid" class="error">
-      <div ng-message="required">Please enter your password.</div>
+      <div ng-message="required">Please enter your password</div>
     </div>
 
     <!-- <label for="passwordConfirmation">Password Confirmation</label> -->

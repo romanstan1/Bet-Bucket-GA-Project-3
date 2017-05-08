@@ -63,10 +63,11 @@ nav {
     font-family: 'gilroyextrabold', sans-serif;
     color: ghostwhite;
   }
-    position: absolute;
+  position: absolute;
   height: 65px;
   //border-bottom: 1px solid $ndarkGreen;
   background: $grey;
+  // opacity: 0.3;
   top: 0;
   width: 100%;
   ul{
@@ -490,34 +491,44 @@ ul.profile-tracked-accumulator {
 //-------------- login page styles ---------------------------------------------------
 
 div.login-animation {
-  margin-top: 0px;
   background: $nBlack;
+  // background: blue;
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
-  height: 95vh;
-  overflow: hidden;
-  margin-top: 5vh;
+  // height: 95vh;
+  overflow: visible;
+  // margin-top: 5vh;
   #line {
-    // height: vh;
-    // width: 900px;
-    background: $nBlack;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // height: calc(100vh - 65px);
+    margin-top: 65px;
+    width: 100%;
+    height: 100%;
+    // max-width: 100%;
+    // background: red;
     //overflow: hidden;
   }
 }
 
-h1.login {
-  margin-top: 100px;
-  color: white;
-  font-size: 26px;
-}
+// h1.login {
+//   margin-top: 100px;
+//   color: white;
+//   font-size: 26px;
+// }
 
 form.login, form.register {
   // position: relative;
+
   margin: 20px auto;
-  margin-top: 15vh;
+  margin-top: 35vh;
   // height: 500px;
   width: 50%;
   background: white;
@@ -529,109 +540,54 @@ form.login, form.register {
     padding-right: 2%;
   }
   input {
-    line-height: 30px;
-    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    line-height: 35px;
+    height: 35px;
+    font-size: 12px;
     display: inline-block;
+    margin-bottom: 8px;
     // float: right;
     width: 100%;
     text-align: center;
-
-    // border: 2px solid grey;
+    border: 2px solid ghostwhite;
+    &:focus {
+      border: 2px solid $green;
+      opacity: 1;
+    }
   }
+
   div {
-    font-size: 12px;
+    position: fixed;
+    top:  70px;
+    left: 0;
+    right:0;
+    // margin-top: 5vh;
+    font-size: 13px;
     text-align: center;
     display: block;
     float: left;
     width: 100%;
-    line-height: 30px;
-    background: white;
+    line-height: 40px;
+    background: #e5e5e5;
     color: tomato;
+    text-transform: uppercase;
   }
   // margin-top: 150px;
   // height: 400px;
   // border: 1px black solid;
   button {
+    height: 40px;
     background: $nGreen;
     width: 100%;
     color: white;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     &:hover {
       background: $nlightGreen;
     }
   }
 }
-
-//SW 3 divs styling on login page
-
-div.logoInLogin {
-  margin: 0 auto;
-  margin-top: 90px;
-  text-align: center;
-  p {
-    color: white;
-    font-weight: 600;
-  }
-  img {
-    margin-top: 40px;
-    height: 50px;
-    width: auto;
-    margin-bottom: 20px;
-  }
-}
-
-div.loginTrio {
-  color: $slategray;
-  margin-top: 70px;
-  text-align: center;
-  div {
-    margin: 3.5%;
-    // padding-top: 0px;
-    text-align: center;
-    display: inline-block;
-    float: left;
-    width: 26%;
-    padding-bottom: 00px;
-    h2 {
-      // padding-top: 10px;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    h3 {
-      text-align: center;
-      font-size: 16px;
-      // margin-top: 10px;
-    }
-    img {
-      width: 100%;
-      margin-top: 5px;
-      border: 2px solid;
-      border-radius: 2px;
-    }
-  }
-}
-// END of styling for loginPage
-
-//SW  - register styles
-
-// li {
-//   cursor: pointer;
-//   color: white;
-  // &:hover {
-  //   background: dodgerblue;
-  //   color:black;
-  // }
-// }
-// li {
-//   cursor: pointer;
-//   background: grey;
-//   color: white;
-//   &:hover {
-//     background: dodgerblue;
-//     color:black;
-//   }
-// }
 
 
 button.goBackButton {
