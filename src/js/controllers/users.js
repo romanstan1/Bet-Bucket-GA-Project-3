@@ -39,7 +39,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function chooseAccumulator(accy) {
+
     if(accy) {
+      if(accy !== vm.currentAccumulator) vm.editToggleBoolean = false;
       vm.currentAccumulator = accy;
       vm.currentAccumulator.events.sort((a, b) => a.runnerId - b.runnerId);
       vm.data = [];
@@ -84,7 +86,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then(() => {
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
-        vm.currentAccumulator = false;
+        vm.currentAccumulator = {};
+        editToggle();
       });
   }
 
@@ -109,11 +112,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.editToggleBoolean =  true;
 
   function editToggle(){
-    if(vm.editToggleBoolean === true) {
-      vm.editToggleBoolean = false;
-    } else {
-      vm.editToggleBoolean = true;
-    }
+    if(vm.editToggleBoolean === true) vm.editToggleBoolean = false;
+    else vm.editToggleBoolean = true;
+
   }
 
   function deleteEvent(event) {
@@ -133,8 +134,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function displayTrackedEvents(accumulatorId) {
-    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
-    $http
+    if(vm.currentAccumulator.events.length > 0) {
+      const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
+      $http
       .get(`/api/accumulators/${accumulatorId}`)
       .then((response) => {
         vm.runners = response.data.reduce((runners, data) => {
@@ -163,6 +165,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
           i++;
         }, 1000);
       });
+
+    }
   }
 
   function createLinesOnGraph(accy) {

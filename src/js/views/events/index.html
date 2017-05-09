@@ -1,4 +1,8 @@
-<div>
+<div class="event-type-menu" ng-if="!usersShow.eventButton">
+  {{ betfairIndex.eventType }} Events
+</div>
+
+<div ng-if="!usersShow.eventButton">
   <section class="profile-select-event" >
     <p ng-repeat="event in betfairIndex.all" ui-sref="profile.eventsShow({ eventType: betfairIndex.eventType, eventId: event.event.id })" ng-click="usersShow.newEvent.eventName = event.event.name">{{ event.event.name }}</p>
   </section>

@@ -1,12 +1,17 @@
-<button class="goBackButton" ui-sref="profile.events({ eventType: betfairShow.eventType })">Go back to {{ betfairShow.eventType }} events</button>
+<button ng-if="!usersShow.eventButton" class="goBackButton" ui-sref="profile.events({ eventType: betfairShow.eventType })">Go back to {{ betfairShow.eventType }} events</button>
 
-<ul class="showEvents">
+<ul ng-if="!usersShow.eventButton" class="showEvents">
+
+  <div class="event-type-menu" ng-if="!usersShow.eventButton">
+    Markets For {{ usersShow.newEvent.eventName }}
+  </div>
+
   <li ng-click="betfairShow.getMarketOdds(market.marketId); betfairShow.selectMarket(market); usersShow.selectMarket(market); usersShow.newEvent.marketName = market.marketName; usersShow.newEvent.marketId = market.marketId" ng-repeat="market in betfairShow.markets" ng-class="{'selected': market.selected }">
-    <h3>{{ market.marketName }} <span ng-if="!market.totalMatched"> - No odds Available</span></h3>
+    <p>{{ market.marketName }} <span ng-if="!market.totalMatched"> - No odds Available</span></p>
   </li>
 </ul>
 
-<ul class="showOdds">
+<ul ng-if="!usersShow.eventButton" class="showOdds">
   <li ng-repeat="runner in betfairShow.specificMarket.runners" ng-if="runner.lastPriceTraded">
     <p> {{ betfairShow.runnerNames[$index] }} - Last Price Traded: {{ runner.lastPriceTraded }} </p>
 

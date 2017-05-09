@@ -19,7 +19,7 @@
       </a>
       <div class="edit">
 
-        <div ng-hide="usersShow.editToggleBoolean">
+        <div ng-if="usersShow.editToggleBoolean">
           <form class="editForm" ng-submit="usersShow.rename()">
             <input type="text" ng-model="usersShow.currentAccumulator.name">
             <button class="editForm">Rename</button>
@@ -27,8 +27,7 @@
           <button class="editForm" ng-click="usersShow.delete(accy)">Delete</button>
         </div>
 
-        <button class="editForm" ng-show="usersShow.editToggleBoolean" ng-click="usersShow.editToggle()">Edit</button>
-
+        <button class="editForm editButton" ng-click="usersShow.editToggle()">Edit</button>
       </div>
     </li>
   </ul>
@@ -52,8 +51,11 @@
 <h3 class="profile-h3" ng-show="usersShow.currentAccumulator.name">Tracked live events in <span>{{ usersShow.currentAccumulator.name}}</span> </h3>
 
 <ul class="profile-tracked-accumulator">
+  <li ng-if="usersShow.currentAccumulator.events.length > 0" class="menu">
+    <p> Event Type - Event Name - Market Name - Runner Name</p>
+  </li>
   <li ng-repeat="event in usersShow.currentAccumulator.events">
-    <p>{{ event.eventType }} - {{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }} - {{ event.runnerId }}
+    <p>{{ event.eventType }} - {{ event.eventName }} - {{ event.marketName }} - {{ event.runnerName }}
     </p>
     <p> LATEST ODDS: <span> {{ usersShow.runnerPrices[$index].lastPriceTraded }}</span></p>
     <button ng-click="usersShow.deleteEvent(event)">Delete</button>
@@ -62,7 +64,15 @@
 
 <br>
 
-<button class="eventButton" ng-click="usersShow.eventButton = false" ng-if="usersShow.eventButton">Add Event</button>
+<button class="eventButton" ng-click="usersShow.eventButton = !usersShow.eventButton">
+  <span>
+    Add Event
+  </span>
+  <div ng-if="!usersShow.eventButton" style="transform: rotate(90deg);"></div>
+  <div ng-if="usersShow.eventButton"></div>
+</button>
+<!-- <button class="eventButton" ng-click="usersShow.eventButton = false" ng-if="usersShow.eventButton">
+  Add Event</button> -->
 
 <section class="profile-input-selectboxes" ng-if="!usersShow.eventButton">
   <select name="EVENT TYPE" ng-model="usersShow.eventType">
@@ -85,5 +95,5 @@
 <div ui-view></div>
 
 <footer>
-  <p> made with &#9829; by Ytho 2017</p>
+  <p> made with &#9829; at GA LONDON 2017</p>
 </footer>
