@@ -33,6 +33,14 @@
   </ul>
 </section>
 <section class="profile-graphs">
+  <p ng-if="!usersShow.currentAccumulator">
+    <span>Instructions</span>
+    1. Do this. <br>
+    2. Now do this.<br>
+    3. That means you Ben.<br>
+    4. I'm watching you.<br>
+    5. Nice tan.
+  </p>
   <div>
     <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
     </canvas>
