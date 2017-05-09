@@ -48,6 +48,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
       i = 0;
+      console.log(accy);
       createLinesOnGraph(accy);
     }
   }
@@ -134,7 +135,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function displayTrackedEvents(accumulatorId) {
-    if(vm.currentAccumulator.events.length > 0) {
+    if(vm.currentAccumulator.events && vm.currentAccumulator.events.length > 0) {
       const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
       $http
       .get(`/api/accumulators/${accumulatorId}`)
@@ -161,7 +162,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
-          updateGraph(i);
+          if(vm.currentAccumulator.events) updateGraph(i);
           i++;
         }, 1000);
       });
@@ -178,10 +179,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function updateGraph(i) {
     const time = moment().format('mm:ss');
-
     if(i < 20) {
       for(let p = 0; p < vm.data.length; p++) {
-        vm.data[p][i] = vm.runners[p].lastPriceTraded;
+        if(vm.runners[p]) vm.data[p][i] = vm.runners[p].lastPriceTraded;
       }
       vm.labels[i] = time;
     } else {
