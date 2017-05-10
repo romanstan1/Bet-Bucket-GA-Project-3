@@ -48,7 +48,6 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       vm.labels = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
       i = 0;
-      console.log(accy);
       createLinesOnGraph(accy);
     }
   }
@@ -87,8 +86,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .then(() => {
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
-        vm.currentAccumulator = {};
+        vm.currentAccumulator = false;
         editToggle();
+        vm.data = [];
       });
   }
 
