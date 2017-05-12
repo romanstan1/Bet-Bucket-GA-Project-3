@@ -107,6 +107,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
       .$promise
       .then(() => {
         vm.editToggleBoolean =  true;
+        editToggle();
       });
   }
 

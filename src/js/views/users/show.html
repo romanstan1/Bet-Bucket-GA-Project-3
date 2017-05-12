@@ -8,7 +8,7 @@
     <div ng-message="required">A name is required.</div>
   </div>
   <form class="newForm" name="usersShow.newAccyForm" ng-submit="usersShow.createAccumulator()" novalidate>
-    <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" required>
+    <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" placeholder="Name of accumulator..." required>
     <button>Create New Accumulator</button>
   </form>
   <ul>
@@ -33,16 +33,19 @@
   </ul>
 </section>
 <section class="profile-graphs">
-  <p ng-if="!usersShow.currentAccumulator">
-    <span>Instructions</span>
-    1. Do this. <br>
-    2. Now do this.<br>
-    3. That means you Ben.<br>
-    4. I'm watching you.<br>
-    5. Nice tan.
-  </p>
   <div>
-    <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
+  <ul ng-if=" !usersShow.currentAccumulator || usersShow.currentAccumulator.events.length === 0">
+    <li>INSTRUCTIONS</li>
+    <li>1. Create and select your first accumulator in the top right hand corner </li>
+    <li>2. Click the "ADD EVENT" button below </li>
+    <li>3. Select an event type (eg. SOCCER) and click 'SEARCH' </li>
+    <li>4. Select an event (eg. 'Real Madrid vs Barcelona')</li>
+    <li>5. Select a market (eg. 'Match Odds')</li>
+    <li>6. Click 'ADD TO ACCUMULATOR' on the runner of your choice (eg. 'Barcelona')</li>
+    <li>7. Input 'Stake' to see your total return</li>
+    <li>8. Hover over the lines on graph to view further information </li>
+  </ul>
+    <canvas ng-if="usersShow.currentAccumulator.events.length > 0" id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
     </canvas>
   </div>
 </section>
@@ -72,7 +75,7 @@
 
 <br>
 
-<button class="eventButton" ng-click="usersShow.eventButton = !usersShow.eventButton">
+<button ng-if="usersShow.currentAccumulator" class="eventButton" ng-click="usersShow.eventButton = !usersShow.eventButton">
   <span>
     Add Event
   </span>
